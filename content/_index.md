@@ -9,10 +9,6 @@ design:
   spacing: '6rem'
 
 sections:
----
-title: Home
-type: landing
-
   - block: resume-biography-3
     content:
       # Choose a user profile to display (a folder name within `content/authors/`)
