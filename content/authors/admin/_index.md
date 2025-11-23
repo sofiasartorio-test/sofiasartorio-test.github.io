@@ -48,10 +48,9 @@ profiles:
     url: https://orcid.org/0000-0002-1825-0097
 
 interests:
-  - Large Language Models
-  - Computer Vision
-  - Reinforcement Learning
-  - AI Ethics
+  - Composite delamination
+  - Damage of Composite
+  - Cold Spray
 
 education:
   - area: PhD Computer Science (AI Focus)
