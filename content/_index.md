@@ -13,32 +13,6 @@ sections:
 title: Home
 type: landing
 
-sections:
-  - block: columns
-    content:
-      columns:
-        - width: 6
-          block: image
-          content:
-            src: /images/foto.jpg
-            alt: "Una foto descrittiva"
-        - width: 6
-          block: markdown
-          content:
-            title: Titolo accanto alla foto
-            text: >
-              Questo è il testo che comparirà **di fianco all’immagine**.
-              Puoi mettere descrizioni, spiegazioni o un'introduzione.
-  - block: markdown
-    content:
-      title: Welcome
-      text: Hello World!
-
-  - block: collection
-    content:
-      title: Latest Posts
----
-
   - block: resume-biography-3
     content:
       # Choose a user profile to display (a folder name within `content/authors/`)
