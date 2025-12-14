@@ -11,7 +11,7 @@ design:
 sections:
   - block: collection
     content:
-      title: The TEAM :
+      title: "The TEAM :"
       text: Who we are — A collaborative research group.
       filters:
         folders:
