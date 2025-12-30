@@ -63,7 +63,21 @@ sections:
         featured_only: true
     design:
       view: article-grid
-      columns: 2     
+      columns: 2
+
+  - block: markdown
+  id: map
+  content: |
+    <iframe
+      src="[https://www.google.com/maps/place/Universit%C3%A0+tecnica+di+Delft/@52.0021919,4.3710017,17z/data=!4m14!1m7!3m6!1s0x47c5b58e7e597879:0x3d1e05e58c2c037c!2sUniversit%C3%A0+tecnica+di+Delft!8m2!3d52.0021919!4d4.3735766!16zL20vMHExOXQ!3m5!1s0x47c5b58e7e597879:0x3d1e05e58c2c037c!8m2!3d52.0021919!4d4.3735766!16zL20vMHExOXQ?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoKLDEwMDc5MjA2OUgBUAM%3D]"
+      width="100%"
+      height="450"
+      style="border:0;"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+
   - block: cta-card
     demo: true # Only display this section in the Hugo Blox Builder demo site
     content:
