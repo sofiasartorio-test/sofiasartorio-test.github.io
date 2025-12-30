@@ -36,8 +36,6 @@ profiles:
   - icon: at-symbol
     url: 'mailto:alex.johnson@meta.com'
     label: E-mail Me
-  - icon: brands/x
-    url: https://twitter.com/AlexAIResearch
   - icon: brands/github
     url: https://github.com/alexjohnsonai
   - icon: brands/linkedin
