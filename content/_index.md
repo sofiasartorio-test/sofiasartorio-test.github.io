@@ -9,6 +9,18 @@ design:
   spacing: '6rem'
 
 sections:
+- block: markdown
+  id: hero
+  content:
+    title: Hi, I'm George
+    subtitle: I build open source software.
+    text: Welcome to my portfolio.
+  design:
+    background:
+      image:
+        filename: featured.jpg
+        filters:
+          brightness: 0.5
   - block: resume-biography-3
     content:
       # Choose a user profile to display (a folder name within `content/authors/`)
