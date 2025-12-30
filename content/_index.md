@@ -9,7 +9,7 @@ design:
   spacing: '6rem'
 
 sections:
-  - block: markdown
+  - block: hero
     id: hero
     content:
       title: Hi, I'm George
