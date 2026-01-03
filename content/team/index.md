@@ -3,3 +3,5 @@ title: Team
 ---
 
 {{< people >}}
+
+---
