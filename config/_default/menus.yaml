@@ -8,7 +8,7 @@ main:
     url: /
     weight: 10
   - name: Research
-    url: /#papers
+    url: /papers/
     weight: 11
   - name: Team members
     url: /#talks
