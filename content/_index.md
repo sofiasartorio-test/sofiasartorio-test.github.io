@@ -15,15 +15,12 @@ sections:
       title: Hi, I'm George
       subtitle: I build open source software.
       text: Welcome to my portfolio.
+
     design:
-      layout: image-side               # layout fianco a fianco
-      image_position: right            # immagine a destra (left = testo a destra)
-      text_align: left                 # testo allineato a sinistra
-      text_color: "#000000"            # colore testo
-      image:
-        filename: featured.jpg         # immagine che vuoi mostrare
-        filters:
-          brightness: 1.0             # luminosità normale
+      background:
+       image:
+        filename: featured.jpg
+
   - block: resume-biography-3
     content:
       # Choose a user profile to display (a folder name within `content/authors/`)
