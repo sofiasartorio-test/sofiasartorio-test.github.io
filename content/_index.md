@@ -7,8 +7,7 @@ type: landing
 design:
   # Default section spacing
   spacing: '6rem'
-
-sections:
+  
 sections:
   - block: markdown
     content:
