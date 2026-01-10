@@ -1,0 +1,125 @@
+{{ define "main" }}
+
+<div class="author-container">
+
+  <!-- HEADER -->
+  <div class="author-header">
+    <img class="author-avatar"
+         src="{{ .Params.avatar | default "/images/default-avatar.png" }}"
+         alt="{{ .Title }}">
+
+    <div>
+      <h1>{{ .Title }}</h1>
+      <p class="author-role">{{ .Params.role }}</p>
+
+      <!-- SOCIAL -->
+      <div class="author-social">
+        {{ with .Params.social }}
+          {{ if .email }}<a href="mailto:{{ .email }}">Email</a>{{ end }}
+          {{ if .twitter }} · <a href="{{ .twitter }}" target="_blank">Twitter</a>{{ end }}
+          {{ if .scholar }} · <a href="{{ .scholar }}" target="_blank">Scholar</a>{{ end }}
+        {{ end }}
+      </div>
+    </div>
+  </div>
+
+  <!-- BIO / INFO -->
+  {{ with .Params.education }}
+    <h2>Education</h2>
+    <ul>
+      {{ range . }}
+        <li>{{ . }}</li>
+      {{ end }}
+    </ul>
+  {{ end }}
+
+  {{ with .Params.interests }}
+    <h2>Research Interests</h2>
+    <ul class="interest-list">
+      {{ range . }}
+        <li>{{ . }}</li>
+      {{ end }}
+    </ul>
+  {{ end }}
+
+  <!-- PUBLICATIONS BY AUTHOR -->
+  <h2>Publications</h2>
+
+  <div class="author-pubs">
+    {{ $name := .Title }}
+
+    {{ range where site.RegularPages "Section" "publications" }}
+      {{ if in .Params.authors $name }}
+        <div class="author-pub-item">
+          <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+          <span>({{ .Params.year }})</span>
+        </div>
+      {{ end }}
+    {{ end }}
+  </div>
+
+</div>
+
+<!-- STYLE -->
+<style>
+.author-container {
+  max-width: 900px;
+  margin: auto;
+}
+
+.author-header {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.author-avatar {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.author-role {
+  color: #666;
+  margin-top: 0.3rem;
+}
+
+.author-social a {
+  color: #0066cc;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.author-social a:hover {
+  text-decoration: underline;
+}
+
+h2 {
+  margin-top: 2rem;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 0.3rem;
+}
+
+.interest-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  list-style: none;
+  padding: 0;
+}
+
+.interest-list li {
+  background: #f3f3f3;
+  padding: 0.4rem 0.8rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+}
+
+.author-pub-item {
+  margin: 0.4rem 0;
+}
+</style>
+
+{{ end }}
