@@ -39,8 +39,20 @@
       </a>
 
       <div class="pub-meta">
-        {{ delimit .Params.authors ", " }} ({{ .Params.year }})
-        {{ with .Params.pdf }} – <a href="{{ . }}" target="_blank">PDF</a>{{ end }}
+        {{ if reflect.IsSlice .Params.authors }}
+          {{ delimit .Params.authors ", " }}
+        {{ else }}
+          {{ .Params.authors }}
+        {{ end }}
+        ({{ .Params.year }})
+
+        {{ with .Params.pdf }}
+          – <a href="{{ . }}" target="_blank">PDF</a>
+        {{ end }}
+
+        {{ with .Resources.GetMatch "cite.bib" }}
+          – <a href="{{ .RelPermalink }}" target="_blank">BibTeX</a>
+        {{ end }}
       </div>
     </div>
   {{ end }}
