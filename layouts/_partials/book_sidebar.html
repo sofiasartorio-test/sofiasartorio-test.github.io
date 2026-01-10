@@ -49,7 +49,7 @@
       {{- end}}
 
       {{- range $query -}}
-       {{ template "book-menu" dict "sect" . "current_node" $current_node "order_by" $order_by "is_root" $is_root }}
+       {{/* {{ template "book-menu" . }} */}}
      {{- end -}}
   
     {{else}}
