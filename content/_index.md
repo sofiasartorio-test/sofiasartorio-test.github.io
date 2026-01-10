@@ -14,7 +14,7 @@ sections:
       title: "We are a university research group dedicated to advanced composite materials..."
       text: "Welcome to my portfolio."
       image:
-        filename: "images/featured.jpg"
+        filename: "images/IMG_7320.jpg"
         alt: "Research group"
 
     design:
