@@ -1,51 +1,13 @@
 {{ define "main" }}
-<h1 style="text-align:center; margin-bottom:2rem;">📚 Publications</h1>
-
-<!-- Barra di ricerca -->
-<label>Filtra per anno, titolo o autore:
-  <input type="text" id="searchInput" placeholder="Scrivi qui..." style="margin-left:0.5rem; padding:0.3rem; width:250px;">
-</label>
-
-<div id="listaPubblicazioni" style="margin-top:2rem;"></div>
-
-<!-- Includi JS generato da Hugo -->
-<script src="{{ "partials/publications-data.js" | relURL }}"></script>
-
-<script>
-const searchInput = document.getElementById("searchInput");
-const container = document.getElementById("listaPubblicazioni");
-
-function filtraPubblicazioni() {
-  const query = searchInput.value.toLowerCase().trim();
-
-  container.innerHTML = "";
-
-  pubs
-    .filter(p => 
-        !query || 
-        p.year.includes(query) ||
-        p.title.toLowerCase().includes(query) ||
-        p.authors.join(" ").toLowerCase().includes(query)
-    )
-    .sort((a,b) => b.year - a.year)
-    .forEach(p => {
-      const div = document.createElement("div");
-      div.className = "pub";
-      div.innerHTML = `<strong>${p.title}</strong> — ${p.authors.join(", ")} (${p.year}) 
-                       <a href="${p.url}">Vai</a>`;
-      container.appendChild(div);
-    });
-}
-
-// Mostra tutte le pubblicazioni inizialmente
-filtraPubblicazioni();
-searchInput.addEventListener("input", filtraPubblicazioni);
-</script>
-
-<style>
-.pub { margin-bottom: 1rem; padding:0.5rem; border-bottom:1px solid #eee; }
-label { font-weight: bold; display:block; margin-bottom:1rem; }
-input { border:1px solid #ccc; border-radius:4px; padding:0.3rem; }
-</style>
+<h1>Pubblicazioni</h1>
+<ul>
+  {{ range .Pages }}
+    <li>
+      <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+      {{ with .Params.authors }} ({{ . }}){{ end }}
+      {{ with .Params.year }} - {{ . }}{{ end }}
+    </li>
+  {{ end }}
+</ul>
 {{ end }}
 
