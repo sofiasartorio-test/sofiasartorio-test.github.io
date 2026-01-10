@@ -8,7 +8,7 @@ design:
   # Default section spacing
   spacing: '6rem'
 
-sections:
+ssections:
   - block: hero
     content:
       title: "We are a university research group dedicated to advanced composite materials..."
@@ -20,7 +20,12 @@ sections:
     design:
       image_position: left
       text_color: white
-      padding: "4rem 0"
+      padding: "6rem 0"
+      bg_size: cover
+      bg_position: center
+      overlay:
+        color: "rgba(0,0,0,0.3)"   # leggero scuro per far risaltare il testo
+
 
   - block: resume-biography-3
     content:
