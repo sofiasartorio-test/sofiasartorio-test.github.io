@@ -8,28 +8,13 @@
 
 <div id="listaPubblicazioni" style="margin-top:2rem;"></div>
 
-<script>
-// Crea array delle pubblicazioni
-const pubs = [
-{{- range .Pages -}}
-  {{- $authors := .Params.authors | default (slice "Unknown") -}}
-  {{- $types := .Params.publication_types | default (slice "") -}}
-  {
-    title: {{ .Title | jsonify }},
-    authors: {{ $authors | jsonify }},
-    year: {{ .Date.Format "2006" | jsonify }},
-    type: {{ index $types 0 | default "" | jsonify }},
-    url: {{ .RelPermalink | jsonify }}
-  },
-{{- end -}}
-];
-</script>
+<!-- Includi JS generato da Hugo -->
+<script src="{{ "partials/publications-data.js" | relURL }}"></script>
 
 <script>
 const searchInput = document.getElementById("searchInput");
 const container = document.getElementById("listaPubblicazioni");
 
-// Funzione per mostrare tutte le pubblicazioni filtrate
 function filtraPubblicazioni() {
   const query = searchInput.value.toLowerCase().trim();
 
@@ -42,7 +27,7 @@ function filtraPubblicazioni() {
         p.title.toLowerCase().includes(query) ||
         p.authors.join(" ").toLowerCase().includes(query)
     )
-    .sort((a,b) => b.year - a.year) // decrescente per anno
+    .sort((a,b) => b.year - a.year)
     .forEach(p => {
       const div = document.createElement("div");
       div.className = "pub";
@@ -52,18 +37,15 @@ function filtraPubblicazioni() {
     });
 }
 
-// Mostra tutte le pubblicazioni all’avvio
+// Mostra tutte le pubblicazioni inizialmente
 filtraPubblicazioni();
-
-// Aggiorna in tempo reale al digitare
 searchInput.addEventListener("input", filtraPubblicazioni);
 </script>
 
 <style>
 .pub { margin-bottom: 1rem; padding:0.5rem; border-bottom:1px solid #eee; }
 label { font-weight: bold; display:block; margin-bottom:1rem; }
-input { border:1px solid #ccc; border-radius:4px; }
+input { border:1px solid #ccc; border-radius:4px; padding:0.3rem; }
 </style>
 {{ end }}
-
 
