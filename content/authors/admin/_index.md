@@ -10,7 +10,7 @@ last_name: Damage Management & Certification
 superuser: true
 
 # Highlight the author in author lists? (true/false)
-highlight_name: true
+highlight_name: false
 
 # Role/position/tagline
 role: Research Group
