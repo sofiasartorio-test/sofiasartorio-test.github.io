@@ -9,20 +9,18 @@ design:
   spacing: '6rem'
 
 sections:
-  - block: feature
+  - block: hero
     content:
-      title: "We are a university research group dedicated to advanced composite materials and cold-spray technologies, with a primary focus on aerospace applications. Our research seeks to move from extensive empirical testing toward a deep understanding of the physics behind material damage."
+      title: "We are a university research group dedicated to advanced composite materials..."
       text: "Welcome to my portfolio."
       image:
         filename: "featured.jpg"
         alt: "Research group"
 
     design:
-      image_position: left   # immagine a sinistra, testo a destra
-      columns: 2
+      image_position: left
+      text_color: white
       padding: "4rem 0"
-
-
   - block: resume-biography-3
     content:
       # Choose a user profile to display (a folder name within `content/authors/`)
