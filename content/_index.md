@@ -13,6 +13,17 @@ sections:
     content:
       title: "We are a university research group dedicated to advanced composite materials..."
       text: |
+        <img src="images/IMG_7320.jpg" alt="Research group"
+             style="float:left; width:35%; margin-left:-2rem; margin-right:2rem; margin-bottom:1rem;">
+        <div style="max-width:65%; display:inline-block;">
+          Welcome to my portfolio. Here you can write more text, and it will wrap nicely next to the image.
+          You can extend this paragraph as much as needed.
+        </div>
+
+  - block: markdown
+    content:
+      title: "We are a university research group dedicated to advanced composite materials..."
+      text: |
         <img src="images/IMG_7320.jpg" alt="Research group" style="float:left; width:40%; margin-right:2rem; margin-bottom:1rem;">
         Welcome to my portfolio. Here is some more descriptive text that wraps nicely around the image.
 
