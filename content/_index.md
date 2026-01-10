@@ -9,13 +9,14 @@ design:
   spacing: '6rem'
 
 sections:
+sections:
   - block: markdown
     content:
       title: "We are a university research group dedicated to advanced composite materials..."
       text: |
         <img src="images/IMG_7320.jpg" alt="Research group"
              style="float:left; width:35%; margin-right:2rem; margin-bottom:1rem;">
-        <div style="max-width:65%; display:inline-block;">
+        <div style="max-width:65%; display:inline-block; font-size:30px; font-family:Arial, sans-serif; color:#333;">
           Benvenuti nel nostro laboratorio:
           <ul>
             <li><strong>Materiali compositi avanzati</strong></li>
@@ -23,6 +24,7 @@ sections:
             <li><strong>Applicazioni aerospace</strong></li>
           </ul>
         </div>
+
 
   - block: markdown
     content:
