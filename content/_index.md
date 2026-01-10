@@ -36,7 +36,6 @@ sections:
 
   - block: markdown
     content:
-      title: "Meet Our Team"
       text: | 
         <div style="text-align: center; margin: 2rem 0;">
         <p style="font-size:1.5rem; font-weight:bold;">Join us and discover our team!</p>
