@@ -1,56 +1,86 @@
 {{ define "main" }}
 <h1 style="text-align:center; margin-bottom:2rem;">📚 Publications</h1>
 
-<div style="text-align:center; margin-bottom:1rem;">
-  <label for="yearFilter">Filter by year:</label>
-  <select id="yearFilter">
-    <option value="">All</option>
-
-    {{ $years := slice }}
-    {{ range .Pages }}
-      {{ with .Params.year }}
-        {{ if not (in $years .) }}
-          {{ $years = $years | append . }}
-        {{ end }}
-      {{ end }}
-    {{ end }}
-
-    {{ range sort $years }}
-      <option value="{{ . }}">{{ . }}</option>
-    {{ end }}
-  </select>
+<!-- SEARCH BAR -->
+<div style="max-width:600px; margin:0 auto 2rem auto;">
+  <input
+    type="text"
+    id="searchInput"
+    placeholder="Search by title, author, topic, year..."
+    style="
+      width:100%;
+      padding:0.7rem 1rem;
+      font-size:1rem;
+      border:1px solid #ccc;
+      border-radius:999px;
+      outline:none;
+    "
+  >
 </div>
 
-<div id="pubList" class="max-w-3xl mx-auto flex flex-col gap-4 px-4">
+<!-- PUBLICATIONS LIST -->
+<div class="pub-list">
   {{ range sort .Pages "Params.year" "desc" }}
-    <div class="publication-item flex flex-col sm:flex-row sm:items-center sm:justify-between border-b border-gray-200 pb-2"
-         data-year="{{ .Params.year }}">
+    <div class="pub-item"
+         data-search="{{ lower (printf "%s %s %v %v" .Title (delimit .Params.authors " ") .Params.topics .Params.year) }}">
 
-      <a href="{{ .RelPermalink }}" class="text-blue-600 hover:underline font-medium">
+      <a href="{{ .RelPermalink }}" class="pub-title">
         {{ .Title }}
       </a>
 
-      <div class="text-gray-600 text-sm mt-1 sm:mt-0">
-        {{ with .Params.authors }}{{ . }}{{ end }}
-        {{ with .Params.year }} ({{ . }}){{ end }}
-        {{ with .Params.pdf }}
-          – <a href="{{ . }}" class="text-blue-500 hover:underline" target="_blank">PDF</a>
-        {{ end }}
+      <div class="pub-meta">
+        {{ delimit .Params.authors ", " }} ({{ .Params.year }})
+        {{ with .Params.pdf }} – <a href="{{ . }}" target="_blank">PDF</a>{{ end }}
       </div>
-
     </div>
   {{ end }}
 </div>
 
+<!-- STYLE -->
+<style>
+.pub-list {
+  max-width: 800px;
+  margin: auto;
+}
+
+.pub-item {
+  padding: 0.6rem 0;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.pub-title {
+  font-weight: 500;
+  color: #0066cc;
+  text-decoration: none;
+}
+
+.pub-title:hover {
+  text-decoration: underline;
+}
+
+.pub-meta {
+  font-size: 0.9rem;
+  color: #555;
+}
+</style>
+
+<!-- SEARCH SCRIPT -->
 <script>
-document.getElementById('yearFilter').addEventListener('change', function () {
-  const year = this.value;
-  document.querySelectorAll('.publication-item').forEach(item => {
-    item.style.display = (!year || item.dataset.year === year) ? 'flex' : 'none';
+const input = document.getElementById('searchInput');
+const items = document.querySelectorAll('.pub-item');
+
+input.addEventListener('input', () => {
+  const query = input.value.toLowerCase();
+
+  items.forEach(item => {
+    const text = item.dataset.search;
+    item.style.display = text.includes(query) ? 'block' : 'none';
   });
 });
 </script>
+
 {{ end }}
+
 
 
 
