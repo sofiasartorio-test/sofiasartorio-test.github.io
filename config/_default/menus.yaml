@@ -16,9 +16,9 @@ main:
   - name: Publications
     url: /#news
     weight: 13
-  - name: Projects Collaboration
-    url: /team/
-    weight: 20
+  - name: 👥 Team
+    url: team/
+    weight: 21
   - name: News
     url: projects/
     weight: 30
