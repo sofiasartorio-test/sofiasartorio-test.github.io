@@ -1,83 +1,56 @@
 ---
-title: "Meet the Team"
-weight: 1
+title: "👥 People"
+weight: 2
 disable_toc: true
 no_sidebar: true
 ---
 
-<h1>👥 Meet the Team</h1>
+<div class="people-grid">
+  {{ range (where site.RegularPages "Section" "authors") }}
+    <div class="person-card">
+      {{ $avatar := .Params.avatar | default "/images/default-avatar.png" }}
+      <img class="avatar" src="{{ $avatar }}" alt="{{ .Title }}">
 
-<label>Gruppo:
-  <select id="filtroGruppo">
-    <option value="">Tutti</option>
-  </select>
-</label>
+      <h3>{{ .Title }}</h3>
 
-<div id="listaPersone"></div>
+      {{ if .Params.role }}
+        <p class="role">{{ .Params.role }}</p>
+      {{ end }}
 
-<script>
-// Array dei membri (modifica qui per aggiungere persone)
-const persone = [
-  {
-    nome: "Sofia Sartorio",
-    ruolo: "Founder",
-    gruppi: ["Founders", "Notes"],
-    avatar: "images/IMG_7320.jpg",
-    social: { twitter: "https://twitter.com/sofia" }
-  },
-  {
-    nome: "Mario Rossi",
-    ruolo: "Notes",
-    gruppi: ["Notes"],
-    avatar: "images/IMG_7320.jpg",
-    social: {}
-  },
-  {
-    nome: "Luca Bianchi",
-    ruolo: "Lab",
-    gruppi: ["Laboratory"],
-    avatar: "images/IMG_7320.jpg",
-    social: { linkedin: "https://linkedin.com/in/luca" }
-  }
-];
-
-// Riempi il filtro
-const tuttiGruppi = new Set();
-persone.forEach(p => p.gruppi.forEach(g => tuttiGruppi.add(g)));
-const filtro = document.getElementById("filtroGruppo");
-tuttiGruppi.forEach(g => {
-  const opt = document.createElement("option");
-  opt.value = g;
-  opt.textContent = g;
-  filtro.appendChild(opt);
-});
-
-// Mostra le persone filtrate
-function mostraPersone() {
-  const selezionato = filtro.value;
-  const container = document.getElementById("listaPersone");
-  container.innerHTML = "";
-  persone.filter(p => !selezionato || p.gruppi.includes(selezionato))
-         .forEach(p => {
-           const div = document.createElement("div");
-           div.className = "persona";
-           div.innerHTML = `
-             <img src="${p.avatar}" alt="${p.nome}" width="150">
-             <h2>${p.nome}</h2>
-             <p>${p.ruolo}</p>
-             ${p.social.twitter ? `<a href="${p.social.twitter}">Twitter</a>` : ""}
-             ${p.social.linkedin ? `<a href="${p.social.linkedin}">LinkedIn</a>` : ""}
-           `;
-           container.appendChild(div);
-         });
-}
-
-// Inizializza
-mostraPersone();
-filtro.addEventListener("change", mostraPersone);
-</script>
+      <div class="socials">
+        {{ with .Params.social }}
+          {{ if .twitter }}<a href="{{ .twitter }}" target="_blank">Twitter</a>{{ end }}
+          {{ if .linkedin }}<a href="{{ .linkedin }}" target="_blank">LinkedIn</a>{{ end }}
+        {{ end }}
+      </div>
+    </div>
+  {{ end }}
+</div>
 
 <style>
-.persona { display: inline-block; margin: 1em; text-align: center; }
-.persona img { border-radius: 50%; }
+.people-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 2rem;
+  justify-items: center;
+  margin-top: 2rem;
+}
+.person-card {
+  text-align: center;
+}
+.avatar {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.role {
+  font-size: 0.9rem;
+  color: #555;
+}
+.socials a {
+  margin: 0 0.5rem;
+  font-size: 0.9rem;
+  color: #007acc;
+}
 </style>
