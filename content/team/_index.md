@@ -41,3 +41,4 @@ headless: false
 .role { font-size: 0.9rem; color: #555; }
 .socials a { margin: 0 0.5rem; font-size: 0.9rem; color: #007acc; text-decoration: none; }
 </style>
+
