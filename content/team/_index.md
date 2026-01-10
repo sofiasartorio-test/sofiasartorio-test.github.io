@@ -3,28 +3,29 @@ title: "👥 People"
 weight: 2
 disable_toc: true
 no_sidebar: true
+headless: false
 ---
 
 <div class="people-grid">
-  {{ range (where site.RegularPages "Section" "authors") }}
-    <div class="person-card">
-      {{ $avatar := .Params.avatar | default "/images/default-avatar.png" }}
-      <img class="avatar" src="{{ $avatar }}" alt="{{ .Title }}">
+{{ range (where site.RegularPages "Section" "authors") }}
+  <div class="person-card">
+    {{ $avatar := .Params.avatar | default "/images/default-avatar.png" }}
+    <img class="avatar" src="{{ $avatar }}" alt="{{ .Title }}">
 
-      <h3>{{ .Title }}</h3>
+    <h3>{{ .Title }}</h3>
 
-      {{ if .Params.role }}
-        <p class="role">{{ .Params.role }}</p>
+    {{ if .Params.role }}
+      <p class="role">{{ .Params.role }}</p>
+    {{ end }}
+
+    <div class="socials">
+      {{ with .Params.social }}
+        {{ if .twitter }}<a href="{{ .twitter }}" target="_blank">Twitter</a>{{ end }}
+        {{ if .linkedin }}<a href="{{ .linkedin }}" target="_blank">LinkedIn</a>{{ end }}
       {{ end }}
-
-      <div class="socials">
-        {{ with .Params.social }}
-          {{ if .twitter }}<a href="{{ .twitter }}" target="_blank">Twitter</a>{{ end }}
-          {{ if .linkedin }}<a href="{{ .linkedin }}" target="_blank">LinkedIn</a>{{ end }}
-        {{ end }}
-      </div>
     </div>
-  {{ end }}
+  </div>
+{{ end }}
 </div>
 
 <style>
@@ -35,22 +36,8 @@ no_sidebar: true
   justify-items: center;
   margin-top: 2rem;
 }
-.person-card {
-  text-align: center;
-}
-.avatar {
-  width: 150px;
-  height: 150px;
-  object-fit: cover;
-  border-radius: 50%;
-}
-.role {
-  font-size: 0.9rem;
-  color: #555;
-}
-.socials a {
-  margin: 0 0.5rem;
-  font-size: 0.9rem;
-  color: #007acc;
-}
+.person-card { text-align: center; }
+.avatar { width: 150px; height: 150px; object-fit: cover; border-radius: 50%; }
+.role { font-size: 0.9rem; color: #555; }
+.socials a { margin: 0 0.5rem; font-size: 0.9rem; color: #007acc; text-decoration: none; }
 </style>
