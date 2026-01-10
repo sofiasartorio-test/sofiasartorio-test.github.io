@@ -1,43 +1,41 @@
 ---
 # Display name
-title: "Sofia Test"
-url: "team/sofia-test"
+title: "Enrique Ortega González"
+url: "/team/enrique-ortega-gonzalez"
 
-weight: 20
+weight: 90
 
 # Username (this should match the folder name)
 authors:
-- sofia-test
+- enrique-ortega-gonzalez
 
 # Is this the primary user of the site?
 superuser: false
 
 # Role/position
-role: 📚 Notes
+role: 🎓 Admission Tests<br>📝 Examinations
 
 # Organizations/Affiliations
-#organizations:
-#- name: "Inglés: C1"
-#  url: ""
+organizations:
+- name: "IES José del Campo"
+  url: "http://www.josedelcampo.com"
 #- name: "Italiano: B2"
 #  url: ""  
 
 # Short bio (displayed in user profile at end of posts)
-bio: "I have a Degree in Chemistry and I am a self-employed Physics and Chemistry Teacher."
+bio: "I have a Degree in Chemistry and I teach Physics and Chemistry at [IES José del Campo](http://www.josedelcampo.com) in Ampuero (Cantabria)."
 
 interests:
-- 🎹 Piano and 🎸 guitar
-- 🍿 Science-fiction series
-- 🎞 Dramatic movies
-- 📺 Science and history documentaries
-- 🎮 Videogames
-- 🏛️ Architecture and decoration
+- 🥾 Hiking
+- 🎶 Music
+- 📖 Reading
+- 🎞️ Movies/Series
 
 education:
   courses:
-  - course: Degree in Chemistry
-    institution: University of Extremadura
-    year: 2021  
+  - course: Degree in Chemistry, specialising in Analytical Chemistry
+    institution: University of Valladolid
+    year: 1987  
 
 # Social/Academic Networking
 # For available icons, see: https://sourcethemes.com/academic/docs/page-builder/#icons
@@ -46,12 +44,8 @@ education:
 social:
 - icon: ✉️
   icon_pack: emoji
-  link: 'mailto:albavalenzuela3@gmail.com'  # For a direct email link, use "mailto:test@example.org".
+  link: 'mailto:enrique.ortega@educantabria.es'  # For a direct email link, use "mailto:test@example.org".
   label: Contact me
-- icon: twitter
-  icon_pack: svg
-  link: https://twitter.com/FrauValenzuela
-  label: Follow me on Twitter
 # Link to a PDF of your resume/CV from the About widget.
 # To enable, copy your resume/CV to `static/files/cv.pdf` and uncomment the lines below.
 # - icon: cv
@@ -64,7 +58,7 @@ email:
 # Organizational groups that you belong to (for People widget)
 #   Set this to `[]` or comment out if you are not using People widget.
 user_groups:
-- 📚 Notes
+- 🎓 Admission Tests
 ---
 
-
+I have a Degree in Chemistry and I teach Physics and Chemistry at [IES José del Campo](http://www.josedelcampo.com) in Ampuero (Cantabria). Outside the academic sphere, I am secretary of the Cajiga de Laredo Hiking Club and member of the Board of Directors of the [Asociación de Amigos del Patrimonio de Laredo](https://amigospatrimoniolaredo.es).

@@ -1,0 +1,289 @@
+{{ $show_navbar := ((site.Params.header.navbar.enable | default true) | and (ne .Params.header.navbar.enable false)) | or .Params.header.navbar.enable }}
+{{ if $show_navbar }}
+
+{{ $current_page := . }}
+{{ $highlight_active_link := site.Params.header.navbar.highlight_active_link | default true }}
+{{ $show_current_language := site.Params.header.navbar.show_language | default false }}
+
+{{/* Get site logo. */}}
+{{ $show_logo := site.Params.header.navbar.show_logo | default true }}
+{{ $has_logo := fileExists "assets/media/logo.png" | or (fileExists "assets/media/logo.svg") }}
+{{ $logo := "" }}
+{{ if $has_logo }}
+  {{ if or (eq .Site.Language.Lang "es") (eq .Site.Language.Lang "ca") }}
+    {{ $logo = (partial "blox-core/functions/get_logo" (dict "constraint" "max_height" "size" 70)) }}
+  {{ else if eq .Site.Language.Lang "en" }}
+    {{ $logo = resources.Get "media/logo-en.svg" }}
+  {{ end }}
+{{ end }}
+
+<header>
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container-xl">
+
+    {{if $show_logo}}
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="{{ site.Home.RelPermalink }}">
+        {{- if $has_logo -}}
+        <tgs-player id="tgs-nav" autoplay loop mode="normal" style="width: 61.6px; height:61.6px"></tgs-player>
+        <script>
+          document.addEventListener('wcThemeChange', (e) => {
+            // console.log('isDarkTheme? ' + e.detail.isDarkTheme());
+            if (e.detail.isDarkTheme()) {
+              const player = document.querySelector("#tgs-nav");
+              player.load("/media/lottie/home.tgs");
+            } else {
+              const player = document.querySelector("#tgs-nav");
+              player.load("/media/lottie/home-dark.tgs");
+            }
+          });
+        </script>
+          {{/*  <img src="{{ $logo.RelPermalink }}" alt="{{ site.Title }}"
+          {{with site.Params.header.image.width}}width="{{.}}"{{end}}
+          {{with site.Params.header.image.height}}height="{{.}}"{{end}} id="logo">  */}}
+          {{/*  {{ if or (eq .Site.Language.Lang "es") (eq .Site.Language.Lang "ca") }}
+          <script>
+            document.addEventListener('wcThemeChange', (e) => {
+              // console.log('isDarkTheme? ' + e.detail.isDarkTheme());
+              if (e.detail.isDarkTheme()) {
+                document.getElementById("logo").src="/media/logo-dark.svg";
+              } else {
+                document.getElementById("logo").src="/media/logo.svg";
+              }
+              });
+            </script>
+          {{ else if eq .Site.Language.Lang "en" }}
+          <script>
+            document.addEventListener('wcThemeChange', (e) => {
+              // console.log('isDarkTheme? ' + e.detail.isDarkTheme());
+              if (e.detail.isDarkTheme()) {
+                document.getElementById("logo").src="/media/logo-en-dark.svg";
+              } else {
+                document.getElementById("logo").src="/media/logo-en.svg";
+              }
+              });
+            </script>
+          {{ end }}  */}}
+        {{- else -}}
+          {{- site.Title -}}
+        {{- end -}}
+      </a>
+    </div>
+    {{end}}
+
+    <!-- {{ if site.Menus.main }}
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+      data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="{{ i18n "toggle_navigation" }}">
+    {{if $show_logo}}
+    {{- if $has_logo -}}
+      <span class="navbar-brand py-0"><img src="{{ $logo.RelPermalink }}" alt="{{ site.Title }}"></span>
+    {{- else -}}
+      <span><i class="fas fa-bars"></i></span>
+    {{- end -}}
+    {{ end }}
+    </button>
+    {{ end }} -->
+
+    {{ if site.Menus.main }}
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="{{ i18n "toggle_navigation" }}">
+          <tgs-player id="tgs-nav-mobile" autoplay loop mode="normal" style="width: 44px; height: 44px"></tgs-player>
+          <script>
+            document.addEventListener('wcThemeChange', (e) => {
+              // console.log('isDarkTheme? ' + e.detail.isDarkTheme());
+              if (e.detail.isDarkTheme()) {
+                const player = document.getElementById("tgs-nav-mobile");
+                player.load("/media/lottie/home.tgs");
+              } else {
+                const player = document.getElementById("tgs-nav-mobile");
+                player.load("/media/lottie/home-dark.tgs");
+              }
+            });
+          </script>
+    </button>
+    {{ end }}
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    {{ $align_menu := site.Params.header.navbar.align | default "l" }}
+    <div class="navbar-collapse main-menu-item collapse {{ if eq $align_menu "c" }}justify-content-center{{ else if eq $align_menu "r" }}justify-content-end{{else}}justify-content-start{{ end }}" id="navbar-content">
+
+      <!-- Left Nav Bar -->
+      <ul class="navbar-nav d-md-inline-flex">
+        {{ range site.Menus.main }}
+
+        {{ if .HasChildren }}
+        <li class="nav-item dropdown">
+          <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true">
+            {{- .Pre -}}<span>{{ .Name | safeHTML }}</span>{{- .Post -}}
+            <span class="caret"></span>
+          </a>
+          <div class="dropdown-menu">
+            {{ range .Children }}
+              <a class="dropdown-item" href="{{ .URL | relLangURL }}"{{ if $.IsHome }} data-target="{{ .URL }}"{{ end }}>
+                {{- .Pre -}}<span>{{ .Name | safeHTML }}</span>{{- .Post -}}
+              </a>
+            {{ end }}
+          </div>
+        </li>
+
+        {{ else }}
+
+        {{/* Set target for link. */}}
+        {{ $.Scratch.Set "target" "" }}
+        {{ if gt (len .URL) 4 }}
+          {{ if eq "http" (slicestr .URL 0 4) }}
+            {{ $.Scratch.Set "target" " target=\"_blank\" rel=\"noopener\"" }}
+          {{ end }}
+        {{ end }}
+
+        {{/* Get active page. */}}
+
+        {{ $is_link_in_current_path := false }}
+        {{ $is_widget_page := or $current_page.IsHome (eq $current_page.Type "widget_page") }}
+        {{ $is_same_page := false }}
+        {{ $hash := findRE "#(.+)" .URL }}
+
+        {{ if $current_page.IsHome | and (or (eq .URL "/") (eq .URL "")) }}
+          {{ $is_link_in_current_path = true }}
+        {{else}}
+          {{ if gt (len .URL) 1 }}{{/* Ignore root URL */}}
+            {{ $is_link_in_current_path = in $current_page.RelPermalink .URL }}
+            {{ $is_same_page = $is_link_in_current_path }}
+          {{end}}
+          {{ if gt (len $hash) 0 }}
+            {{ $hash = index $hash 0 }}
+            {{ $hash_removed := replace .URL $hash "" }}
+            {{ if eq (len $hash_removed) 0 }}
+              {{ $hash_removed = "/" }}{{/* Add robustness for `/#SECTION` or `#SECTION` in `menus.toml`. */}}
+            {{ end }}
+            {{ $is_same_page = eq (path.Dir $current_page.RelPermalink) (path.Dir ($hash_removed|relLangURL)) }}
+          {{ end }}
+        {{end}}
+
+        <li class="nav-item">
+          <a class="nav-link {{if and $highlight_active_link $is_link_in_current_path }} active{{end}}" href="{{.URL | relLangURL}}"{{ if and $is_widget_page $is_same_page }} data-target="{{$hash}}"{{ end }}{{ ($.Scratch.Get "target") | safeHTMLAttr }}>
+            {{- .Pre -}}<span>{{ .Name | safeHTML }}</span>{{- .Post -}}
+          </a>
+        </li>
+
+        {{ end }}
+        {{ end }}
+
+      {{ if site.Menus.main_right | and (eq $align_menu "l") }}
+      </ul>
+      <ul class="navbar-nav ml-md-auto">
+      {{ end }}
+
+        {{ range site.Menus.main_right }}
+
+        {{/* Set target for link. */}}
+        {{ $.Scratch.Set "target" "" }}
+        {{ if gt (len .URL) 4 }}
+        {{ if eq "http" (slicestr .URL 0 4) }}
+        {{ $.Scratch.Set "target" " target=\"_blank\" rel=\"noopener\"" }}
+        {{ end }}
+        {{ end }}
+
+        <li class="nav-item">
+          <a class="nav-link" href="{{ .URL | relLangURL }}"{{ if $.IsHome }} data-target="{{ .URL }}"{{ end }}{{ ($.Scratch.Get "target") | safeHTMLAttr }}>
+            {{- .Pre -}}<span>{{ .Name | safeHTML }}</span>{{- .Post -}}
+          </a>
+        </li>
+
+        {{ end }}
+
+      </ul>
+    </div><!-- /.navbar-collapse -->
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+
+      {{/* Display any social links that the superuser chose to display in the header. */}}
+       {{ range where (where (where site.Pages "Section" "authors") ".Params.superuser" true) ".Params.social" "!=" nil }}
+         {{ range where .Params.social ".display.header" true }}
+           {{ $social_link := partial "functions/get_social_link" . }}
+           <!-- <li class="nav-item"> -->
+            <li class="nav-item d-none d-lg-inline-flex">
+             <a class="nav-link" href="{{ $social_link.link | safeURL }}"{{ with $social_link.tooltip }} data-toggle="tooltip" data-placement="bottom" title="{{.}}"{{ end }} {{ $social_link.target | safeHTMLAttr }} aria-label="{{ $social_link.aria_label }}">
+          {{ if eq $social_link.icon_pack "emoji" }}
+              {{- $social_link.icon | markdownify | emojify -}}
+        {{ else if eq $social_link.icon_pack "svg" }}
+            {{- $svg_icon := resources.Get (printf "media/icons/%s.png" .icon) | default (resources.Get (printf "media/icons/%s.svg" .icon)) -}}
+            <img src="{{ $svg_icon.RelPermalink }}" alt="{{ $social_link.icon }}" class="svg-icon svg-baseline" loading="lazy">
+         {{ else }}
+            <i class="{{ $social_link.icon_pack }} {{ $social_link.pack_prefix }}-{{ $social_link.icon }}" aria-hidden="true"></i>
+         {{ end }}
+             </a>
+           </li>
+         {{ end }}
+       {{ end }}
+
+      {{/* Override: hide search icon if provider is Docsearch so we only show Docsearch once in the docs sidebar. */}}
+      {{ $show_search := site.Params.header.navbar.show_search | default true }}
+      {{ if and site.Params.features.search.provider $show_search | and (ne (lower site.Params.features.search.provider) "docsearch") }}
+      <li class="nav-item">
+        <a class="nav-link js-search" href="#" aria-label="{{ i18n "search" }}"><span data-toggle="tooltip" data-placement="bottom" data-original-title="{{ i18n "search" }}">🔍</span></a>
+      </li>
+      {{ end }}
+
+      {{ $show_day_night := site.Params.header.navbar.show_day_night | default true }}
+      {{ $has_day_night_themes := (and site.Params.appearance.theme_day site.Params.appearance.theme_night) }}
+      {{ if and $has_day_night_themes $show_day_night }}
+      <li class="nav-item dropdown theme-dropdown">
+		<a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-label="{{ i18n "theme_selector" | default "Display preferences" }}">
+      🌙
+        </a>
+        <div class="dropdown-menu">
+          <a href="#" class="dropdown-item js-set-theme-light">
+            <span>{{ i18n "theme_light" | default "Light" }}</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-dark">
+            <span>{{ i18n "theme_dark" | default "Dark" }}</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-auto">
+            <span>{{ i18n "theme_auto" | default "Automatic" }}</span>
+          </a>
+        </div>
+      </li>
+      {{ end }}
+
+      {{ $show_translations := site.Params.header.navbar.show_translations | default true }}
+      {{ if .IsTranslated | and $show_translations }}
+      <li class="nav-item dropdown i18n-dropdown">
+        <a href="#" class="nav-link {{ if $show_current_language }}dropdown-toggle{{end}}" data-toggle="dropdown"
+            aria-haspopup="true" aria-label="{{ i18n "languages" | default "Languages" }}">
+            🌐
+          {{- if $show_current_language -}}
+            <span class="d-none d-lg-inline">{{ index site.Data.i18n.languages .Lang }}</span>
+          {{- end -}}
+        </a>
+        <div class="dropdown-menu">
+          <div class="dropdown-item dropdown-item-active">
+            <span>{{ index site.Data.i18n.languages .Lang }}</span>
+          </div>
+          {{ range .Translations }}
+          <a class="dropdown-item" href="{{ .Permalink }}"{{ if $.IsHome }} data-target="{{ .RelPermalink }}"{{ end }}>
+            <span>{{ index site.Data.i18n.languages .Lang }}</span>
+          </a>
+          {{ end }}
+        </div>
+      </li>
+      {{ end }}
+
+	  <!-- Paypal -->
+    <li class="nav-item">
+      {{ if eq .Site.Language.Lang "es" }}
+        <a class="nav-link" href="https://fisiquimicamente.com/donativos" data-target="https://fisiquimicamente.com/donativos" target="_blank" rel="noopener" aria-label="PayPal"><span data-toggle="tooltip" data-placement="bottom" data-original-title="{{ i18n "paypal" }}">☕</span></a>
+      {{ else if eq .Site.Language.Lang "ca" }}
+        <a class="nav-link" href="https://fisiquimicament.com/donatius" data-target="https://fisiquimicament.com/donatius" target="_blank" rel="noopener" aria-label="PayPal"><span data-toggle="tooltip" data-placement="bottom" data-original-title="{{ i18n "paypal" }}">☕</span></a>
+      {{ else if eq .Site.Language.Lang "en" }}
+        <a class="nav-link" href="https://physichemically.com/donations" data-target="https://physichemically.com/donations" target="_blank" rel="noopener" aria-label="PayPal"><span data-toggle="tooltip" data-placement="bottom" data-original-title="{{ i18n "paypal" }}">☕</span></a>
+      {{ end }}
+    </li>
+
+    </ul>
+
+  </div><!-- /.container -->
+</nav>
+
+</header>
+{{end}}{{/* End show navbar. */}}

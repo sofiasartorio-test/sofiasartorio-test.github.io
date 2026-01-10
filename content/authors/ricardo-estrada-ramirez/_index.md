@@ -1,19 +1,19 @@
 ---
 # Display name
-title: "Alba López Valenzuela"
-url: "team/alba-valenzuela"
+title: "Ricardo M. A. Estrada Ramírez"
+url: "/team/ricardo-estrada-ramirez"
 
-weight: 60
+weight: 70
 
 # Username (this should match the folder name)
 authors:
-- alba-valenzuela
+- ricardo-estrada-ramirez
 
 # Is this the primary user of the site?
 superuser: false
 
 # Role/position
-role: 📚 Notes
+role: ✍️ Blog
 
 # Organizations/Affiliations
 #organizations:
@@ -23,21 +23,27 @@ role: 📚 Notes
 #  url: ""  
 
 # Short bio (displayed in user profile at end of posts)
-bio: "I have a Degree in Chemistry and I am a self-employed Physics and Chemistry Teacher."
+bio: "I have a Master in Teaching for Higher Secondary Education and I teach Classical Thermodynamics (theory and laboratory) at the [Faculty of Chemistry of the UNAM](https://quimica.unam.mx/)."
 
 interests:
-- 🎹 Piano and 🎸 guitar
-- 🍿 Science-fiction series
-- 🎞 Dramatic movies
-- 📺 Science and history documentaries
-- 🎮 Videogames
-- 🏛️ Architecture and decoration
+- ✈️ Traveling
+- 🎸 Electric bass
+- 🎞 Science fiction and horror movies
 
 education:
   courses:
+  - course: Master's Degree in Teaching in Higher Education
+    institution: UNAM
+    year: 2013
   - course: Degree in Chemistry
-    institution: University of Extremadura
-    year: 2021  
+    institution: UNAM
+    year: 2004
+  - course: Diploma in Mathematics Education
+    institution: UNAM
+    year: 2003
+  - course: Diploma in Chemistry Education
+    institution: UNAM
+    year: 2002
 
 # Social/Academic Networking
 # For available icons, see: https://sourcethemes.com/academic/docs/page-builder/#icons
@@ -46,11 +52,11 @@ education:
 social:
 - icon: ✉️
   icon_pack: emoji
-  link: 'mailto:albavalenzuela3@gmail.com'  # For a direct email link, use "mailto:test@example.org".
+  link: 'mailto:ricardoenlineacad@gmail.com'  # For a direct email link, use "mailto:test@example.org".
   label: Contact me
 - icon: twitter
   icon_pack: svg
-  link: https://twitter.com/FrauValenzuela
+  link: https://twitter.com/ricestrada
   label: Follow me on Twitter
 # Link to a PDF of your resume/CV from the About widget.
 # To enable, copy your resume/CV to `static/files/cv.pdf` and uncomment the lines below.
@@ -64,7 +70,7 @@ email:
 # Organizational groups that you belong to (for People widget)
 #   Set this to `[]` or comment out if you are not using People widget.
 user_groups:
-- 📚 Notes
+- ✍️ Blog
 ---
 
-
+I have a Master in Teaching for Higher Secondary Education and I teach Classical Thermodynamics (theory and laboratory) at the [Faculty of Chemistry of the UNAM](https://quimica.unam.mx/). I am also interested in teacher training in the area of science.

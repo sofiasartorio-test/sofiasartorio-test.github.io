@@ -1,0 +1,29 @@
+<ul class="network-icon" aria-hidden="true">
+    {{ range .Params.social }}
+      {{ $pack := or .icon_pack "fas" }}
+      {{ $pack_prefix := $pack }}
+      {{ if in (slice "fab" "fas" "far" "fal") $pack }}
+        {{ $pack_prefix = "fa" }}
+      {{ end }}
+      {{ $link := .link }}
+      {{ $scheme := (urls.Parse $link).Scheme }}
+      {{ $target := "" }}
+      {{ if not $scheme }}
+        {{ $link = .link | relLangURL }}
+      {{ else if in (slice "http" "https") $scheme }}
+        {{ $target = "target=\"_blank\" rel=\"noopener\"" }}
+      {{ end }}
+      <li>
+        <a href="{{ $link | safeURL }}" {{ $target | safeHTMLAttr }}>
+          {{ if eq $pack "emoji" }}
+            <span data-toggle="tooltip" data-placement="bottom" title="{{ .label }}">{{- .icon | markdownify | emojify -}}</span>
+          {{ else if eq $pack "svg" }}
+            {{- $svg_icon := resources.Get (printf "media/icons/%s.png" .icon) | default (resources.Get (printf "media/icons/%s.svg" .icon)) -}}
+            <img data-toggle="tooltip" data-placement="bottom" title="{{ .label }}" src="{{ $svg_icon.RelPermalink }}" alt="{{ .icon }}" class="svg-icon svg-baseline" loading="lazy">
+          {{ else }}
+            <i data-toggle="tooltip" data-placement="bottom" title="{{.label}}" class="{{ $pack }} {{ $pack_prefix }}-{{ .icon }}"></i>
+          {{ end }}
+        </a>
+      </li>
+    {{end}}
+  </ul>

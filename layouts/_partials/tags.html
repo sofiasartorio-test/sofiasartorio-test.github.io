@@ -1,0 +1,12 @@
+<div class="article-tags">
+  {{ if .Params.categories }}
+  📁&nbsp; {{ range $index, $value := sort (.GetTerms "categories") ".Page.Title" "asc" }}
+  <a class="badge badge-light" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+  {{ end }}
+  {{ end }}
+  {{ if .Params.tags }}
+  🏷️&nbsp; {{ range $index, $value := sort (.GetTerms "tags") ".Page.Title" "asc" }}
+  <a class="badge badge-light" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+  {{ end }}
+  {{ end }}
+</div>

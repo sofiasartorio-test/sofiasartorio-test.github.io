@@ -1,0 +1,169 @@
+{{ if ne .Params.share false }}
+<div class="subscribe-box" aria-hidden="true">
+	<div align="center">
+		<h3>
+			{{ if eq .Site.Language.Lang "es" }}
+			¿Te ha gustado?
+			{{ else if eq .Site.Language.Lang "en" }}
+			Did you like it?
+			{{ else if eq .Site.Language.Lang "ca" }}
+			T'ha agradat?
+			{{ end }}
+		</h3>
+	</div>
+	<ul class=subscribe>
+		<li>
+		{{- $coffee_tgs := resources.Get ("media/lottie/coffee.tgs") -}}
+		{{ if eq .Site.Language.Lang "es" }}
+		<div align="center">
+		<a href="https://fisiquimicamente.com/donativos" target="_blank" rel="noopener">			
+		<tgs-player autoplay loop mode="normal" style="width:50%;height:auto" src="{{ $coffee_tgs.RelPermalink }}" data-toggle="tooltip" data-placement="right" title aria-label="PayPal" data-original-title="Invítanos a un café">
+		</tgs-player>
+		</a>
+		</div>
+		{{ else if eq .Site.Language.Lang "en" }}
+		<div align="center">
+        <a href="https://physichemically.com/donations" target="_blank" rel="noopener">
+			<tgs-player autoplay loop mode="normal" style="width:50%;height:auto" src="{{ $coffee_tgs.RelPermalink }}" data-toggle="tooltip" data-placement="right" title aria-label="PayPal" data-original-title="Buy us a coffee">
+			</tgs-player>			
+		</a>
+		</div>
+		{{ else if eq .Site.Language.Lang "ca" }}
+		<div align="center">
+        <a href="https://fisiquimicament.com/donatius" target="_blank" rel="noopener">
+			<tgs-player autoplay loop mode="normal" style="width:50%;height:auto" src="{{ $coffee_tgs.RelPermalink }}" data-toggle="tooltip" data-placement="right" title aria-label="PayPal" data-original-title="Invítanos a un cafè">
+			</tgs-player>
+		</a>
+		</div>
+		{{ end }}
+		</li>
+	</ul>
+	  <p class="kudos">
+	  {{ if eq .Site.Language.Lang "es" }}
+	  <strong>Invitándonos a un café</strong> estás reconociendo nuestro esfuerzo, animándonos a seguir preparando materiales de calidad. FisiQuímicamente funciona sin anuncios; todos los <em>cafés</em> se destinarán a costearla y seguir mejorándola.
+		<script>
+			document.addEventListener('wcThemeChange', (e) => {
+			  // console.log('isDarkTheme? ' + e.detail.isDarkTheme());
+			  if (e.detail.isDarkTheme()) {
+				document.getElementById("fisiquimicamente").src="/icon/logo-fisiquimicamente-dark.svg";
+			  } else {
+				document.getElementById("fisiquimicamente").src="/icon/logo-fisiquimicamente.svg";
+			  }
+			  });
+		</script>
+	  {{ else if eq .Site.Language.Lang "en" }}
+	  <strong>Inviting us to a coffee</strong> you are acknowledging our effort, encouraging us to continue preparing quality materials. PhysiChemically runs ad-free; all the <em>coffees</em> will be used to pay for it and to continue improving it.
+		<script>
+			document.addEventListener('wcThemeChange', (e) => {
+			  // console.log('isDarkTheme? ' + e.detail.isDarkTheme());
+			  if (e.detail.isDarkTheme()) {
+				document.getElementById("physichemically").src="/icon/logo-physichemically-dark.svg";
+			  } else {
+				document.getElementById("physichemically").src="/icon/logo-physichemically.svg";
+			  }
+			  });
+		</script>
+	{{ else if eq .Site.Language.Lang "ca" }}
+	<strong>Convidant-nos a un cafè</strong> estàs reconeixent el nostre esforç, animant-nos a seguir preparant materials de qualitat. FisiQuímicament funciona sense anuncis; tots els <em>cafès</em> es destinaran a costejar-la i continuar millorant-la.
+	<script>
+		document.addEventListener('wcThemeChange', (e) => {
+		  // console.log('isDarkTheme? ' + e.detail.isDarkTheme());
+		  if (e.detail.isDarkTheme()) {
+			document.getElementById("fisiquimicament").src="/icon/logo-fisiquimicament-dark.svg";
+		  } else {
+			document.getElementById("fisiquimicament").src="/icon/logo-fisiquimicament.svg";
+		  }
+		  });
+	</script>
+	{{ end }}
+  </p>
+</div>
+
+<div class="share-box">
+	<div align="center">
+		<h3>
+			{{ if eq .Site.Language.Lang "es" }}
+			Compártelo
+			{{ else if eq .Site.Language.Lang "en" }}
+			Share it
+			{{ else if eq .Site.Language.Lang "ca" }}
+			Comparteix-ho
+			{{ end }}
+		</h3>
+	</div>	
+  <ul class="share">
+	  {{/*  <script async defer src="https://teams.microsoft.com/share/launcher.js"></script>
+	  <li data-toggle="tooltip" data-placement="bottom" title="Teams" class="teams-share-button" data-href="{{ $.Permalink }}" data-icon-px-size="30"></li>
+	  <script src="https://apis.google.com/js/platform.js" async defer></script>	  
+	  <li data-toggle="tooltip" data-placement="bottom" title="Classroom"><g:sharetoclassroom url="{{ $.Permalink }}" size="30"></g:sharetoclassroom></li>  */}}
+    {{ range where site.Data.page_sharer.buttons "enable" true }}
+      {{ $pack := or .icon_pack "fas" }}
+      {{ $pack_prefix := $pack }}
+      {{ if in (slice "fab" "fas" "far" "fal") $pack }}
+        {{ $pack_prefix = "fa" }}
+      {{ end }}
+      {{/* Utilise `urlquery` over `htmlEscape` to encode sharing URL */}}
+      {{/* See https://github.com/HugoBlox/hugo-blox-builder/pull/2726 */}}
+      {{ $link := replace .url "{url}" ($.Permalink | urlquery) }}
+      {{ $link = replace $link "{title}" ($.Title | urlquery) }}
+      {{/* Workaround `urlquery` encoding for mailto as `urlquery` encodes `+` as `%2B` and ` ` (space) as `+` */}}
+      {{ if eq (urls.Parse $link).Scheme "mailto" }}
+        {{ $link = replace $link "+" "%20" }}
+      {{ end }}
+      <li>
+        <a href="{{$link|safeURL}}" data-toggle="tooltip" data-placement="bottom" title aria-label="{{.title}}" data-original-title="{{.title}}" target="_blank" rel="noopener" class="share-btn-{{.id}}" aria-label="{{.icon}}">
+		{{ if eq $pack "emoji" }}
+            {{- .icon | markdownify | emojify -}}
+          {{ else if eq $pack "svg" }}
+            {{- $svg_icon := resources.Get (printf "media/icons/%s.png" .icon) | default (resources.Get (printf "media/icons/%s.svg" .icon)) -}}
+            <img src="{{ $svg_icon.RelPermalink }}" alt="{{ .icon }}" class="svg-icon svg-baseline" loading="lazy">
+          {{ else }}
+		  	<i class="{{$pack}} {{$pack_prefix}}-{{.icon}}"></i>
+          {{ end }}
+        </a>
+      </li>
+    {{ end }}
+  </ul>  	  
+</div>
+
+<div class="share-box">
+	<div align="center">
+		<h3>
+			{{ if eq .Site.Language.Lang "es" }}
+			Suscríbete
+			{{ else if eq .Site.Language.Lang "en" }}
+			Subscribe
+			{{ else if eq .Site.Language.Lang "ca" }}
+			Subscriu-te
+			{{ end }}
+		</h3>
+	</div>
+	<ul class=share>
+		<li>
+	        <a href="https://t.me/fisiquimicamente" target="_blank" rel="noopener">
+				<img data-toggle="tooltip" data-placement="left" title="Telegram" src="/icon/telegram.svg" alt="telegram" class="svg-icon svg-baseline">
+			</a>
+		</li>
+		<li>
+	        <a href="https://whatsapp.com/channel/0029VaCbtJCIt5s4EryJFG3f" target="_blank" rel="noopener">
+				<img data-toggle="tooltip" data-placement="left" title="Whatsapp" src="/icon/whatsapp.svg" alt="whatsapp" class="svg-icon svg-baseline">
+			</a>
+		</li>				
+		<li>
+	        <a href="{{ "/index.xml" | absLangURL }}" target="_blank" rel="noopener">
+				<img data-toggle="tooltip" data-placement="right" title="RSS" src="/icon/RSS.svg" alt="RSS" class="svg-icon svg-baseline">
+			</a>
+		</li>
+	</ul>
+	  <p class="kudos">
+	  {{ if eq .Site.Language.Lang "es" }}
+		Si no quieres perderte ninguna <strong>actualización</strong> considera suscribirte al canal de <img draggable="false" class="icon" alt="telegram" src="/icon/telegram.svg"> <strong>Telegram</strong>, al canal de <img draggable="false" class="icon" alt="whatsapp" src="/icon/whatsapp.svg"> <strong>Whatsapp</strong> o al canal <img draggable="false" class="icon" alt="RSS" src="/icon/RSS.svg"> <strong>RSS</strong>.
+	  {{ else if eq .Site.Language.Lang "en" }}
+		If you don't want to miss any <strong>updates</strong> consider subscribing to the <img draggable="false" class="icon" alt="telegram" src="/icon/telegram.svg"> <strong>Telegram</strong> channel (in Spanish), the <img draggable="false" class="icon" alt="whatsapp" src="/icon/whatsapp.svg"> <strong>Whatsapp</strong> channel (in Spanish) or the <img draggable="false" class="icon" alt="RSS" src="/icon/RSS.svg"> <strong>RSS</strong> channel.
+	{{ else if eq .Site.Language.Lang "ca" }}
+		Si no vols perdre't cap <strong>actualització</strong> considera subscriure't al canal de <img draggable="false" class="icon" alt="telegram" src="/icon/telegram.svg"> <strong>Telegram</strong> (en espanyol), al canal de <img draggable="false" class="icon" alt="whatsapp" src="/icon/whatsapp.svg"> <strong>Whatsapp</strong> (en espanyol) o al canal <img draggable="false" class="icon" alt="RSS" src="/icon/RSS.svg"> <strong>RSS</strong>.
+	{{ end }}				  
+  </p>
+</div>
+
+{{ end }}

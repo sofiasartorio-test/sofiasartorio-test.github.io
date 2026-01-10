@@ -1,0 +1,147 @@
+{{ if .IsTranslated | and site.Params.footer.show_translations }}
+<div class="powered-by d-flex flex-wrap pb-2 justify-content-center">
+  <div class="p-2 font-weight-bold"><span class="pr-1" aria-hidden="true">🌐</span>{{ i18n "languages" }}:</div>
+  <div class="p-2">{{ index site.Data.i18n.languages .Lang }}</div>
+  {{ range .Translations }}
+  <div class="p-2"><a href="{{ .Permalink }}">{{ index site.Data.i18n.languages .Lang }}</a></div>
+  {{ end }}
+</div>
+<p class="powered-by">
+    {{ if eq .Site.Language.Lang "es" }}
+    (Versión en catalán traducida por <a href="https://fisiquimicamente.com/equipo/oscar-colomar/">Òscar Colomar</a> y <a href="https://fisiquimicamente.com/equipo/eduard-cremades/">Eduard Cremades</a>)
+    {{ else if eq .Site.Language.Lang "en" }}
+    (Catalan version translated by <a href="https://physichemically.com/team/oscar-colomar/">Òscar Colomar</a> and <a href="https://physichemically.com/team/eduard-cremades/">Eduard Cremades</a>)
+    {{ else if eq .Site.Language.Lang "ca" }}
+    (Versió en català traduïda per <a href="https://fisiquimicament.com/equip/oscar-colomar/">Òscar Colomar</a> i <a href="https://fisiquimicament.com/equip/eduard-cremades/">Eduard Cremades</a>)
+    {{ end }}
+   </p>
+{{ end }}
+
+{{ if or (site.GetPage "/terms.md") (site.GetPage "/privacy.md") }}
+<p class="powered-by">
+  {{ with site.GetPage "/privacy.md" }}
+  {{ printf "<a href=\"%s\">%s</a>" .RelPermalink .Title | safeHTML }}
+  {{ end }}
+  {{ with site.GetPage "/terms.md" }}
+  {{ if site.GetPage "/privacy.md" }} &middot; {{ end }}
+  {{ printf "<a href=\"%s\">%s</a>" .RelPermalink .Title | safeHTML }}
+  {{ end }}
+</p>
+{{ end }}
+
+{{/* Display any social links that the superuser chose to display in the footer. */}}
+{{ $display_icons := false }}
+{{ range where (where (where site.Pages "Section" "authors") ".Params.superuser" true) ".Params.social" "!=" nil }}
+  {{ range where .Params.social ".display.footer" true }}
+    {{ if not $display_icons }}
+      <div class="d-flex justify-content-center">
+        <ul class="network-icon network-icon-footer" aria-hidden="true">
+    {{ end }}
+    {{ $display_icons = true }}
+    {{ $social_link := partial "functions/get_social_link" . }}
+    <li>
+      <a href="{{ $social_link.link | safeURL }}" {{ $social_link.target | safeHTMLAttr }} aria-label="{{ $social_link.icon }}">
+        {{ if eq $social_link.icon_pack "emoji" }}
+            <span {{ with $social_link.tooltip }} data-toggle="tooltip" data-placement="top" data-original-title="{{$social_link.tooltip}}"{{ end }}>{{- $social_link.icon | markdownify | emojify -}}</span>
+        {{ else if eq $social_link.icon_pack "svg" }}
+            {{- $svg_icon := resources.Get (printf "media/icons/%s.png" .icon) | default (resources.Get (printf "media/icons/%s.svg" .icon)) -}}
+            <img {{ with $social_link.tooltip }} data-toggle="tooltip" data-placement="top" data-original-title="{{$social_link.tooltip}}"{{ end }} src="{{ $svg_icon.RelPermalink }}" alt="{{ $social_link.icon }}" class="svg-icon svg-baseline" loading="lazy">
+         {{ else }}
+            <i {{ with $social_link.tooltip }} data-toggle="tooltip" data-placement="top" data-original-title="{{$social_link.tooltip}}"{{ end }} class="{{ $social_link.icon_pack }} {{ $social_link.pack_prefix }}-{{ $social_link.icon }}"></i>
+         {{ end }}
+      </a>
+    </li>
+  {{ end }}
+{{ end }}
+{{ if $display_icons }}
+    </ul>
+  </div>
+{{ end }}
+
+{{ with site.Params.footer.text }}
+<p class="powered-by">
+  {{ . | replaceRE "{year}" now.Year | markdownify | emojify | safeHTML }}
+</p>
+{{ end }}
+
+{{ with site.GetPage "licencia.md" }}
+<p class="powered-by">
+{{ printf "<a href=\"%s\">%s <br> %s </a>" .RelPermalink .Title .LinkTitle  | safeHTML }}<br>
+</p>
+{{ end }}
+
+  <p class="powered-by">
+	  {{ if eq .Site.Language.Lang "es" }}
+    Publicado con
+	<a href="https://hugoblox.com?aff=K4VGj" target="_blank" rel="noopener"><strong>Hugo Blox</strong></a> —
+	    el constructor de sitios web gratuito y <a href="https://github.com/HugoBlox/hugo-blox-builder" target="_blank" rel="noopener">
+	    de <img draggable="false" class="icon" alt="opensource" src="/icon/opensource.svg" loading="lazy"> código abierto</a> para <a href="https://gohugo.io" target="_blank" rel="noopener"><img draggable="false" class="icon" alt="hugo" src="/icon/hugo.svg" loading="lazy"></a><br><a href="https://hugoblox.com/sponsor/?aff=K4VGj">Únete a <strong><em>All Access</em></strong> para desbloquear blox y plantillas exclusivas</a>
+{{ else if eq .Site.Language.Lang "en" }}
+    Published with
+	<a href="https://hugoblox.com?aff=K4VGj" target="_blank" rel="noopener"><strong>Hugo Blox</strong></a>  —
+	    the free, <a href="https://github.com/HugoBlox/hugo-blox-builder" target="_blank" rel="noopener">
+        <img draggable="false" class="icon" alt="opensource" src="/icon/opensource.svg" loading="lazy"> open source</a> website builder for <a href="https://gohugo.io" target="_blank" rel="noopener"><img draggable="false" class="icon" alt="hugo" src="/icon/hugo.svg" loading="lazy"></a><br><a href="https://hugoblox.com/sponsor/?aff=K4VGj">Join <strong><em>All Access</em></strong> to unlock exclusive blox and templates</a>
+  {{ else if eq .Site.Language.Lang "ca" }}
+  Publicat amb
+	<a href="https://hugoblox.com?aff=K4VGj" target="_blank" rel="noopener"><strong>Hugo Blox</strong></a> —
+  el constructor de llocs web gratuït i <a href="https://github.com/HugoBlox/hugo-blox-builder" target="_blank" rel="noopener">
+	    de <img draggable="false" class="icon" alt="opensource" src="/icon/opensource.svg" loading="lazy"> codi obert</a> per <a href="https://gohugo.io" target="_blank" rel="noopener"><img draggable="false" class="icon" alt="hugo" src="/icon/hugo.svg" loading="lazy"></a><br><a href="https://hugoblox.com/sponsor/?aff=K4VGj">Uneix-te a <strong><em>All Access</em></strong> per desbloquejar blox i plantilles exclusives</a>
+{{ end }}
+  </p>
+
+  <p class="powered-by">
+    {{ if eq .Site.Language.Lang "es" }}
+    Alojado en <a href="https://github.com/rodrigoalcarazdelaosa/fisiquimicamente" target="_blank" rel="noopener"><img draggable="false" class="icon" alt="github" src="/icon/github.svg" loading="lazy"> GitHub</a><span class="middot-divider"></span>Servido por <a href="https://pages.cloudflare.com" target="_blank" rel="noopener"><img draggable="false" class="icon" alt="cloudflare-pages" src="/icon/cloudflare-pages.svg" loading="lazy"> Cloudflare Pages</a><br>{{ with site.Params.git.last_commit }}Última&nbsp;confirmación:&nbsp;<a href="https://github.com/rodrigoalcarazdelaosa/fisiquimicamente/commit/{{ .hash }}" target="_blank" rel="noopener">{{ .abbrev_hash }}</a>{{ end }}
+{{ else if eq .Site.Language.Lang "en" }}
+    Hosted on <a href="https://github.com/rodrigoalcarazdelaosa/fisiquimicamente" target="_blank" rel="noopener"><img draggable="false" class="icon" alt="github" src="/icon/github.svg" loading="lazy"> GitHub</a><span class="middot-divider"></span>Served by <a href="https://pages.cloudflare.com" target="_blank" rel="noopener"><img draggable="false" class="icon" alt="cloudflare-pages" src="/icon/cloudflare-pages.svg" loading="lazy"> Cloudflare Pages</a><br>{{ with site.Params.git.last_commit }}Latest&nbsp;commit:&nbsp;<a href="https://github.com/rodrigoalcarazdelaosa/fisiquimicamente/commit/{{ .hash }}" target="_blank" rel="noopener">{{ .abbrev_hash }}</a>{{ end }}
+{{ else if eq .Site.Language.Lang "ca" }}
+Allotjat en <a href="https://github.com/rodrigoalcarazdelaosa/fisiquimicamente" target="_blank" rel="noopener"><img draggable="false" class="icon" alt="github" src="/icon/github.svg" loading="lazy"> GitHub</a><span class="middot-divider"></span>Servit per <a href="https://pages.cloudflare.com" target="_blank" rel="noopener"><img draggable="false" class="icon" alt="cloudflare-pages" src="/icon/cloudflare-pages.svg" loading="lazy"> Cloudflare Pages</a><br>{{ with site.Params.git.last_commit }}Última&nbsp;confirmació:&nbsp;<a href="https://github.com/rodrigoalcarazdelaosa/fisiquimicamente/commit/{{ .hash }}" target="_blank" rel="noopener">{{ .abbrev_hash }}</a>{{ end }}
+{{ end }}
+
+<br><a href="https://github.com/rodrigoalcarazdelaosa/fisiquimicamente/actions/workflows/publish-CFP.yml" target="_blank" rel="noopener"><img draggable="false" class="icon" alt="cloudflare-pages" src="https://github.com/rodrigoalcarazdelaosa/fisiquimicamente/actions/workflows/publish-CFP.yml/badge.svg" loading="lazy"></a>
+
+</p>
+
+{{/*  <p class="powered-by">
+
+  <!-- Speedlify -->
+<script src="/js/speedlify-score.js"></script>
+{{ if eq .Site.Language.Lang "es" }}
+  Puntuaciones de <a href="https://developer.chrome.com/docs/lighthouse/overview/" target="_blank" rel="noopener"><img draggable="false" class="icon" alt="lighthouse" src="/icon/lighthouse.svg" loading="lazy"> Lighthouse</a>
+  <a href="https://speedlify-fisiquimicamente.netlify.app/fisiquimicamente/" aria-label="Ver todos los resultados en https://speedlify-fisiquimicamente.netlify.app/fisiquimicamente/"><speedlify-score speedlify-url="https://speedlify-fisiquimicamente.netlify.app" hash="9c1b7add"></a>
+{{ else if eq .Site.Language.Lang "en" }}
+<a href="https://developer.chrome.com/docs/lighthouse/overview/" target="_blank" rel="noopener"><img draggable="false" class="icon" alt="lighthouse" src="/icon/lighthouse.svg" loading="lazy"> Lighthouse</a> scores
+  <a href="https://speedlify-fisiquimicamente.netlify.app/physichemically/" aria-label="View full results on https://speedlify-fisiquimicamente.netlify.app/physichemically/"><speedlify-score speedlify-url="https://speedlify-fisiquimicamente.netlify.app" hash="7884bdde"></speedlify-score></a>
+{{ else if eq .Site.Language.Lang "ca" }}
+  Puntuacions de <a href="https://developer.chrome.com/docs/lighthouse/overview/" target="_blank" rel="noopener"><img draggable="false" class="icon" alt="lighthouse" src="/icon/lighthouse.svg" loading="lazy"> Lighthouse</a>
+  <a href="https://speedlify-fisiquimicamente.netlify.app/fisiquimicament/" aria-label="Veure tots els resultats a https://speedlify-fisiquimicamente.netlify.app/fisiquimicament/"><speedlify-score speedlify-url="https://speedlify-fisiquimicamente.netlify.app" hash="af60d138"></speedlify-score></a>
+{{ end }}
+
+</p>  */}}
+
+<!-- Menú horizontal -->
+
+<ul id="menu-horizontal" class="site-footer powered-by">
+{{ if eq .Site.Language.Lang "es" }}
+	<li><a href="/recursos-fisica-quimica/">💼 Recursos FyQ</a></li>
+	<li><a href="/tutoriales/">🤝 Tutoriales</a></li>
+	<li><a href="/enlaces-interes/">🔗 Enlaces de interés</a></li>
+	<li><a href="/blog">✍️ Blog</a></li>
+	<li><a href="/equipo/">👥 Equipo</a></li>
+	<li><a href="/#contacto">📬 Contacto</a></li>
+{{ else if eq .Site.Language.Lang "en" }}
+	<li><a href="/physics-chemistry-notes/">📚 Notes</a></li>
+	<li><a href="/tutorials/">🤝 Tutorials</a></li>
+	<li><a href="/online-resources/">🔗 Online Resources</a></li>
+	<li><a href="/blog">✍️ Blog</a></li>
+	<li><a href="/team/">👥 Team</a></li>
+	<li><a href="/#contact">📬 Contact</a></li>
+{{ else if eq .Site.Language.Lang "ca" }}
+	<li><a href="/recursos-fisica-quimica/">💼 Recursos FiQ</a></li>
+	<li><a href="/tutorials/">🤝 Tutorials</a></li>
+	<li><a href="/recursos-online/">🔗 Recursos online</a></li>
+	<li><a href="/blog">✍️ Blog</a></li>
+	<li><a href="/equip/">👥 Equip</a></li>
+	<li><a href="/#contacte">📬 Contacte</a></li>
+{{ end }}
+</ul>
