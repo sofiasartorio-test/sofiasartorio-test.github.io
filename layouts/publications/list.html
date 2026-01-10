@@ -10,7 +10,6 @@
 }
 </style>
 
-
 <!-- SEARCH BAR -->
 <div style="max-width:600px; margin:0 auto 2rem auto;">
   <input
@@ -34,16 +33,30 @@
     <div class="pub-item"
          data-search="{{ lower (printf "%s %s %v %v" .Title (delimit .Params.authors " ") .Params.topics .Params.year) }}">
 
+      <!-- TITOLO -->
       <a href="{{ .RelPermalink }}" class="pub-title">
         {{ .Title }}
       </a>
 
+      <!-- META -->
       <div class="pub-meta">
-        {{ if reflect.IsSlice .Params.authors }}
-          {{ delimit .Params.authors ", " }}
+
+        {{/* AUTORI CLICCABILI */}}
+        {{ $authors := .Params.authors }}
+        {{ if reflect.IsSlice $authors }}
+          {{ range $i, $author := $authors }}
+            {{ if gt $i 0 }}, {{ end }}
+            {{ $slug := urlize $author }}
+            {{ with site.GetPage (printf "/authors/%s" $slug) }}
+              <a href="{{ .RelPermalink }}">{{ $author }}</a>
+            {{ else }}
+              {{ $author }}
+            {{ end }}
+          {{ end }}
         {{ else }}
-          {{ .Params.authors }}
+          {{ $authors }}
         {{ end }}
+
         ({{ .Params.year }})
 
         {{ with .Params.pdf }}
@@ -53,6 +66,7 @@
         {{ with .Resources.GetMatch "cite.bib" }}
           – <a href="{{ .RelPermalink }}" target="_blank">BibTeX</a>
         {{ end }}
+
       </div>
     </div>
   {{ end }}
@@ -84,6 +98,15 @@
   font-size: 0.9rem;
   color: #555;
 }
+
+.pub-meta a {
+  color: #0066cc;
+  text-decoration: none;
+}
+
+.pub-meta a:hover {
+  text-decoration: underline;
+}
 </style>
 
 <!-- SEARCH SCRIPT -->
@@ -102,6 +125,7 @@ input.addEventListener('input', () => {
 </script>
 
 {{ end }}
+
 
 
 
