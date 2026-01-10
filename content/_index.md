@@ -7,37 +7,37 @@ type: landing
 design:
   # Default section spacing
   spacing: '6rem'
-  
+
 sections:
+
   - block: markdown
     content:
-      title: "We are a university research group dedicated to advanced composite materials..."
+      title: "Damage Management & Certification Team"
       text: |
         <img src="images/IMG_7320.jpg" alt="Research group"
              style="float:left; width:35%; margin-right:2rem; margin-bottom:1rem;">
-        <div style="max-width:65%; display:inline-block; font-size:30px; font-family:Arial, sans-serif; color:#333;">
-          Benvenuti nel nostro laboratorio:
+        <div style="max-width:65%; display:inline-block; font-size:20px; font-family:Arial, sans-serif; color:#333;">
+          Welcome to our website !<br>
+          Our main interests are :
           <ul>
-            <li><strong>Materiali compositi avanzati</strong></li>
-            <li><strong>Tecnologie Cold Spray</strong></li>
-            <li><strong>Applicazioni aerospace</strong></li>
+            <li><strong>Composites materials</strong></li>
+            <li><strong>Cold Spray technologies</strong></li>
+            <li><strong>Aerospace applications</strong></li>
           </ul>
         </div>
 
+  - block: markdown
+    content:
+      text: "We are a university research group dedicated to advanced composite materials and cold-spray technologies, with a primary focus on aerospace applications. Our research seeks to move from extensive empirical testing toward a deep understanding of the physics behind material damage. Through this approach, we aim to reduce the need for exhaustive testing while ensuring safety, reliability, and compliance with aerospace standards."
+    design:
+      # Apply a gradient background
+      css_class: hbx-bg-gradient
 
   - block: markdown
     content:
       title: "Where to find us"
       text: |
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2456.9311033285394!2d4.37274657580187!3d51.98990937192699!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c5b5845c71ce13%3A0xac6856cd728c71cd!2sFacolt%C3%A0%20di%20Ingegneria%20aerospaziale!5e0!3m2!1sit!2snl!4v1768052460073!5m2!1sit!2snl" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-
-
-  - block: markdown
-    content:
-      title: "We are a university research group..."
-      text: |
-        ![Research group](images/IMG_7320.jpg){ width=40% style="float:left; margin-right:2rem;" }
-        Welcome to my portfolio.
 
   - block: resume-biography-3
     content:
