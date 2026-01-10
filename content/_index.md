@@ -48,33 +48,11 @@ sections:
     design:
       css_class: hbx-bg-light
 
-
   - block: markdown
     content:
       title: "Where to find us"
       text: |
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2456.9311033285394!2d4.37274657580187!3d51.98990937192699!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c5b5845c71ce13%3A0xac6856cd728c71cd!2sFacolt%C3%A0%20di%20Ingegneria%20aerospaziale!5e0!3m2!1sit!2snl!4v1768052460073!5m2!1sit!2snl" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-
-  - block: resume-biography-3
-    content:
-      # Choose a user profile to display (a folder name within `content/authors/`)
-      username: admin
-      text: ''
-      # Show a call-to-action button under your biography? (optional)
-      button:
-        text: Download CV
-        url: uploads/resume.pdf
-      headings:
-        about: ''
-        education: ''
-        interests: ''
-    design:
-      # Apply a gradient background
-      css_class: hbx-bg-gradient
-      # Avatar customization
-      avatar:
-        size: medium # Options: small (150px), medium (200px, default), large (320px), xl (400px), xxl (500px)
-        shape: circle # Options: circle (default), square, rounded
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4913.862206657079!2d4.37274657580187!3d51.98990937192699!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c5b5845c71ce13%3A0xac6856cd728c71cd!2sTU%20Delft%20Faculty%20of%20Aerospace%20Engineering!5e0!3m2!1sen!2snl!4v1768055072793!5m2!1sen!2snl" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
   - block: cta-card
     demo: true # Only display this section in the Hugo Blox Builder demo site
