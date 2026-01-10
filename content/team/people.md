@@ -1,44 +1,31 @@
 ---
-title: Meet the Team
+# An instance of the People widget.
+# Documentation: https://wowchemy.com/docs/page-builder/
+widget: people
 
-sections:
-  - block: people
-    content:
-      title: Principal Investigator
-    filter:
-      user_groups:
-        - Principal Investigator
-    design:
-      columns: 3
-      show_social: true
+# This file represents a page section.
+headless: true
 
-  - block: people
-    content:
-      title: Researchers
-    filter:
-      user_groups:
-        - Researcher
-    design:
-      columns: 3
-      show_social: true
+# Order that this section appears on the page.
+weight: 1
 
-  - block: people
-    content:
-      title: Graduate Students
-    filter:
-      user_groups:
-        - Graduate Students
-    design:
-      columns: 3
-      show_social: true
+title: 👥 Meet the Team
+subtitle:
 
-  - block: people
-    content:
-      title: Alumni
-    filter:
-      user_groups:
-        - Alumni
-    design:
-      columns: 4
-      show_social: false
+content:
+  # Choose which groups/teams of users to display.
+  #   Edit `user_groups` in each user's profile to add them to one or more of these groups.
+  user_groups:
+  - 🧑‍🔬 Founders
+  - 📚 Notes
+  - 🗒️ Activities / 🧩 Games / 🧪 Laboratory practices
+  - 🎓 Admission Tests
+  - ✍️ Blog
+design:
+  show_interests: false
+  show_role: true
+  show_social: true
+
+advanced:
+  css_style: "padding-bottom: 0px;"  
 ---
