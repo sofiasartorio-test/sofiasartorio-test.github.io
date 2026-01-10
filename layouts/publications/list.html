@@ -8,21 +8,20 @@
 
 <div id="listaPubblicazioni" style="margin-top:2rem;"></div>
 
-<!-- Genera array JS sicuro -->
 <script>
+// Crea array delle pubblicazioni
 const pubs = [
-{{- $pubs := slice -}}
-{{- range .Pages }}
-  {{- $p := dict 
-      "title" .Title 
-      "authors" .Params.authors 
-      "year" (.Date.Format "2006") 
-      "type" (index .Params.publication_types 0 | default "") 
-      "url" .RelPermalink 
-  -}}
-  {{- $pubs = $pubs | append $p -}}
-{{- end }}
-{{ $pubs | jsonify }}
+{{- range .Pages -}}
+  {{- $authors := .Params.authors | default (slice "Unknown") -}}
+  {{- $types := .Params.publication_types | default (slice "") -}}
+  {
+    title: {{ .Title | jsonify }},
+    authors: {{ $authors | jsonify }},
+    year: {{ .Date.Format "2006" | jsonify }},
+    type: {{ index $types 0 | default "" | jsonify }},
+    url: {{ .RelPermalink | jsonify }}
+  },
+{{- end -}}
 ];
 </script>
 
@@ -30,7 +29,7 @@ const pubs = [
 const searchInput = document.getElementById("searchInput");
 const container = document.getElementById("listaPubblicazioni");
 
-// Funzione di filtro interattiva
+// Funzione per mostrare tutte le pubblicazioni filtrate
 function filtraPubblicazioni() {
   const query = searchInput.value.toLowerCase().trim();
 
@@ -43,7 +42,7 @@ function filtraPubblicazioni() {
         p.title.toLowerCase().includes(query) ||
         p.authors.join(" ").toLowerCase().includes(query)
     )
-    .sort((a,b)=>b.year - a.year) // ordina decrescente per anno
+    .sort((a,b) => b.year - a.year) // decrescente per anno
     .forEach(p => {
       const div = document.createElement("div");
       div.className = "pub";
@@ -53,8 +52,10 @@ function filtraPubblicazioni() {
     });
 }
 
-// Inizializza
+// Mostra tutte le pubblicazioni all’avvio
 filtraPubblicazioni();
+
+// Aggiorna in tempo reale al digitare
 searchInput.addEventListener("input", filtraPubblicazioni);
 </script>
 
