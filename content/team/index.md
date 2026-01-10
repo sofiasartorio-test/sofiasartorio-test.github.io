@@ -5,9 +5,6 @@ sections:
   - block: people
     content:
       title: Postdoctoral Researchers
-    filter:
-      user_groups:
-        - Postdoc
     design:
       columns: 3
       show_social: true
