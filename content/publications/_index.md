@@ -1,12 +1,15 @@
 ---
 title: Publications
 cms_exclude: true
-
-# View.
 view: citation
-
-# Optional header image (relative to `static/media/` folder).
 banner:
-  caption: ''
-  image: ''
+  image: "media/publications_header.jpg"
+  caption: "Our latest research publications"
+filters:
+  show: true
+  fields:
+    - publication_types
+    - authors
+search: true
+sort: true
 ---
