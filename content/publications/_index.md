@@ -17,14 +17,15 @@ banner:
 
 <script>
 const pubs = [
-  {{ range .Pages }}
-  {
-    title: "{{ .Title | htmlEscape }}",
-    authors: "{{ delimit .Params.authors ", " | htmlEscape }}",
-    year: {{ .Date.Format "2006" }},
-    url: "{{ .RelPermalink }}"
-  },
-  {{ end }}
+{{- $count := len .Pages -}}
+{{- range $i, $p := .Pages }}
+{
+  title: {{ $p.Title | jsonify }},
+  authors: {{ delimit $p.Params.authors ", " | jsonify }},
+  year: {{ $p.Date.Format "2006" }},
+  url: {{ $p.RelPermalink | jsonify }}
+}{{ if lt (add $i 1) $count }},{{ end }}
+{{- end }}
 ];
 
 const anniSet = new Set(pubs.map(p => p.year));
