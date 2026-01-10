@@ -14,13 +14,14 @@ sections:
       title: "We are a university research group dedicated to advanced composite materials..."
       text: "Welcome to my portfolio."
       image:
-        filename: "featured.jpg"
+        filename: "images/featured.jpg"
         alt: "Research group"
 
     design:
       image_position: left
       text_color: white
       padding: "4rem 0"
+
   - block: resume-biography-3
     content:
       # Choose a user profile to display (a folder name within `content/authors/`)
