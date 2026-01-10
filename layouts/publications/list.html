@@ -1,28 +1,29 @@
 {{ define "main" }}
-<h1 class="text-3xl font-bold mb-6 text-center">Pubblicazioni</h1>
+<h1 class="text-4xl font-bold text-center mb-8">Pubblicazioni</h1>
 
-<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+<div class="flex flex-col gap-4">
   {{ range sort .Pages "Params.year" "desc" }}
-  <div class="bg-white rounded-2xl shadow-md p-6 hover:shadow-xl transition-shadow duration-300">
-    <h2 class="text-xl font-semibold mb-2">
-      <a href="{{ .RelPermalink }}" class="text-blue-600 hover:underline">{{ .Title }}</a>
-    </h2>
+  <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between border-b border-gray-200 pb-2">
+    
+    <!-- Titolo linkato -->
+    <a href="{{ .RelPermalink }}" class="text-blue-600 hover:underline font-medium">
+      {{ .Title }}
+    </a>
 
-    {{ with .Params.authors }}
-    <p class="text-gray-700 mb-1">{{ . }}</p>
-    {{ end }}
+    <div class="text-gray-600 text-sm mt-1 sm:mt-0">
+      {{ with .Params.authors }}{{ . }}{{ end }}
+      {{ with .Params.year }} ({{ . }}){{ end }}
 
-    {{ with .Params.year }}
-    <p class="text-gray-500 text-sm mb-3">{{ . }}</p>
-    {{ end }}
+      {{ with .Params.pdf }}
+      - <a href="{{ . }}" class="text-blue-500 hover:underline" target="_blank">PDF</a>
+      {{ end }}
+    </div>
 
-    {{ with .Params.link }}
-    <a href="{{ . }}" class="text-white bg-blue-600 hover:bg-blue-700 px-3 py-1 rounded-full text-sm transition-colors">Vedi pubblicazione</a>
-    {{ end }}
   </div>
   {{ end }}
 </div>
 {{ end }}
+
 
 
 
