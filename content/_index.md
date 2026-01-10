@@ -9,11 +9,10 @@ design:
   spacing: '6rem'
 
 sections:
-  - block: hero
-    id: hero
+  - block: markdown
     content:
-      title: Hi, I'm George
-      subtitle: I build open source software.
+      title: We are a university research group dedicated to advanced composite materials and cold-spray technologies, with a primary focus on aerospace applications. Our research seeks to move from extensive empirical testing toward a deep understanding of the physics behind material damage. Through this approach, we aim to reduce the need for exhaustive testing while ensuring safety, reliability, and compliance with aerospace standards.
+
       text: Welcome to my portfolio.
 
     design:
