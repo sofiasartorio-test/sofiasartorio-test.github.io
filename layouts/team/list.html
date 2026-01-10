@@ -4,17 +4,19 @@
 {{/* Prima raccogli tutti i ruoli */}}
 {{ $ruoli := slice }}
 {{ range (where site.RegularPages "Section" "authors") }}
-  {{ if not (in $ruoli .Params.role) }}
-    {{ $ruoli = $ruoli | append .Params.role }}
+  {{ if .Params.role }}
+    {{ if not (in $ruoli .Params.role) }}
+      {{ $ruoli = $ruoli | append .Params.role }}
+    {{ end }}
   {{ end }}
 {{ end }}
 
 {{/* Per ogni ruolo crea una sezione */}}
-{{ range $ruoli }}
-  <h2 style="text-align:center; margin-top:2rem;">{{ . }}</h2>
+{{ range $ruolo := $ruoli }}
+  <h2 style="text-align:center; margin-top:2rem;">{{ $ruolo }}</h2>
   <div class="people-grid">
     {{ range (where site.RegularPages "Section" "authors") }}
-      {{ if eq .Params.role $. }}
+      {{ if eq .Params.role $ruolo }}
         <div class="person-card">
           {{ $avatar := .Params.avatar | default "/images/default-avatar.png" }}
           <img class="avatar" src="{{ $avatar }}" alt="{{ .Title }}">
@@ -40,3 +42,4 @@
 h2 { color: #222; border-bottom: 1px solid #ccc; padding-bottom: 0.3rem; }
 </style>
 {{ end }}
+
