@@ -2,7 +2,7 @@
 <h1 class="text-3xl font-bold mb-6 text-center">Pubblicazioni</h1>
 
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-  {{ range (.Pages.ByParam "year" | reverse) }}
+  {{ range sort .Pages "Params.year" "desc" }}
   <div class="bg-white rounded-2xl shadow-md p-6 hover:shadow-xl transition-shadow duration-300">
     <h2 class="text-xl font-semibold mb-2">
       <a href="{{ .RelPermalink }}" class="text-blue-600 hover:underline">{{ .Title }}</a>
@@ -23,6 +23,7 @@
   {{ end }}
 </div>
 {{ end }}
+
 
 
 
