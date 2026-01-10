@@ -1,28 +1,63 @@
 {{ define "main" }}
-<h1 class="text-4xl font-bold text-center mb-8">Publications</h1>
+<h1 style="text-align:center; margin-bottom:2rem;">📚 Publications</h1>
 
-<div class="max-w-3xl mx-auto flex flex-col gap-4 px-4">
-  {{ range sort .Pages "Params.year" "desc" }}
-  <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between border-b border-gray-200 pb-2">
-    
-    <!-- Titolo linkato -->
-    <a href="{{ .RelPermalink }}" class="text-blue-600 hover:underline font-medium">
-      {{ .Title }}
-    </a>
-
-    <div class="text-gray-600 text-sm mt-1 sm:mt-0">
-      {{ with .Params.authors }}{{ . }}{{ end }}
-      {{ with .Params.year }} ({{ . }}){{ end }}
-
-      {{ with .Params.pdf }}
-      - <a href="{{ . }}" class="text-blue-500 hover:underline" target="_blank">PDF</a>
+<div style="text-align:center; margin-bottom:1rem;">
+  <label for="yearFilter">Filter by year:</label>
+  <select id="yearFilter">
+    <option value="">All</option>
+    {{/* Raccogli tutti gli anni presenti */}}
+    {{ $years := slice }}
+    {{ range .Pages }}
+      {{ with .Params.year }}
+        {{ if not (in $years .) }}
+          {{ $years = $years | append . }}
+        {{ end }}
       {{ end }}
-    </div>
+    {{ end }}
+    {{ range sort $years "desc" }}
+      <option value="{{ . }}">{{ . }}</option>
+    {{ end }}
+  </select>
+</div>
 
-  </div>
+<div id="pubList" class="max-w-3xl mx-auto flex flex-col gap-4 px-4">
+  {{ range sort .Pages "Params.year" "desc" }}
+    <div class="publication-item flex flex-col sm:flex-row sm:items-center sm:justify-between border-b border-gray-200 pb-2" data-year="{{ .Params.year }}">
+
+      <!-- Titolo linkato -->
+      <a href="{{ .RelPermalink }}" class="text-blue-600 hover:underline font-medium">
+        {{ .Title }}
+      </a>
+
+      <!-- Autori, anno e PDF -->
+      <div class="text-gray-600 text-sm mt-1 sm:mt-0">
+        {{ with .Params.authors }}{{ . }}{{ end }}
+        {{ with .Params.year }} ({{ . }}){{ end }}
+        {{ with .Params.pdf }}
+          - <a href="{{ . }}" class="text-blue-500 hover:underline" target="_blank">PDF</a>
+        {{ end }}
+      </div>
+
+    </div>
   {{ end }}
 </div>
+
+<script>
+document.getElementById('yearFilter').addEventListener('change', function() {
+  const year = this.value;
+  const items = document.querySelectorAll('.publication-item');
+  items.forEach(item => {
+    if (!year || item.dataset.year === year) {
+      item.style.display = 'flex';
+    } else {
+      item.style.display = 'none';
+    }
+  });
+});
+</script>
+
 {{ end }}
+
 
 
 
