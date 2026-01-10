@@ -11,6 +11,13 @@ design:
 sections:
   - block: markdown
     content:
+      title: "We are a university research group dedicated to advanced composite materials..."
+      text: |
+        <img src="images/IMG_7320.jpg" alt="Research group" style="float:left; width:40%; margin-right:2rem; margin-bottom:1rem;">
+        Welcome to my portfolio. Here is some more descriptive text that wraps nicely around the image.
+
+  - block: markdown
+    content:
       title: "We are a university research group..."
       text: |
         ![Research group](images/IMG_7320.jpg){ width=40% style="float:left; margin-right:2rem;" }
