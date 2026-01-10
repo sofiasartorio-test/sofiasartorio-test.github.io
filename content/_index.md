@@ -9,16 +9,19 @@ design:
   spacing: '6rem'
 
 sections:
-  - block: markdown
+  - block: feature
     content:
-      title: We are a university research group dedicated to advanced composite materials and cold-spray technologies, with a primary focus on aerospace applications. Our research seeks to move from extensive empirical testing toward a deep understanding of the physics behind material damage. Through this approach, we aim to reduce the need for exhaustive testing while ensuring safety, reliability, and compliance with aerospace standards.
-
-      text: Welcome to my portfolio.
+      title: "We are a university research group dedicated to advanced composite materials and cold-spray technologies, with a primary focus on aerospace applications. Our research seeks to move from extensive empirical testing toward a deep understanding of the physics behind material damage."
+      text: "Welcome to my portfolio."
+      image:
+        filename: "featured.jpg"
+        alt: "Research group"
 
     design:
-      background:
-       image:
-        filename: featured.jpg
+      image_position: left   # immagine a sinistra, testo a destra
+      columns: 2
+      padding: "4rem 0"
+
 
   - block: resume-biography-3
     content:
