@@ -45,14 +45,39 @@
   <!-- PUBLICATIONS BY AUTHOR -->
   <h2>Publications</h2>
 
-  <div class="author-pubs">
+  <div class="author-pubs flex flex-col gap-2">
     {{ $name := .Title }}
 
     {{ range where site.RegularPages "Section" "publications" }}
-      {{ if in .Params.authors $name }}
-        <div class="author-pub-item">
-          <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-          <span>({{ .Params.year }})</span>
+      {{ $authors := .Params.authors | default (slice) }}
+      {{ if in $authors $name }}
+        <div class="author-pub-item flex flex-wrap items-center gap-2">
+
+          <!-- Titolo -->
+          <a href="{{ .RelPermalink }}" class="text-blue-600 hover:underline font-medium">{{ .Title }}</a>
+          <span class="text-gray-600 text-sm">({{ .Params.year }})</span>
+
+          <!-- PDF Button -->
+          {{ with .Params.pdf }}
+          <a href="{{ . }}" target="_blank" class="inline-block bg-blue-600 text-white px-2 py-1 rounded hover:bg-blue-700 transition text-sm">
+            PDF
+          </a>
+          {{ end }}
+
+          <!-- DOI Button -->
+          {{ with .Params.doi }}
+          <a href="{{ . }}" target="_blank" class="inline-block bg-green-600 text-white px-2 py-1 rounded hover:bg-green-700 transition text-sm">
+            DOI
+          </a>
+          {{ end }}
+
+          <!-- Cite Button -->
+          {{ with .Params.cite }}
+          <a href="{{ . }}" target="_blank" class="inline-block bg-gray-600 text-white px-2 py-1 rounded hover:bg-gray-700 transition text-sm">
+            Cite
+          </a>
+          {{ end }}
+
         </div>
       {{ end }}
     {{ end }}
@@ -123,3 +148,4 @@ h2 {
 </style>
 
 {{ end }}
+
