@@ -1,5 +1,5 @@
 ---
-title: "👥 People"
+title: "👥 Our Team"
 weight: 2
 disable_toc: true
 no_sidebar: true
@@ -20,8 +20,8 @@ headless: false
 
     <div class="socials">
       {{ with .Params.social }}
-        {{ if .twitter }}<a href="{{ .twitter }}" target="_blank">Twitter</a>{{ end }}
-        {{ if .linkedin }}<a href="{{ .linkedin }}" target="_blank">LinkedIn</a>{{ end }}
+        {{ if .email }}<a href="mailto:{{ .email }}">Email</a>{{ end }}
+        {{ if .scholar }} | <a href="{{ .scholar }}">Google Scholar</a>{{ end }}
       {{ end }}
     </div>
   </div>
@@ -41,4 +41,5 @@ headless: false
 .role { font-size: 0.9rem; color: #555; }
 .socials a { margin: 0 0.5rem; font-size: 0.9rem; color: #007acc; text-decoration: none; }
 </style>
+
 
