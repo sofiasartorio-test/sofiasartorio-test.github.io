@@ -1,6 +1,6 @@
 ---
 title: "Research Topics"
-type: landing
+type: page
 
 design:
   spacing: '0rem'
