@@ -14,12 +14,14 @@ sections:
       title: "We are a university research group dedicated to advanced composite materials..."
       text: |
         <img src="images/IMG_7320.jpg" alt="Research group"
-             style="float:left; width:30%; margin-left:-20rem; margin-right:20rem; margin-bottom:1rem;">
-        <div style="max-width:70%; display:inline-block;">
-         Benvenuti nel nostro laboratorio:
-         - **Materiali compositi avanzati**
-         - **Tecnologie Cold Spray**
-         - **Applicazioni aerospace**    
+             style="float:left; width:35%; margin-right:2rem; margin-bottom:1rem;">
+        <div style="max-width:65%; display:inline-block;">
+          Benvenuti nel nostro laboratorio:
+          <ul>
+            <li><strong>Materiali compositi avanzati</strong></li>
+            <li><strong>Tecnologie Cold Spray</strong></li>
+            <li><strong>Applicazioni aerospace</strong></li>
+          </ul>
         </div>
 
   - block: markdown
