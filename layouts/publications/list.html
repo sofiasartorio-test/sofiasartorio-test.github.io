@@ -5,7 +5,7 @@
   <label for="yearFilter">Filter by year:</label>
   <select id="yearFilter">
     <option value="">All</option>
-    {{/* Raccogli tutti gli anni presenti */}}
+
     {{ $years := slice }}
     {{ range .Pages }}
       {{ with .Params.year }}
@@ -14,7 +14,8 @@
         {{ end }}
       {{ end }}
     {{ end }}
-    {{ range sort $years "desc" }}
+
+    {{ range sort $years }}
       <option value="{{ . }}">{{ . }}</option>
     {{ end }}
   </select>
@@ -22,19 +23,18 @@
 
 <div id="pubList" class="max-w-3xl mx-auto flex flex-col gap-4 px-4">
   {{ range sort .Pages "Params.year" "desc" }}
-    <div class="publication-item flex flex-col sm:flex-row sm:items-center sm:justify-between border-b border-gray-200 pb-2" data-year="{{ .Params.year }}">
+    <div class="publication-item flex flex-col sm:flex-row sm:items-center sm:justify-between border-b border-gray-200 pb-2"
+         data-year="{{ .Params.year }}">
 
-      <!-- Titolo linkato -->
       <a href="{{ .RelPermalink }}" class="text-blue-600 hover:underline font-medium">
         {{ .Title }}
       </a>
 
-      <!-- Autori, anno e PDF -->
       <div class="text-gray-600 text-sm mt-1 sm:mt-0">
         {{ with .Params.authors }}{{ . }}{{ end }}
         {{ with .Params.year }} ({{ . }}){{ end }}
         {{ with .Params.pdf }}
-          - <a href="{{ . }}" class="text-blue-500 hover:underline" target="_blank">PDF</a>
+          – <a href="{{ . }}" class="text-blue-500 hover:underline" target="_blank">PDF</a>
         {{ end }}
       </div>
 
@@ -43,20 +43,15 @@
 </div>
 
 <script>
-document.getElementById('yearFilter').addEventListener('change', function() {
+document.getElementById('yearFilter').addEventListener('change', function () {
   const year = this.value;
-  const items = document.querySelectorAll('.publication-item');
-  items.forEach(item => {
-    if (!year || item.dataset.year === year) {
-      item.style.display = 'flex';
-    } else {
-      item.style.display = 'none';
-    }
+  document.querySelectorAll('.publication-item').forEach(item => {
+    item.style.display = (!year || item.dataset.year === year) ? 'flex' : 'none';
   });
 });
 </script>
-
 {{ end }}
+
 
 
 
