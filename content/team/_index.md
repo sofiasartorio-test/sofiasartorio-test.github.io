@@ -6,18 +6,16 @@ no_sidebar: true
 headless: false
 ---
 
+{{/* Wrapper obbligatorio per far funzionare il tema */}}
+{{ .Content }}
+
 <div class="people-grid">
 {{ range (where site.RegularPages "Section" "authors") }}
   <div class="person-card">
     {{ $avatar := .Params.avatar | default "/images/default-avatar.png" }}
     <img class="avatar" src="{{ $avatar }}" alt="{{ .Title }}">
-
     <h3>{{ .Title }}</h3>
-
-    {{ if .Params.role }}
-      <p class="role">{{ .Params.role }}</p>
-    {{ end }}
-
+    {{ if .Params.role }}<p class="role">{{ .Params.role }}</p>{{ end }}
     <div class="socials">
       {{ with .Params.social }}
         {{ if .twitter }}<a href="{{ .twitter }}" target="_blank">Twitter</a>{{ end }}
@@ -41,4 +39,5 @@ headless: false
 .role { font-size: 0.9rem; color: #555; }
 .socials a { margin: 0 0.5rem; font-size: 0.9rem; color: #007acc; text-decoration: none; }
 </style>
+
 
