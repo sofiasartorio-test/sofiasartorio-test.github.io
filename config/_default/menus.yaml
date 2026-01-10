@@ -14,7 +14,7 @@ main:
     url: team/
     weight: 12
   - name: 📄 Publications
-    url: /papers/
+    url: /publications/
     weight: 13
   - name: 👥 News
     url: /#news
