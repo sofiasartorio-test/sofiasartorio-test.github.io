@@ -9,9 +9,9 @@ design:
   display:flex;
   align-items:center;
   justify-content:center;
-  min-height:100vh;
+  height:auto;
   width:100%;
-  padding:4rem;
+  padding:1rem;
   background-image:url('images/IMG_7320.jpg');
   background-size:cover;
   background-position:center;
@@ -19,7 +19,7 @@ design:
 
   <div style="
     max-width:800px;
-    background:rgba(0,0,0,0.55);
+    background:rgba(107, 216, 10, 0.88);
     color:white;
     padding:3rem;
     border-radius:1rem;
@@ -37,7 +37,7 @@ design:
   display:flex;
   align-items:center;
   justify-content:center;
-  min-height:100vh;
+  height:auto;
   width:100%;
   padding:1rem;
   background-image:url('images/IMG_7320.jpg');
@@ -47,7 +47,7 @@ design:
 
   <div style="
     max-width:800px;
-    background:rgba(0,0,0,0.55);
+    background:rgba(4, 40, 245, 0.55);
     color:white;
     padding:3rem;
     border-radius:1rem;
