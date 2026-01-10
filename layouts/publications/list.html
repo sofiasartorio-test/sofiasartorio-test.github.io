@@ -13,7 +13,13 @@
 const pubs = [
 {{- $pubs := slice -}}
 {{- range .Pages }}
-  {{- $p := dict "title" .Title "authors" .Params.authors "year" (.Date.Format "2006") "type" (.Params.publication_types | first) "url" .RelPermalink -}}
+  {{- $p := dict 
+      "title" .Title 
+      "authors" .Params.authors 
+      "year" (.Date.Format "2006") 
+      "type" (index .Params.publication_types 0 | default "") 
+      "url" .RelPermalink 
+  -}}
   {{- $pubs = $pubs | append $p -}}
 {{- end }}
 {{ $pubs | jsonify }}
@@ -24,7 +30,7 @@ const pubs = [
 const searchInput = document.getElementById("searchInput");
 const container = document.getElementById("listaPubblicazioni");
 
-// Funzione di filtro
+// Funzione di filtro interattiva
 function filtraPubblicazioni() {
   const query = searchInput.value.toLowerCase().trim();
 
@@ -47,7 +53,7 @@ function filtraPubblicazioni() {
     });
 }
 
-// Inizializza e aggiorna in tempo reale
+// Inizializza
 filtraPubblicazioni();
 searchInput.addEventListener("input", filtraPubblicazioni);
 </script>
@@ -58,4 +64,5 @@ label { font-weight: bold; display:block; margin-bottom:1rem; }
 input { border:1px solid #ccc; border-radius:4px; }
 </style>
 {{ end }}
+
 
