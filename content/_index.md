@@ -8,24 +8,13 @@ design:
   # Default section spacing
   spacing: '6rem'
 
-ssections:
-  - block: hero
+sections:
+  - block: markdown
     content:
-      title: "We are a university research group dedicated to advanced composite materials..."
-      text: "Welcome to my portfolio."
-      image:
-        filename: "images/IMG_7320.jpg"
-        alt: "Research group"
-
-    design:
-      image_position: left
-      text_color: white
-      padding: "6rem 0"
-      bg_size: cover
-      bg_position: center
-      overlay:
-        color: "rgba(0,0,0,0.3)"   # leggero scuro per far risaltare il testo
-
+      title: "We are a university research group..."
+      text: |
+        ![Research group](images/IMG_7320.jpg){ width=40% style="float:left; margin-right:2rem;" }
+        Welcome to my portfolio.
 
   - block: resume-biography-3
     content:
