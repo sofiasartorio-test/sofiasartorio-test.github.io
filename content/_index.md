@@ -37,15 +37,14 @@ sections:
   - block: markdown
     content:
       title: "Meet Our Team"
-      text: |
-      <div style="text-align: center; margin: 2rem 0;">
+      text: | 
+        <div style="text-align: center; margin: 2rem 0;">
         <p style="font-size:1.5rem; font-weight:bold;">Join us and discover our team!</p>
         <a href="/team/" 
            class="hbx-btn hbx-btn-primary" 
            style="background-color:#007BFF; border-color:#007BFF; color:white; padding:0.75rem 1.5rem; font-size:1rem; border-radius:0.5rem;">
           Meet the Team
-        </a>
-      </div>
+        </a> </div>
     design:
       css_class: hbx-bg-light
 
