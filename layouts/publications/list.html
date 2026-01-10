@@ -1,7 +1,7 @@
 {{ define "main" }}
-<h1 class="text-4xl font-bold text-center mb-8">Pubblicazioni</h1>
+<h1 class="text-4xl font-bold text-center mb-8">Publications</h1>
 
-<div class="flex flex-col gap-4">
+<div class="max-w-3xl mx-auto flex flex-col gap-4 px-4">
   {{ range sort .Pages "Params.year" "desc" }}
   <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between border-b border-gray-200 pb-2">
     
