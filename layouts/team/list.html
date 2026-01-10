@@ -1,34 +1,26 @@
 {{ define "main" }}
 <h1 style="text-align:center; margin-bottom:2rem;">👥 Our Team</h1>
 
-{{/* Ordine personalizzato dei ruoli */}}
-{{ $ordine := slice "Founder" "Principal Investigator" "Post-doc" "Lab" }}
+{{/* Prima raccogli tutti i ruoli */}}
+{{ $ruoli := slice }}
+{{ range (where site.RegularPages "Section" "authors") }}
+  {{ if .Params.role }}
+    {{ if not (in $ruoli .Params.role) }}
+      {{ $ruoli = $ruoli | append .Params.role }}
+    {{ end }}
+  {{ end }}
+{{ end }}
 
-{{/* Mappa dei colori per ruolo */}}
-{{ $colori := dict
-    "Founder" "rgba(107, 216, 10, 0.88)"
-    "Principal Investigator" "rgba(255, 140, 0, 0.8)"
-    "Post-doc" "rgba(4, 40, 245, 0.55)"
-    "Lab" "rgba(200, 50, 200, 0.6)"
-}}
-
-{{/* Loop sui ruoli */}}
-{{ range $i, $ruolo := $ordine }}
-
-  {{/* Trova tutti gli autori con questo ruolo */}}
-  {{ $membri := where site.RegularPages "Section" "authors" }}
-  {{ $membri = where $membri "Params.role" "intersect" (slice $ruolo) }}
-  {{ if gt (len $membri) 0 }}
-    <h2 style="text-align:center; margin-top:2rem;">{{ $ruolo }}</h2>
-    <div class="people-grid">
-      {{ range $membri }}
-        {{ $avatar := .Params.avatar | default "/images/default-avatar.png" }}
-        <div class="person-card" style="border-top: 4px solid {{ index $colori $ruolo }}">
+{{/* Per ogni ruolo crea una sezione */}}
+{{ range $ruolo := $ruoli }}
+  <h2 style="text-align:center; margin-top:2rem;">{{ $ruolo }}</h2>
+  <div class="people-grid">
+    {{ range (where site.RegularPages "Section" "authors") }}
+      {{ if eq .Params.role $ruolo }}
+        <div class="person-card">
+          {{ $avatar := .Params.avatar | default "/images/default-avatar.png" }}
           <img class="avatar" src="{{ $avatar }}" alt="{{ .Title }}">
           <h3>{{ .Title }}</h3>
-          <div class="roles">
-            {{ range .Params.role }}<span class="role-badge" style="background-color: {{ index $colori . }}">{{ . }}</span>{{ end }}
-          </div>
           <div class="socials">
             {{ with .Params.social }}
               {{ if .email }}<a href="mailto:{{ .email }}">Email</a>{{ end }}
@@ -37,50 +29,19 @@
           </div>
         </div>
       {{ end }}
-    </div>
-  {{ end }}
-
+    {{ end }}
+  </div>
 {{ end }}
 
 <style>
-.people-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 2rem;
-  justify-items: center;
-  margin-top: 1rem;
-}
-.person-card {
-  text-align: center;
-  padding: 1rem;
-  border: 1px solid #eee;
-  border-radius: 8px;
-  transition: transform 0.2s;
-}
-.person-card:hover { transform: translateY(-5px); }
+.people-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 2rem; justify-items: center; margin-top: 1rem; }
+.person-card { text-align: center; padding: 1rem; border: 1px solid #eee; border-radius: 8px; }
 .avatar { width: 150px; height: 150px; object-fit: cover; border-radius: 50%; }
-.roles { margin: 0.5rem 0; }
-.role-badge {
-  display: inline-block;
-  padding: 0.2rem 0.5rem;
-  margin: 0.1rem;
-  font-size: 0.8rem;
-  color: #fff;
-  border-radius: 4px;
-}
-.socials a {
-  margin: 0 0.5rem;
-  font-size: 0.9rem;
-  color: #007acc;
-  text-decoration: none;
-}
-h2 {
-  color: #222;
-  border-bottom: 1px solid #ccc;
-  padding-bottom: 0.3rem;
-  margin-top: 3rem;
-}
+.role { font-size: 0.9rem; color: #555; }
+.socials a { margin: 0 0.5rem; font-size: 0.9rem; color: #007acc; text-decoration: none; }
+h2 { color: #222; border-bottom: 1px solid #ccc; padding-bottom: 0.3rem; }
 </style>
 {{ end }}
+
 
 
