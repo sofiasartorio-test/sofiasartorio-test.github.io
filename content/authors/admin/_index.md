@@ -7,7 +7,7 @@ first_name: Damage Management & Certification
 last_name: Damage Management & Certification
 
 # Is this the primary user of the site?
-superuser: true
+superuser: false
 
 # Highlight the author in author lists? (true/false)
 highlight_name: false
