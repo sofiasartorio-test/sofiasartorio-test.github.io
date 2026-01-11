@@ -23,8 +23,8 @@
           <h3>{{ .Title }}</h3>
           <div class="socials">
             {{ with .Params.social }}
-              {{ if .email }}<a href="mailto:{{ .email }}">Email</a>{{ end }}
-              {{ if .scholar }} | <a href="{{ .scholar }}">Google Scholar</a>{{ end }}
+              {{ if .email }} <a href="mailto:{{ .email }}" title="Email"> <img src="/images/icons/mail.svg" alt="Email" class="social-icon"> </a> {{ end }}
+              {{ if .scholar }} <a href="{{ .scholar }}" target="_blank" title="Google Scholar"> <img src="/images/icons/gooogle_scholar_logo.svg" alt="Google Scholar" class="social-icon"> </a> {{ end }}
               {{ if .linkedin }} <a href="{{ .linkedin }}" target="_blank" title="LinkedIn"> <img src="/images/icons/linkedin.svg" alt="LinkedIn" class="social-icon"></a>{{ end }}
             {{ end }}
           </div>
