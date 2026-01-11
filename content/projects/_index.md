@@ -7,6 +7,8 @@ design:
   # Section spacing
   spacing: '5rem'
 
+---
+
 sections:
   - block: markdown
     content:
@@ -46,4 +48,5 @@ sections:
         </div>
     design:
       css_class: hbx-bg-gradient
+
 
