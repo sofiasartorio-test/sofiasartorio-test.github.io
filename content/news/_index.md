@@ -8,7 +8,7 @@ sections:
       title: Upcoming Events
       filters:
         folders:
-          - event
+          - events
         future: true
       sort_by: date
       sort_ascending: true
@@ -21,7 +21,7 @@ sections:
       title: Past Events
       filters:
         folders:
-          - event
+          - events
         past: true
       sort_by: date
       sort_ascending: false
