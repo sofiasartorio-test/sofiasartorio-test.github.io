@@ -24,7 +24,7 @@
           <div class="socials">
             {{ with .Params.social }}
               {{ if .email }} <a href="mailto:{{ .email }}" title="Email"> <img src="/images/icons/mail.svg" alt="Email" class="social-icon"> </a> {{ end }}
-              {{ if .scholar }} <a href="{{ .scholar }}" target="_blank" title="Google Scholar"> <img src="/images/icons/gooogle_scholar_logo.svg" alt="Google Scholar" class="social-icon"> </a> {{ end }}
+              {{ if .scholar }} <a href="{{ .scholar }}" target="_blank" title="Google Scholar"> <img src="/images/icons/google_scholar_logo.svg" alt="Google Scholar" class="social-icon"> </a> {{ end }}
               {{ if .linkedin }} <a href="{{ .linkedin }}" target="_blank" title="LinkedIn"> <img src="/images/icons/linkedin.svg" alt="LinkedIn" class="social-icon"></a>{{ end }}
             {{ end }}
           </div>
@@ -39,6 +39,12 @@
 .person-card { text-align: center; padding: 1rem; border: 1px solid #eee; border-radius: 8px; }
 .avatar { width: 150px; height: 150px; object-fit: cover; border-radius: 50%; }
 .role { font-size: 0.9rem; color: #555; }
+.socials {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
 .socials a { margin: 0 0.5rem; font-size: 0.9rem; color: #007acc; text-decoration: none; }
 h2 { color: #222; border-bottom: 1px solid #ccc; padding-bottom: 0.3rem; }
 .social-icon {
