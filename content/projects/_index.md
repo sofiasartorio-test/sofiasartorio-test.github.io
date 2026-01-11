@@ -11,7 +11,7 @@ sections:
   - block: markdown
     content:
       text: |
-        <div style="text-align:center; max-width:800px; margin:auto; color:#fff; font-family:Arial, sans-serif;">
+        <div style="text-align:center; max-width:800px; margin:auto; font-family:Arial, sans-serif;">
           
           <h1 style="font-size:2.5rem; font-weight:bold; margin-bottom:1rem;">
             Projects & Collaborations
