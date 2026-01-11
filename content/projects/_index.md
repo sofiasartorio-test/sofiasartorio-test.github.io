@@ -7,15 +7,6 @@ design:
   # Section spacing
   spacing: '5rem'
 
-
----
-title: 'Projects'
-date: 2024-05-19
-type: landing
-
-design:
-  spacing: '5rem'
-
 sections:
   - block: markdown
     content:
