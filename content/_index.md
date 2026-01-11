@@ -15,7 +15,7 @@ sections:
       title: |
        <div style="white-space: nowrap; font-size:2rem; font-weight:bold;">Damage Management & Certification </div>
       text: |
-        <img src="images/IMG_7320.jpg" alt="Research group"
+        <img src="images/logo.jpg" alt="Research group"
              style="float:left; width:35%; margin-right:2rem; margin-bottom:1rem;">
         <div style="max-width:65%; display:inline-block; font-size:20px; font-family:Arial, sans-serif; color:#333;">
           Welcome to our website !<br>
