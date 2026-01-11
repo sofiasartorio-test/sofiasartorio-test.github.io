@@ -1,21 +1,18 @@
 ---
 title: "Sofia Sartorio"
-role: "Ph.D"
-avatar: "/images/IMG_7320.jpg"
+role: "Doctoral Candidate"
+avatar: "/images/Sofia_Sartorio.jpg"
 
 education:
-  - PhD in Computer Science, University of X
-  - MSc in Artificial Intelligence, University of Y
+  - MSc in Materials Engineering & Nanotechnology, Politecnico di Milano
 
 interests:
-  - Deep Learning
-  - Music Generation
-  - Audio AI
-  - Human–Computer Interaction
+  - Fatigue of composites
+  - Thermoplastic composites
+  - Acoustic Emission
 
 social:
-  twitter: "https://twitter.com/sofia"
-  scholar: "https://scholar.google.com/..."
-  email: "sofia@university.edu"
+  email: "s.f.sartorio@tudelft.nl"
   linkedin: "https://www.linkedin.com/in/sofia-francesca-sartorio-b258542a7/"
+  scholar: "https://scholar.google.com/..."
 ---
