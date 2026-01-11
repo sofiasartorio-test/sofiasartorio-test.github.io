@@ -9,6 +9,27 @@ design:
   spacing: '6rem'
 
 sections:
+  
+  - block: markdown
+    content:
+      title: |
+        <div style="white-space: nowrap; font-size:2rem; font-weight:bold;">
+        Damage Management & Certification
+        </div>
+      text: |
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:1rem;">
+        <img src="images/logo.jpg" alt="Research group"
+          style="flex:0 0 35%; max-width:35%; height:auto; border-radius:8px;">
+        <div style="flex:1 1 60%; font-size:20px; font-family:Arial, sans-serif; color:#333;">
+          Welcome to our website!<br><br>
+          Our main interests are:
+          <ul>
+            <li><strong>Composites materials</strong></li>
+            <li><strong>Cold Spray technologies</strong></li>
+            <li><strong>Aerospace applications</strong></li>
+          </ul>
+        </div>
+
 
   - block: markdown
     content:
