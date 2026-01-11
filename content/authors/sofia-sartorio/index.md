@@ -1,6 +1,6 @@
 ---
 title: "Sofia Sartorio"
-role: "Founder"
+role: "Ph.D"
 avatar: "/images/IMG_7320.jpg"
 
 education:
