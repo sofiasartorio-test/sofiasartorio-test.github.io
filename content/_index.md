@@ -30,24 +30,6 @@ sections:
           </ul>
         </div>
 
-
-  - block: markdown
-    content:
-      title: |
-       <div style="white-space: nowrap; font-size:2rem; font-weight:bold;">Damage Management & Certification </div>
-      text: |
-        <img src="images/logo.jpg" alt="Research group"
-             style="float:left; width:35%; margin-right:2rem; margin-bottom:1rem;">
-        <div style="max-width:65%; display:inline-block; font-size:20px; font-family:Arial, sans-serif; color:#333;">
-          Welcome to our website !<br>
-          Our main interests are :
-          <ul>
-            <li><strong>Composites materials</strong></li>
-            <li><strong>Cold Spray technologies</strong></li>
-            <li><strong>Aerospace applications</strong></li>
-          </ul>
-        </div>
-
   - block: markdown
     content:
       text: "We are a university research group dedicated to advanced composite materials and cold-spray technologies, with a primary focus on aerospace applications. Our research seeks to move from extensive empirical testing toward a deep understanding of the physics behind material damage. Through this approach, we aim to reduce the need for exhaustive testing while ensuring safety, reliability, and compliance with aerospace standards."
