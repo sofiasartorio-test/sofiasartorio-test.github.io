@@ -26,7 +26,7 @@ sections:
           </p>
 
           <!-- Bottone Contact Us -->
-          <a href="mailto:s.f.sartorio@tudelft.nl"
+          <a href="mailto:test@tudelft.nl"
              style="
                display:inline-block;
                padding:0.8rem 2rem;
