@@ -25,6 +25,7 @@
             {{ with .Params.social }}
               {{ if .email }}<a href="mailto:{{ .email }}">Email</a>{{ end }}
               {{ if .scholar }} | <a href="{{ .scholar }}">Google Scholar</a>{{ end }}
+              {{ if .linkedin }} <a href="{{ .linkedin }}" target="_blank" title="LinkedIn"> <img src="/images/icons/linkedin.svg" alt="LinkedIn" class="social-icon"></a>{{ end }}
             {{ end }}
           </div>
         </div>

@@ -17,4 +17,5 @@ social:
   twitter: "https://twitter.com/sofia"
   scholar: "https://scholar.google.com/..."
   email: "sofia@university.edu"
+  linkedin: "https://www.linkedin.com/in/sofia-francesca-sartorio-b258542a7/"
 ---
