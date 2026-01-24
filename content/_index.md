@@ -82,7 +82,7 @@ sections:
         </div>
     design:
       background:
-      color: light
+        color: light
 
 
 
