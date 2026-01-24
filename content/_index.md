@@ -65,7 +65,7 @@ sections:
           <div class="swiper papersSwiper">
             <div class="swiper-wrapper">
 
-              {{ range first 6 (where site.RegularPages "Section" "publication") }}
+              {{ range first 6 (where site.RegularPages "Section" "publications") }}
                 <div class="swiper-slide">
                   <div class="bg-white rounded-xl shadow-lg p-6 h-full">
                     <h3 class="text-lg font-semibold mb-2">
