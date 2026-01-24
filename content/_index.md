@@ -55,15 +55,18 @@ sections:
     content:
       title: Paper recenti
       subtitle: Le nostre ultime pubblicazioni
-    text: |
-      Ricerca, innovazione e risultati del nostro team.
-    count: 3
-    filters:
-      folders:
-        - publications
+      text: |
+        Ricerca, innovazione e risultati del nostro team.
+      count: 3
+      filters:
+        folders:
+        - publication
     design:
-    view: card
-    columns: 3
+      background:
+        color: light
+      view: card
+      columns: 3
+
 
 
   - block: markdown
