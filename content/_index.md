@@ -55,10 +55,10 @@ sections:
     content:
       text: |
         <div class="max-w-7xl mx-auto">
-        <h2 class="text-2xl font-bold text-center mb-2">Paper recenti</h2>
-        <p class="text-center mb-6 opacity-70">
+          <h2 class="text-2xl font-bold text-center mb-2">Paper recenti</h2>
+          <p class="text-center mb-6 opacity-70">
           Le nostre ultime pubblicazioni
-        </p>
+          </p>
 
         <div class="swiper papersSwiper">
           <div class="swiper-wrapper">
@@ -88,9 +88,9 @@ sections:
             {{ end }}
           </div>
         </div>
-        </div>
+      </div>
 
-        <script>
+      <script>
         new Swiper(".papersSwiper", {
           slidesPerView: 1.2,
           spaceBetween: 20,
@@ -100,13 +100,10 @@ sections:
             1024: { slidesPerView: 3 }
           }
         });
-        </script>
+      </script>
     design:
       background:
         color: light
-
-
-
 
   - block: markdown
     content:
