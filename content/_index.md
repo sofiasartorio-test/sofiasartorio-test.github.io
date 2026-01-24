@@ -50,6 +50,22 @@ sections:
     design:
       css_class: hbx-bg-light
 
+
+  - block: collection
+    content:
+      title: Paper recenti
+      subtitle: Le nostre ultime pubblicazioni
+    text: |
+      Ricerca, innovazione e risultati del nostro team.
+    count: 3
+    filters:
+      folders:
+        - publications
+    design:
+    view: card
+    columns: 3
+
+
   - block: markdown
     content:
       title: "Where to find us"
