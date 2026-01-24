@@ -1,0 +1,15 @@
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    new Swiper(".papersSwiper", {
+      slidesPerView: 1.2,
+      spaceBetween: 20,
+      grabCursor: true,
+      breakpoints: {
+        768: { slidesPerView: 2.5 },
+        1024: { slidesPerView: 3 }
+      }
+    });
+  });
+</script>

@@ -51,21 +51,60 @@ sections:
       css_class: hbx-bg-light
 
 
-  - block: collection
+  - block: markdown
     content:
-      title: Paper recenti
-      subtitle: Le nostre ultime pubblicazioni
       text: |
-        Ricerca, innovazione e risultati del nostro team.
-      count: 3
-      filters:
-        folders:
-        - publications
+        <div class="max-w-7xl mx-auto">
+        <h2 class="text-2xl font-bold text-center mb-2">Paper recenti</h2>
+        <p class="text-center mb-6 opacity-70">
+          Le nostre ultime pubblicazioni
+        </p>
+
+        <div class="swiper papersSwiper">
+          <div class="swiper-wrapper">
+            {{ range first 6 (where site.RegularPages "Section" "publication") }}
+              <div class="swiper-slide">
+                <div class="bg-white rounded-xl shadow-lg p-6 h-full">
+                  <h3 class="text-lg font-semibold mb-2">
+                    {{ .Title }}
+                  </h3>
+
+                  {{ with .Params.authors }}
+                    <p class="text-sm opacity-70 mb-2">
+                      {{ delimit . ", " }}
+                    </p>
+                  {{ end }}
+
+                  <p class="text-sm opacity-60 mb-4">
+                    {{ .Date.Format "2006" }}
+                  </p>
+
+                  <a href="{{ .RelPermalink }}"
+                     class="text-primary font-medium">
+                    Leggi il paper →
+                  </a>
+                </div>
+              </div>
+            {{ end }}
+          </div>
+        </div>
+        </div>
+
+        <script>
+        new Swiper(".papersSwiper", {
+          slidesPerView: 1.2,
+          spaceBetween: 20,
+          grabCursor: true,
+          breakpoints: {
+            640: { slidesPerView: 2 },
+            1024: { slidesPerView: 3 }
+          }
+        });
+        </script>
     design:
       background:
         color: light
-      view: card
-      columns: 3
+
 
 
 
