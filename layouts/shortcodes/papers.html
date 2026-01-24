@@ -4,7 +4,6 @@
 
   <div class="swiper papersSwiper">
     <div class="swiper-wrapper">
-
       {{ range first 6 (where site.RegularPages "Section" "publications") }}
         <div class="swiper-slide">
           <div class="bg-white rounded-xl shadow-lg p-6 h-full">
@@ -20,7 +19,35 @@
           </div>
         </div>
       {{ end }}
-
     </div>
+
+    <!-- Pulsanti navigazione -->
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
   </div>
 </div>
+
+<!-- Swiper JS -->
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
+/>
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
+<script>
+  const papersSwiper = new Swiper('.papersSwiper', {
+    slidesPerView: 3,
+    spaceBetween: 20,
+    loop: true,
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    breakpoints: {
+      640: { slidesPerView: 1 },
+      768: { slidesPerView: 2 },
+      1024: { slidesPerView: 3 },
+    },
+  });
+</script>
+
