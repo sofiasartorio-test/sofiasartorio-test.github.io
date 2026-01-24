@@ -60,7 +60,7 @@ sections:
       count: 3
       filters:
         folders:
-        - publication
+        - publications
     design:
       background:
         color: light
