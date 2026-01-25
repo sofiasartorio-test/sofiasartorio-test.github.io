@@ -23,10 +23,16 @@
               {{ .Date.Format "2006" }}
             </p>
 
-            <a href="{{ .RelPermalink }}" 
-               class="text-primary font-medium hover:underline">
+
+            {{ with .Params.link }}
+            <a href="{{ . }}" target="_blank" class="text-primary font-medium hover:underline">
               Read paper →
             </a>
+            {{ else }}
+            <a href="{{ .RelPermalink }}" class="text-primary font-medium hover:underline">
+              Read paper →
+            </a>
+            {{ end }}
 
           </div>
         </div>
