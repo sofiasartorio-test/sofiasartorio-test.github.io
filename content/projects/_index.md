@@ -21,7 +21,7 @@ sections:
           <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:2rem; margin-bottom:3rem;">
 
           <div>
-          <a href="/projects/">
+          <a href="https://d-standart.eu/" target="_blank">
           <img src="/images/project1.jpg" style="width:100%;border-radius:12px;">
           </a>
           <p>Cold Spray Repair</p>
