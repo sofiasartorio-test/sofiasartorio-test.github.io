@@ -17,6 +17,33 @@ sections:
             Projects & Collaborations
           </h1>
 
+          <!-- GRID PROGETTI -->
+          <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:2rem; margin-bottom:3rem;">
+
+          <div>
+          <a href="/projects/">
+          <img src="/images/project1.jpg" style="width:100%;border-radius:12px;">
+          </a>
+          <p>Cold Spray Repair</p>
+          </div>
+
+          <div>
+          <a href="/projects/">
+          <img src="/images/project2.jpg" style="width:100%;border-radius:12px;">
+          </a>
+          <p>Damage Detection</p>
+          </div>
+
+          <div>
+          <a href="/projects/">
+          <img src="/images/project3.jpg" style="width:100%;border-radius:12px;">
+          </a>
+          <p>Structural Health Monitoring</p>
+          </div>
+
+          </div>
+
+
           <p style="font-size:1.2rem; line-height:1.6; margin-bottom:1.5rem;">
             If you want to collaborate with us, feel free to reach out via email:<br>
             <a href="mailto:s.f.sartorio@tudelft.nl"
