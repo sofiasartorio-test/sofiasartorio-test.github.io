@@ -9,3 +9,4 @@ authors:
 year: 2013
 pdf: "/publications/articolo1/articolo1.pdf"
 link: "https://www.sciencedirect.com/science/article/abs/pii/S0013794413003214"
+---
