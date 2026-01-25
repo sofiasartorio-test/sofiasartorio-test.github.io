@@ -61,9 +61,6 @@ sections:
       text: |
         {{< events-slider >}}
 
-
-
-
   - block: markdown
     content:
       title: "Where to find us"
