@@ -5,7 +5,7 @@
   <div class="swiper eventsSwiper">
     <div class="swiper-wrapper">
 
-      {{ $events := first 5 (sort (where site.RegularPages "Section" "news") "Date" "desc") }}
+      {{ $events := first 5 (sort (where site.RegularPages "Section" "events") "Date" "desc") }}
       {{ range $events }}
         <div class="swiper-slide">
           <div class="bg-white rounded-xl shadow-lg p-6 h-full text-center">
