@@ -1,0 +1,62 @@
+<div class="max-w-7xl mx-auto bg-white py-8">
+  <h2 class="text-2xl font-bold text-center mb-2">Upcoming Events</h2>
+  <p class="text-center mb-6 opacity-70">Meet our group at upcoming events</p>
+
+  <div class="swiper eventsSwiper">
+    <div class="swiper-wrapper">
+
+      {{ $events := first 5 (sort (where site.RegularPages "Section" "news") "Date" "desc") }}
+      {{ range $events }}
+        <div class="swiper-slide">
+          <div class="bg-white rounded-xl shadow-lg p-6 h-full text-center">
+            <p class="text-sm opacity-70 mb-2">{{ .Date.Format "Jan 2, 2006" }}</p>
+            <h3 class="text-lg font-semibold mb-2">{{ .Title }}</h3>
+            {{ with .Summary }}
+              <p class="text-sm opacity-60 mb-4">{{ . }}</p>
+            {{ end }}
+            <a href="{{ .RelPermalink }}" class="text-primary font-medium hover:underline">
+              Read more →
+            </a>
+          </div>
+        </div>
+      {{ end }}
+
+      <!-- Slide CTA -->
+      <div class="swiper-slide">
+        <div class="bg-primary text-white rounded-xl shadow-lg p-6 h-full flex flex-col items-center justify-center text-center">
+          <h3 class="text-xl font-semibold mb-3">See all events</h3>
+          <a href="/news/" class="bg-white text-primary px-5 py-2 rounded-lg font-medium hover:opacity-90">
+            Browse all →
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Frecce -->
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+  </div>
+</div>
+
+<!-- Swiper CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  new Swiper('.eventsSwiper', {
+    slidesPerView: 1,
+    spaceBetween: 20,
+    loop: false,
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    grabCursor: true,
+    keyboard: { enabled: true },
+  });
+});
+</script>
