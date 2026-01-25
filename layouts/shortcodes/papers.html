@@ -1,53 +1,63 @@
-<div class="max-w-7xl mx-auto bg-gray-50 py-8">
+<div class="max-w-7xl mx-auto bg-white py-8">
   <h2 class="text-2xl font-bold text-center mb-2">Paper recenti</h2>
   <p class="text-center mb-6 opacity-70">Le nostre ultime pubblicazioni</p>
 
   <div class="swiper papersSwiper">
     <div class="swiper-wrapper">
-      {{ range first 6 (where site.RegularPages "Section" "publications") }}
+
+      {{ range first 3 (sort (where site.RegularPages "Section" "publications") "Date" "desc") }}
         <div class="swiper-slide">
-          <div class="bg-white rounded-xl shadow-lg p-6 h-full">
-            <h3 class="text-lg font-semibold mb-2">{{ .Title }}</h3>
+          <div class="bg-white rounded-xl shadow-lg p-6 h-full text-center">
+
+            <h3 class="text-lg font-semibold mb-2">
+              {{ .Title }}
+            </h3>
 
             {{ with .Params.authors }}
-              <p class="text-sm opacity-70 mb-2">{{ delimit . ", " }}</p>
+              <p class="text-sm opacity-70 mb-2">
+                {{ delimit . ", " }}
+              </p>
             {{ end }}
 
-            <p class="text-sm opacity-60 mb-4">{{ .Date.Format "2006" }}</p>
+            <p class="text-sm opacity-60 mb-4">
+              {{ .Date.Format "2006" }}
+            </p>
 
-            <a href="{{ .RelPermalink }}" class="text-primary font-medium">Leggi il paper →</a>
+            <a href="{{ .RelPermalink }}" 
+               class="text-primary font-medium hover:underline">
+              Leggi il paper →
+            </a>
+
           </div>
         </div>
       {{ end }}
+
     </div>
 
-    <!-- Pulsanti navigazione -->
+    <!-- Frecce -->
     <div class="swiper-button-next"></div>
     <div class="swiper-button-prev"></div>
+
   </div>
 </div>
 
-<!-- Swiper JS -->
-<link
-  rel="stylesheet"
+<!-- Swiper CSS -->
+<link rel="stylesheet"
   href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
 />
+
+<!-- Swiper JS -->
 <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
 
 <script>
-  const papersSwiper = new Swiper('.papersSwiper', {
-    slidesPerView: 3,
-    spaceBetween: 20,
-    loop: true,
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-    breakpoints: {
-      640: { slidesPerView: 1 },
-      768: { slidesPerView: 2 },
-      1024: { slidesPerView: 3 },
-    },
-  });
-</script>
+const papersSwiper = new Swiper('.papersSwiper', {
+  slidesPerView: 1,
+  spaceBetween: 20,
+  loop: true,
 
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  }
+});
+</script>
