@@ -56,7 +56,7 @@ sections:
       text: |
         {{< papers >}}
 
-  - block: markdwon
+  - block: markdown
     content:
       text: |
         {{< events-slider >}}
