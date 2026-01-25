@@ -35,7 +35,9 @@ header:
     show_search: true
     show_theme_chooser: true
     logo:
-      image: 'logo.png'
+      image: '/images/logo.png'
+      height: 50
+      alt: 'Test Logo'
 
 # Site footer
 footer:
