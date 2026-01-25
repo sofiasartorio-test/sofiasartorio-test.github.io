@@ -1,8 +1,8 @@
 ---
 title: "22nd European Conference on Composite Materials"
 date: 2026-06-21
-summary: "Meet the group at ECCM22 in Oslo. Join talks, workshops, and networking sessions."
 location: "Oslo Kongressenter (Oslo Congress Center)"
+summary: "Meet the group at ECCM22 in Oslo. Join talks, workshops, and networking sessions."
 ---
 # 22nd European Conference on Composite Materials
 
