@@ -6,7 +6,7 @@ type: landing
 
 design:
   # Default section spacing
-  spacing: '6rem'
+  spacing: '2rem'
 
 sections:
   
@@ -41,7 +41,7 @@ sections:
        </ol>  
     design:
       # Apply a gradient background
-      css_class: hbx-bg-gradient full-bleed
+      css_class: custom-gradient-blue full-bleed
 
   - block: markdown
     content:
