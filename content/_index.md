@@ -21,7 +21,7 @@ sections:
         <img src="images/logo.jpg" alt="Research group"
           style="flex:0 0 35%; max-width:35%; height:auto; border-radius:8px;">
         <div style="flex:1 1 60%; font-size:20px; font-family:Arial, sans-serif; color:#333;">
-          The Damage Management & Certification Group is part of the department of Aerospace Structures & Materials, of the Faculty of Aerospace Engineering at TU Delft. Within the DMC group, we are working together on related projects, seeking to better understand <strong>damage formation<strong> and <strong>evolution in aerospace materials and structures<strong>.
+          The Damage Management & Certification Group (DMC) is part of the department of Aerospace Structures & Materials, of the Faculty of Aerospace Engineering at TU Delft. Within the DMC group, we are working together on related projects, seeking to better understand <strong>damage formation<strong> and <strong>evolution in aerospace materials and structures<strong>.
         </div>
 
   - block: markdown
@@ -72,7 +72,7 @@ sections:
     content:
       text: | 
         <div style="text-align: center; margin: 2rem 0;">
-        <p style="font-size:1.5rem; font-weight:bold;">Join us and discover our team!</p>
+        <p style="font-size:1.5rem; font-weight:bold;"> The DMC group is led by John-Alan Pascoe as principal investigator and in addition consists of over a dozen Post-Doctoral researchers, PhD candidates, and MSc thesis students. Please see {link / below, as appropriate} to meet the team!</p>
         <a href="/team/" 
            class="hbx-btn hbx-btn-primary" 
            style="background-color:#007BFF; border-color:#007BFF; color:white; padding:0.75rem 1.5rem; font-size:1rem; border-radius:0.5rem;">
