@@ -220,3 +220,7 @@ html, body {
 .custom-gradient-blue {
   background: linear-gradient(180deg, #4a90c2 0%, #a8cbe0 50%, #eef5f8 100%);
 }
+
+.custom-bg-blue {
+  background: #eef5f8;
+}

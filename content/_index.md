@@ -6,7 +6,7 @@ type: landing
 
 design:
   # Default section spacing
-  spacing: '2rem'
+  spacing: '1rem'
 
 sections:
   
@@ -30,7 +30,8 @@ sections:
   - block: markdown
     content:
       text: |
-       Our work revolves around the following fundamental questions:
+       <h2>Our research</h2>
+       It revolves around the following fundamental questions:
        <ol>
          <li>How is damage formed in aerospace materials?</li>
          <li>How will damage evolve over time if we keep using a damaged air or  spacecraft?</li>
@@ -46,30 +47,25 @@ sections:
   - block: markdown
     content:
       text: |
-        <h2>Our research</h2>
-        <p>At present, our work focuses on two main research lines:</p>
+        <p>At present, these questions are addressed through two main research lines:</p>
         <div class="research-grid">
         <div class="research-card">
         <div class="research-number">01</div>
         <h3 class="research-title">FRACTURE &amp; FATIGUE</h3>
         <p class="research-text">
-        <strong>Fracture and fatigue of composite structures</strong>,
-        with a particular focus on investigating whether and how results
-        from coupon-level testing can be transferred to structural performance.
+        <strong>Fracture and fatigue of composite structures, in particular investigating if and how results from coupon level testing can be transferred to structural performance.
         </p>
         </div>
         <div class="research-card">
         <div class="research-number">02</div>
         <h3 class="research-title">COLD SPRAY REPAIRS</h3>
         <p class="research-text">
-        <strong>Development of methodologies for the design and evaluation of cold spray repairs.</strong>
+        <strong>Development of methodologies for design and evaluation of cold spray repairs.</strong>
         </p>
         </div>
         </div>
         <p class="research-intro">
-        Through these research activities, we contribute to the development
-        of aerospace structures that are <strong>safe, efficient and sustainable</strong>,
-        while making optimal use of scarce materials and supporting strategic autonomy.
+        Through investigating these topics, we ensure that we can create aerospace structures that are both safe and efficient, making optimal use of scarce materials, and thereby contribute to sustainable aviation and strategic autonomy.
         </p>
     design:
       css_class: full-bleed
@@ -85,7 +81,7 @@ sections:
           Meet the Team
         </a> </div>
     design:
-      css_class: hbx-bg-light
+      css_class: custom-bg-blue hbx-bg-light
 
 
   - block: markdown
