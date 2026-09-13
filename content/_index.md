@@ -81,8 +81,7 @@ sections:
           Meet the Team
         </a> </div>
     design:
-      css_class: custom-bg-blue hbx-bg-light
-
+      css_class: custom-bg-blue hbx-bg-light full-bleed
 
   - block: markdown
     content:
