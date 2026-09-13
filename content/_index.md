@@ -22,27 +22,20 @@ sections:
           style="flex:0 0 35%; max-width:35%; height:auto; border-radius:8px;">
         <div style="flex:1 1 60%; font-size:20px; font-family:Arial, sans-serif; color:#333;">
           The Damage Management & Certification Group is part of the department of Aerospace Structures & Materials, of the Faculty of Aerospace Engineering at TU Delft. Within the DMC group, we are working together on related projects, seeking to better understand <strong>damage formation<strong> and <strong>evolution in aerospace materials and structures<strong>.
-
-          Our main interests are:
-          <ul>
-            <li><strong>Composites materials</strong></li>
-            <li><strong>Cold Spray technologies</strong></li>
-            <li><strong>Aerospace applications</strong></li>
-          </ul>
         </div>
 
   - block: markdown
     content:
       text: |
        Our work revolves around the following fundamental questions:
-       <ul>
-         <li>1.How is damage formed in aerospace materials?</li>
-         <li>2.How will damage evolve over time if we keep using a damaged air or  spacecraft?</li>
-         <li>3.What is the residual strength of a damaged component?</li>
-         <li>4.How long can we safely operate an air- or spacecraft, given that damage may occur?</li>
-         <li>5.What actions (e.g. analyses, experiments, maintenance programmes) are needed to substantiate that structural integrity will indeed be maintained throughout the operational life?</li>
-         <li>6.How can we most efficiently certify novel aerospace materials and structures?</li>
-       </ul>  
+       <ol>
+         <li>How is damage formed in aerospace materials?</li>
+         <li>How will damage evolve over time if we keep using a damaged air or  spacecraft?</li>
+         <li>What is the residual strength of a damaged component?</li>
+         <li>How long can we safely operate an air- or spacecraft, given that damage may occur?</li>
+         <li>What actions (e.g. analyses, experiments, maintenance programmes) are needed to substantiate that structural integrity will indeed be maintained throughout the operational life?</li>
+         <li>How can we most efficiently certify novel aerospace materials and structures?</li>
+       </ol>  
     design:
       # Apply a gradient background
       css_class: hbx-bg-gradient
