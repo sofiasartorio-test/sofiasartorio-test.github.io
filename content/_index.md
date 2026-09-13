@@ -24,6 +24,9 @@ sections:
           The Damage Management & Certification Group (DMC) is part of the department of Aerospace Structures & Materials, of the Faculty of Aerospace Engineering at TU Delft. Within the DMC group, we are working together on related projects, seeking to better understand <strong>damage formation<strong> and <strong>evolution in aerospace materials and structures<strong>.
         </div>
 
+    design:
+      css_class: full-bleed
+
   - block: markdown
     content:
       text: |
@@ -38,7 +41,7 @@ sections:
        </ol>  
     design:
       # Apply a gradient background
-      css_class: hbx-bg-gradient
+      css_class: hbx-bg-gradient full-bleed
 
   - block: markdown
     content:
