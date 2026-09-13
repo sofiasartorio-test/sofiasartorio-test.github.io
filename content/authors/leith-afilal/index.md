@@ -1,7 +1,7 @@
 ---
-title: "Keerthana George"
+title: "Leith Afilal"
 role: "Doctoral Candidate"
-avatar: "/images/Keerthana-George.png"
+avatar: "/images/Leith-Afilal.png"
 
 education:
   - bho

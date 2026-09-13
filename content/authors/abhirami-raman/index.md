@@ -1,7 +1,7 @@
 ---
-title: "Leith Afilal"
+title: "Abhirami Raman"
 role: "Doctoral Candidate"
-avatar: "/images/Leith-Afilal.png"
+avatar: "/images/Abhrami.png"
 
 education:
   - bho
