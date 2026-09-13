@@ -77,7 +77,7 @@ sections:
         <p style="font-size:1.5rem; font-weight:bold;"> The DMC group is led by <strong>John-Alan Pascoe<strong> as principal investigator and in addition consists of over a dozen Post-Doctoral researchers, PhD candidates, and MSc thesis students. </p>
         <a href="/team/" 
            class="hbx-btn hbx-btn-primary" 
-           style="background-color:#007BFF; border-color:#007BFF; color:white; padding:0.75rem 1.5rem; font-size:1rem; border-radius:0.5rem;">
+           style="background-color:#123b5d; border-color:#123b5d; color:white; padding:0.75rem 1.5rem; font-size:1rem; border-radius:0.5rem;">
           Meet the Team !
         </a> </div>
     design:
