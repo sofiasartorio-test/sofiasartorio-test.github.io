@@ -74,11 +74,11 @@ sections:
     content:
       text: | 
         <div style="text-align: center; margin: 2rem 0;">
-        <p style="font-size:1.5rem; font-weight:bold;"> The DMC group is led by John-Alan Pascoe as principal investigator and in addition consists of over a dozen Post-Doctoral researchers, PhD candidates, and MSc thesis students. Please see {link / below, as appropriate} to meet the team!</p>
+        <p style="font-size:1.5rem; font-weight:bold;"> The DMC group is led by <strong>John-Alan Pascoe<strong> as principal investigator and in addition consists of over a dozen Post-Doctoral researchers, PhD candidates, and MSc thesis students. </p>
         <a href="/team/" 
            class="hbx-btn hbx-btn-primary" 
            style="background-color:#007BFF; border-color:#007BFF; color:white; padding:0.75rem 1.5rem; font-size:1rem; border-radius:0.5rem;">
-          Meet the Team
+          Meet the Team !
         </a> </div>
     design:
       css_class: custom-bg-blue hbx-bg-light full-bleed
