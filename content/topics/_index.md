@@ -5,59 +5,36 @@ type: page
 design:
   spacing: '0rem'
 ---
-<section style="
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  height:auto;
-  width:100%;
-  padding:1rem;
-  background-image:url('images/IMG_7320.jpg');
-  background-size:cover;
-  background-position:center;
-">
-
-  <div style="
-    max-width:800px;
-    background:rgba(107, 216, 10, 0.88);
-    color:white;
-    padding:3rem;
-    border-radius:1rem;
-  ">
-    <h1>Composite Materials</h1>
-    <p style="font-size:1.2rem; line-height:1.6;">
-      Advanced damage mechanisms, modelling, and certification strategies
-      for composite structures in aerospace applications.
-    </p>
-  </div>
-
-</section>
 
 <section style="
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  height:auto;
   width:100%;
-  padding:1rem;
-  background-image:url('images/IMG_7320.jpg');
-  background-size:cover;
-  background-position:center;
-">
+  padding:4rem 1.5rem 3rem;
+  text-align:center;
+  background:#eef5f8;">
 
   <div style="
-    max-width:800px;
-    background:rgba(4, 40, 245, 0.55);
-    color:white;
-    padding:3rem;
-    border-radius:1rem;
+    max-width:900px;
+    margin:0 auto;
   ">
-    <h1>Cold Spray Technologies</h1>
-    <p style="font-size:1.2rem; line-height:1.6;">
-      Development and optimization of cold spray processes for repair,
-      additive manufacturing, and surface functionalization of aerospace
-      components, with a strong focus on damage tolerance and certification.
+
+    <h1 style="
+      color:#123b5d;
+      margin-bottom:1rem;
+    ">
+      Research Topics
+    </h1>
+
+    <p style="
+      font-size:1.15rem;
+      line-height:1.7;
+      color:#40586b;
+      margin:0 auto;
+    ">
+      Our research focuses on advanced technologies for aerospace structures,
+      combining experimental investigation, modelling and engineering
+      methodologies to develop safer, more efficient and sustainable solutions.
     </p>
+
   </div>
 
-</section>
+
