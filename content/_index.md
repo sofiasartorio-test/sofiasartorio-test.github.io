@@ -47,67 +47,46 @@ sections:
 
         <p>At present, our work focuses on two main research lines:</p>
 
-        <div style="display:flex; gap:40px; width:100%; margin:40px 0;">
+        <div class="research-grid">
 
-          <div style="flex:1; padding:40px; border:1px solid #e1e5e8; border-radius:12px; background:#ffffff;">
-            <div style="font-size:42px; font-weight:700; opacity:0.25; margin-bottom:20px;">01</div>
-            <h3>FRACTURE &amp; FATIGUE</h3>
-            <p>
+          <div class="research-card">
+            <div class="research-number">01</div>
+
+            <h3 class="research-title">
+              FRACTURE &amp; FATIGUE
+            </h3>
+
+            <p class="research-text">
               <strong>Fracture and fatigue of composite structures</strong>,
               with a particular focus on investigating whether and how results
               from coupon-level testing can be transferred to structural performance.
             </p>
           </div>
 
-          <div style="flex:1; padding:40px; border:1px solid #e1e5e8; border-radius:12px; background:#ffffff;">
-            <div style="font-size:42px; font-weight:700; opacity:0.25; margin-bottom:20px;">02</div>
-            <h3>COLD SPRAY REPAIRS</h3>
-            <p>
-              <strong>Development of methodologies for the design and evaluation
-              of cold spray repairs.</strong>
+
+          <div class="research-card">
+            <div class="research-number">02</div>
+
+            <h3 class="research-title">
+              COLD SPRAY REPAIRS
+            </h3>
+
+            <p class="research-text">
+              <strong>
+                Development of methodologies for the design and evaluation
+                of cold spray repairs.
+              </strong>
             </p>
           </div>
 
         </div>
 
-        <p style="text-align:center; max-width:850px; margin:50px auto 0 auto;">
+        <p class="research-intro">
           Through these research activities, we contribute to the development
           of aerospace structures that are
           <strong>safe, efficient and sustainable</strong>,
           while making optimal use of scarce materials and supporting strategic autonomy.
         </p>
-
-
-
-
-
-  - block: markdown
-    content:
-      text: |
-       ## Our research
-       At present, our work focuses on two main research lines:
-       <div style="display: flex; gap: 30px; margin: 30px 0;">
-        <div style="flex: 1; padding: 30px; border: 1px solid #ddd; border-radius: 10px;">
-         <h3>01 — FRACTURE & FATIGUE</h3>
-         <p>
-         <strong>Fracture and fatigue of composite structures</strong>,
-          with a particular focus on investigating whether and how results
-          from coupon-level testing can be transferred to structural performance.
-         </p>
-        </div>
-        <div style="flex: 1; padding: 30px; border: 1px solid #ddd; border-radius: 10px;">
-         <h3>02 — COLD SPRAY REPAIRS</h3>
-         <p>
-         <strong>Development of methodologies for the design and evaluation
-          of cold spray repairs.</strong>
-         </p>
-        </div>
-       </div>
-       <p style="text-align: center; margin-top: 40px;">
-       Through these research activities, we contribute to the development of
-       aerospace structures that are <strong>safe, efficient and sustainable</strong>,
-       while making optimal use of scarce materials and supporting strategic autonomy.
-       </p>
 
   - block: markdown
     content:

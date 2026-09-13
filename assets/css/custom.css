@@ -1,0 +1,61 @@
+
+.research-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 32px;
+  width: 100%;
+  margin: 40px 0;
+}
+
+.research-card {
+  box-sizing: border-box;
+  padding: 40px;
+  border: 1px solid #e1e5e8;
+  border-radius: 12px;
+  background: #ffffff;
+  height: 100%;
+}
+
+.research-number {
+  font-size: 56px;
+  line-height: 1;
+  font-weight: 700;
+  opacity: 0.25;
+  margin-bottom: 18px;
+}
+
+.research-title {
+  margin: 0 0 18px;
+  font-size: 1.35rem;
+  line-height: 1.2;
+}
+
+.research-text {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.research-intro {
+  max-width: 850px;
+  margin: 50px auto 0;
+  text-align: center;
+}
+
+
+@media (max-width: 768px) {
+
+  .research-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .research-card {
+    padding: 30px;
+  }
+
+  .research-number {
+    font-size: 48px;
+  }
+
+}
