@@ -1,64 +1,150 @@
 {{ define "main" }}
-<h1 style="text-align:center; margin-bottom:2rem;">👥 Our Team</h1>
 
-{{/* Prima raccogli tutti i ruoli */}}
-{{ $ruoli := slice }}
-{{ range (where site.RegularPages "Section" "authors") }}
-  {{ if .Params.role }}
-    {{ if not (in $ruoli .Params.role) }}
-      {{ $ruoli = $ruoli | append .Params.role }}
-    {{ end }}
-  {{ end }}
-{{ end }}
+<h1 style="text-align:center; margin-bottom:2rem;">
+  👥 Our Team
+</h1>
+
+{{/* Ordine dei ruoli */}}
+{{ $ruoli := slice
+  "Principal Investigator"
+  "Postdoc"
+  "Doctoral Candidate"
+}}
 
 {{/* Per ogni ruolo crea una sezione */}}
 {{ range $ruolo := $ruoli }}
-  <h2 style="text-align:center; margin-top:2rem;">{{ $ruolo }}</h2>
+
+  <h2 style="text-align:center; margin-top:2rem;">
+    {{ $ruolo }}
+  </h2>
+
   <div class="people-grid">
+
     {{ range (where site.RegularPages "Section" "authors") }}
+
       {{ if eq .Params.role $ruolo }}
+
         <div class="person-card">
+
           {{ $avatar := .Params.avatar | default "/images/default-avatar.png" }}
-          <img class="avatar" src="{{ $avatar }}" alt="{{ .Title }}">
+
+          <img
+            class="avatar"
+            src="{{ $avatar }}"
+            alt="{{ .Title }}"
+          >
+
           <h3>{{ .Title }}</h3>
+
           <div class="socials">
+
             {{ with .Params.social }}
-              {{ if .email }} <a href="mailto:{{ .email }}" title="Email"> <img src="/images/icons/mail.svg" alt="Email" class="social-icon"> </a> {{ end }}
-              {{ if .scholar }} <a href="{{ .scholar }}" target="_blank" title="Google Scholar"> <img src="/images/icons/google_scholar_logo.svg" alt="Google Scholar" class="social-icon"> </a> {{ end }}
-              {{ if .linkedin }} <a href="{{ .linkedin }}" target="_blank" title="LinkedIn"> <img src="/images/icons/linkedin.svg" alt="LinkedIn" class="social-icon"></a>{{ end }}
+
+              {{ if .email }}
+                <a href="mailto:{{ .email }}" title="Email">
+                  <img
+                    src="/images/icons/mail.svg"
+                    alt="Email"
+                    class="social-icon"
+                  >
+                </a>
+              {{ end }}
+
+              {{ if .scholar }}
+                <a href="{{ .scholar }}" target="_blank" title="Google Scholar">
+                  <img
+                    src="/images/icons/google_scholar_logo.svg"
+                    alt="Google Scholar"
+                    class="social-icon"
+                  >
+                </a>
+              {{ end }}
+
+              {{ if .linkedin }}
+                <a href="{{ .linkedin }}" target="_blank" title="LinkedIn">
+                  <img
+                    src="/images/icons/linkedin.svg"
+                    alt="LinkedIn"
+                    class="social-icon"
+                  >
+                </a>
+              {{ end }}
+
             {{ end }}
+
           </div>
+
         </div>
+
       {{ end }}
+
     {{ end }}
+
   </div>
+
 {{ end }}
 
 <style>
-.people-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 2rem; justify-items: center; margin-top: 1rem; }
-.person-card { text-align: center; padding: 1rem; border: 1px solid #eee; border-radius: 8px; }
-.avatar { width: 150px; height: 150px; object-fit: cover; border-radius: 50%; }
-.role { font-size: 0.9rem; color: #555; }
+
+.people-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 2rem;
+  justify-items: center;
+  margin-top: 1rem;
+}
+
+.person-card {
+  text-align: center;
+  padding: 1rem;
+  border: 1px solid #eee;
+  border-radius: 8px;
+}
+
+.avatar {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.role {
+  font-size: 0.9rem;
+  color: #555;
+}
+
 .socials {
   display: flex;
   justify-content: center;
   gap: 0.5rem;
   margin-top: 0.5rem;
 }
-.socials a { margin: 0 0.5rem; font-size: 0.9rem; color: #007acc; text-decoration: none; }
-h2 { color: #222; border-bottom: 1px solid #ccc; padding-bottom: 0.3rem; }
+
+.socials a {
+  margin: 0 0.5rem;
+  font-size: 0.9rem;
+  color: #007acc;
+  text-decoration: none;
+}
+
 .social-icon {
-  width: 24px;  
+  width: 24px;
   height: 24px;
   margin: 0 0.3rem;
   vertical-align: middle;
   transition: transform 0.2s;
 }
+
 .social-icon:hover {
-  transform: scale(1.2); 
+  transform: scale(1.2);
 }
+
+h2 {
+  color: #222;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 0.3rem;
+}
+
 </style>
+
 {{ end }}
-
-
-
