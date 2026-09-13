@@ -5,14 +5,16 @@ type: landing
 
 design:
   # Default section spacing
-  spacing: '1rem'
+  spacing: '0rem'
 
 sections:
 
     - block: markdown
       content:
        text: |
-        <p>At present, these questions are addressed through two main research lines:</p>
+        <h1> Research Topics <h1>
+        <p>As DMC group, we investigate how to ensure the structural integrity of air and spacecraft over their entire lifetime. This means improving our understanding how damage forms and evolves, how damaged components will perform, how to repair damage and ensure the quality of the repair, and how to deal with the variability introduced by real service environments, such as uncertainty in usage and loading, or the presence of manufacturing defects.
+        Although group members work on many different topics, there are currently two main lines of research connecting our work: </p>
         <div class="research-grid">
         <div class="research-card">
         <div class="research-number">01</div>
@@ -35,6 +37,6 @@ sections:
 
       design:
        css_class: full-bleed
-       
+
 ---
 
