@@ -4,6 +4,7 @@ type: page
 
 design:
   spacing: '0rem'
+  css_class: full-bleed
 ---
 
 <section style="
