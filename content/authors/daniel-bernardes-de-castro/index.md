@@ -1,6 +1,6 @@
 ---
 title: "Daniel Bernardes de Castro"
-role: "Postdoctoral Researcher"
+role: "Doctoral Candidate"
 avatar: "/images/Daniel_Bernardo_de_Castro.jpg"
 
 interests:
