@@ -39,144 +39,45 @@ sections:
     design:
       # Apply a gradient background
       css_class: hbx-bg-gradient
-      
-- block: markdown
-  content:
-    text: |
-      <style>
-        .research-section {
-          width: 100%;
-          margin: 20px 0 50px 0;
-        }
 
-        .research-intro {
-          margin-bottom: 35px;
-        }
+  - block: markdown
+    content:
+      text: |
+        <h2>Our research</h2>
 
-        .research-cards {
-          display: flex;
-          gap: 35px;
-          width: 100%;
-          margin: 35px 0 50px 0;
-        }
+        <p>At present, our work focuses on two main research lines:</p>
 
-        .research-card {
-          flex: 1;
-          position: relative;
-          padding: 40px 40px 35px 40px;
-          border: 1px solid #e1e5e8;
-          border-radius: 12px;
-          background: #ffffff;
-          transition: transform 0.25s ease, box-shadow 0.25s ease;
-        }
+        <div style="display:flex; gap:40px; width:100%; margin:40px 0;">
 
-        .research-card:hover {
-          transform: translateY(-4px);
-          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-        }
-
-        .research-number {
-          font-size: 42px;
-          font-weight: 700;
-          line-height: 1;
-          margin-bottom: 25px;
-          opacity: 0.25;
-        }
-
-        .research-card h3 {
-          margin-bottom: 20px;
-          font-size: 1.15rem;
-          letter-spacing: 0.02em;
-        }
-
-        .research-card p {
-          margin-bottom: 0;
-          line-height: 1.7;
-        }
-
-        .research-impact {
-          max-width: 850px;
-          margin: 0 auto;
-          text-align: center;
-          font-size: 1.05rem;
-          line-height: 1.7;
-        }
-
-        .research-impact strong {
-          font-weight: 700;
-        }
-
-        @media (max-width: 768px) {
-          .research-cards {
-            flex-direction: column;
-            gap: 20px;
-          }
-
-          .research-card {
-            padding: 30px;
-          }
-
-          .research-number {
-            font-size: 36px;
-          }
-        }
-      </style>
-
-      <div class="research-section">
-
-        <div class="research-intro">
-
-          <h2>Our research</h2>
-
-          <p>
-            At present, our work focuses on two main research lines:
-          </p>
-
-        </div>
-
-        <div class="research-cards">
-
-          <div class="research-card">
-
-            <div class="research-number">01</div>
-
+          <div style="flex:1; padding:40px; border:1px solid #e1e5e8; border-radius:12px; background:#ffffff;">
+            <div style="font-size:42px; font-weight:700; opacity:0.25; margin-bottom:20px;">01</div>
             <h3>FRACTURE &amp; FATIGUE</h3>
-
             <p>
               <strong>Fracture and fatigue of composite structures</strong>,
               with a particular focus on investigating whether and how results
-              from coupon-level testing can be transferred to structural
-              performance.
+              from coupon-level testing can be transferred to structural performance.
             </p>
-
           </div>
 
-          <div class="research-card">
-
-            <div class="research-number">02</div>
-
+          <div style="flex:1; padding:40px; border:1px solid #e1e5e8; border-radius:12px; background:#ffffff;">
+            <div style="font-size:42px; font-weight:700; opacity:0.25; margin-bottom:20px;">02</div>
             <h3>COLD SPRAY REPAIRS</h3>
-
             <p>
-              <strong>Development of methodologies for the design and
-              evaluation of cold spray repairs.</strong>
+              <strong>Development of methodologies for the design and evaluation
+              of cold spray repairs.</strong>
             </p>
-
           </div>
 
         </div>
 
-        <div class="research-impact">
-
+        <p style="text-align:center; max-width:850px; margin:50px auto 0 auto;">
           Through these research activities, we contribute to the development
           of aerospace structures that are
           <strong>safe, efficient and sustainable</strong>,
-          while making optimal use of scarce materials and supporting
-          strategic autonomy.
+          while making optimal use of scarce materials and supporting strategic autonomy.
+        </p>
 
-        </div>
 
-      </div>
 
 
 
