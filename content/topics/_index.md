@@ -17,24 +17,26 @@ design:
     margin:0 auto;
   ">
 
-    <h1 style="
+   <h1 style="
       color:#123b5d;
       margin-bottom:1rem;
     ">
-      Research Topics
-    </h1>
+   Research Topics
+   </h1>
 
-    <p style="
+   <p style="
       font-size:1.15rem;
       line-height:1.7;
       color:#40586b;
       margin:0 auto;
-    ">
-      Our research focuses on advanced technologies for aerospace structures,
-      combining experimental investigation, modelling and engineering
-      methodologies to develop safer, more efficient and sustainable solutions.
-    </p>
+   ">
+   Our research focuses on advanced technologies for aerospace structures,
+   combining experimental investigation, modelling and engineering
+   methodologies to develop safer, more efficient and sustainable solutions.
+   </p>
 
   </div>
+
+</section>
 
 
