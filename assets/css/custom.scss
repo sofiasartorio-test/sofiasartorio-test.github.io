@@ -180,7 +180,12 @@ html, body {
 /* =========================================================
    FULL-BLEED: fa "sfondare" una sezione oltre il container
    centrale, usata solo su .research-grid e .map-wrap tramite
-   design.css_class nel file _index.md
+   design.css_class nel file _index.md.
+
+   Il tema Hugo Blox usa Tailwind: il vero limite di larghezza
+   e' la classe ".max-w-prose" (~65ch, pensata per il testo),
+   non un container Bootstrap. Il fix quindi sovrascrive quella
+   classe SOLO dentro le sezioni marcate .full-bleed.
    ========================================================= */
 .full-bleed {
   width: 100vw;
@@ -188,17 +193,24 @@ html, body {
   margin-right: calc(50% - 50vw);
 }
 
-.full-bleed > * {
-  max-width: 1400px;
-  margin-left: auto;
-  margin-right: auto;
+.full-bleed .max-w-prose {
+  max-width: 1400px !important;
+  width: 100%;
+}
+
+.full-bleed .research-grid,
+.full-bleed .map-wrap {
   padding-left: 2rem;
   padding-right: 2rem;
   box-sizing: border-box;
 }
 
 @media (max-width: 768px) {
-  .full-bleed > * {
+  .full-bleed .max-w-prose {
+    max-width: 100% !important;
+  }
+  .full-bleed .research-grid,
+  .full-bleed .map-wrap {
     padding-left: 1rem;
     padding-right: 1rem;
   }
