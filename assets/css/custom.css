@@ -69,7 +69,7 @@ html, body {
   padding: 40px;
   border: 1px solid #e1e5e8;
   border-radius: 12px;
-  background: #ffffff;
+  background: #eef5f8;
   height: 100%;
 }
 
@@ -187,7 +187,7 @@ html, body {
    non un container Bootstrap. Il fix quindi sovrascrive quella
    classe SOLO dentro le sezioni marcate .full-bleed.
    ========================================================= */
-   
+
 .full-bleed {
   width: 100vw;
   margin-left: calc(50% - 50vw);
