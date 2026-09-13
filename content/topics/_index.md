@@ -1,43 +1,38 @@
 ---
-title: "Research Topics"
-type: page
+title: 'Research Topics'
+date: 2022-10-24
+type: landing
 
 design:
-  spacing: '0rem'
-  css_class: full-bleed
----
+  # Default section spacing
+  spacing: '1rem'
 
-<section style="
-  width:100%;
-  padding:4rem 1.5rem 3rem;
-  text-align:center;
-  background:#eef5f8;">
+sections:
 
-  <div style="
-    max-width:900px;
-    margin:0 auto;
-  ">
+    - block: markdown
+      content:
+       text: |
+        <p>At present, these questions are addressed through two main research lines:</p>
+        <div class="research-grid">
+        <div class="research-card">
+        <div class="research-number">01</div>
+        <h3 class="research-title">FRACTURE &amp; FATIGUE</h3>
+        <p class="research-text">
+        <strong>Fracture and fatigue of composite structures, in particular investigating if and how results from coupon level testing can be transferred to structural performance.
+        </p>
+        </div>
+        <div class="research-card">
+        <div class="research-number">02</div>
+        <h3 class="research-title">COLD SPRAY REPAIRS</h3>
+        <p class="research-text">
+        <strong>Development of methodologies for design and evaluation of cold spray repairs.</strong>
+        </p>
+        </div>
+        </div>
+        <p class="research-intro">
+        Through investigating these topics, we ensure that we can create aerospace structures that are both safe and efficient, making optimal use of scarce materials, and thereby contribute to sustainable aviation and strategic autonomy.
+        </p>
 
-   <h1 style="
-      color:#123b5d;
-      margin-bottom:1rem;
-    ">
-   Research Topics
-   </h1>
-
-   <p style="
-      font-size:1.15rem;
-      line-height:1.7;
-      color:#40586b;
-      margin:0 auto;
-   ">
-   Our research focuses on advanced technologies for aerospace structures,
-   combining experimental investigation, modelling and engineering
-   methodologies to develop safer, more efficient and sustainable solutions.
-   </p>
-
-  </div>
-
-</section>
-
+      design:
+       css_class: full-bleed
 
