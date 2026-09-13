@@ -1,7 +1,7 @@
 ---
 title: "Mirko Simonetto"
 role: "Postdoctoral Researcher"
-avatar: "/images/Mirko-Simonetto.png.jpg"
+avatar: "/images/Mirko-Simonetto.png"
 
 education:
   - Bho
