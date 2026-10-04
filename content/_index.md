@@ -1,11 +1,9 @@
 ---
-# Leave the homepage title empty to use the site title
 title: ''
 date: 2022-10-24
 type: landing
 
 design:
-  # Default section spacing
   spacing: '0rem'
 
 sections:
@@ -17,13 +15,6 @@ sections:
       text: |
         <div>
         <span>DAMAGE MANAGEMENT &amp; CERTIFICATION GROUP</span>
-        </div>
-        
-        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:0rem;">
-        <img src="images/logo.jpg" alt="Research group"
-          style="flex:0 0 35%; max-width:35%; height:auto; border-radius:8px;">
-        <div style="flex:1 1 60%; font-size:20px; font-family:Arial, sans-serif; color:#333; background:#eef5f8;">
-          The Damage Management & Certification Group (DMC) is part of the department of Aerospace Structures & Materials, of the Faculty of Aerospace Engineering at TU Delft. Within the DMC group, we are working together on related projects, seeking to better understand <strong>damage formation<strong> and <strong>evolution in aerospace materials and structures<strong>.
         </div>
 
   - block: markdown
