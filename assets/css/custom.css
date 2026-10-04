@@ -576,3 +576,20 @@ html, body {
   padding: 40px !important;
   background: #eef5f8 !important;
 }
+
+
+/* Elimina lo spazio tra barra blu e blocco logo/testo */
+.damage-title {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.research-intro {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+.research-intro > div {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
