@@ -78,7 +78,7 @@ sections:
         Through investigating these topics, we ensure that we can create aerospace structures that are both safe and efficient, making optimal use of scarce materials, and thereby contribute to sustainable aviation and strategic autonomy.
         </p>
     design:
-      css_class: full-bleed
+      css_class: full-bleed research-top   
 
   - block: markdown
     content:
@@ -91,7 +91,7 @@ sections:
           Meet the Team !
         </a> </div>
     design:
-      css_class: custom-bg-blue hbx-bg-light full-bleed
+      css_class: custom-bg-blue hbx-bg-light full-bleed research-top   
 
   - block: markdown
     content:
