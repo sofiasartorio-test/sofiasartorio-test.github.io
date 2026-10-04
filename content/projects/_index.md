@@ -87,24 +87,8 @@ sections:
 
         <p style="font-size:1.2rem; line-height:1.6; margin-bottom:1.5rem;">
         If you want to collaborate with us, feel free to reach out via email:<br>
-        <a href="mailto:s.f.sartorio@tudelft.nl"style="color:#ffd700; text-decoration:underline;">
-        s.f.sartorio@tudelft.nl
-        </a>
-        </p>
-        <!-- Bottone Contact Us -->
-        <a href="mailto:test@tudelft.nl"
-        style="display:inline-block;
-        padding:0.8rem 2rem;
-        font-size:1.1rem;
-        font-weight:bold;
-        color:#2a2a2a;
-        background-color:#ffd700;
-        border-radius:30px;
-        text-decoration:none;
-        transition: all 0.3s ease;"
-        onmouseover="this.style.transform='scale(1.05)'"
-        onmouseout="this.style.transform='scale(1)'">
-        Contact Us
+        <a href="mailto:test@tudelft.nl"style="color:#ffd700; text-decoration:underline;">
+        test@tudelft.nl
         </a>
         </div>
     design:
