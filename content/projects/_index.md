@@ -43,6 +43,7 @@ sections:
         </div>
 
         <div class="project-list">
+        <div class="project-card">
         <div class="project-icon">
         <img src="/images/Cold_Spray.jpg" alt="CSAR">
         </div>
@@ -77,7 +78,7 @@ sections:
         <div class="project-content">
         <h3 class="project-title"> Luchtvaart in Transitie (National Growth Fund) </h3>
         <p class="project-text">
-        Luchtvaart in Transitie (LiT) is a large Dutch programme enabling the transition to sustainable aviation. DMC researchers are active within a number of LiT projects, working on understanding the effect of manufacturing defects and variability in composite materials, and investigating how to more efficiently characterise the fatigue performance of aerospace materials. Within LiT, the DMC group is working with GKN Aerospace
+        Luchtvaart in Transitie (LiT) is a large Dutch programme enabling the transition to sustainable aviation. DMC researchers are active within a number of LiT projects, working on understanding the effect of manufacturing defects and variability in composite materials, and investigating how to more efficiently characterise the fatigue performance of aerospace materials. Within LiT, the DMC group is working with GKN Aerospace.
         </p>
         </div>
         <div class="project-arrow">→</div>
