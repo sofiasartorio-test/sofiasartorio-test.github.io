@@ -24,7 +24,7 @@ sections:
         <div style="text-align: center; margin: 2rem 0;">
         <p style="font-size:1.5rem; font-weight:bold;"> Within the DMC group we seek to better understand how damage behaviour is affected by changes in the lay-up, as well as by other features such as manufacturing defects. Our goal is to minimize the amount of testing required to predict the performance of composite structures, by instead relying on models grounded in physical understanding of the material behaviour, rather than empirical calibration. </p>
         </div>
-    design:
+      design:
       css_class: custom-bg-blue hbx-bg-light full-bleed
     
     - block: markdown
