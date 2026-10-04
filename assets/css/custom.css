@@ -517,6 +517,9 @@ html, body {
 }
 
 .damage-title > div span {
+  width: 100% !important;
+  box-sizing: border-box !important;
+
   color: white !important;
   font-size: 3rem !important;
 
