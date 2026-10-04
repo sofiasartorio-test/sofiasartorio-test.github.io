@@ -488,7 +488,7 @@ html, body {
 
 .damage-title {
   width: 100vw !important;
-  max-width: 100vw !important;
+  max-width: none !important;
 
   margin-top: 0 !important;
   margin-bottom: 0 !important;
