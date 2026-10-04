@@ -247,12 +247,18 @@ html, body {
   color: inherit !important;
 }
 
+.research-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
 .research-topic {
   box-sizing: border-box;
   padding: 24px;
   border-radius: 12px;
 
-  background-image: url("/media/fatigue.jpg");
+  background-image: url("/media/IMG_7320.jpg");
   background-size: cover;
   background-position: center;
 
@@ -282,6 +288,50 @@ html, body {
 .research-topic-number {
   font-size: 1.2rem;
   font-weight: 600;
+}
+
+.research-topic-title {
+  margin: 0;
+  color: white !important;
+}
+
+.research-topic {
+  box-sizing: border-box;
+  border-radius: 12px;
+  height: 350px;
+  overflow: hidden;
+
+  background-size: cover;
+  background-position: center;
+}
+
+.research-topic-fatigue {
+  background-image: url("/media/IMG_7320.jpg");
+}
+
+.research-topic-cold-spray {
+  background-image: url("/media/IMG_7320.jpg");
+}
+
+.research-topic-link {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 24px;
+  box-sizing: border-box;
+
+  color: white !important;
+  text-decoration: none !important;
+}
+
+.research-topic-header {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.research-topic-number {
+  flex-shrink: 0;
 }
 
 .research-topic-title {

@@ -43,7 +43,6 @@ sections:
         <h3 class="research-title">
         Fracture and Fatigue of Composite Structures
         </h3>
-
         <p class="research-text">
         Fracture and fatigue of composite structures, in particular investigating
         if and how results from coupon level testing can be transferred to
@@ -52,6 +51,7 @@ sections:
         </a>
         </div>
 
+        <div class="research-grid">
         <div class="research-topic research-topic-fatigue">
 
         <a href="/topics/fatigue/" class="research-topic-link">
@@ -65,6 +65,19 @@ sections:
         </div>
 
         </a>
+
+        </div>
+
+        <div class="research-topic research-topic-cold-spray">
+        <a href="/topics/cold-spray/" class="research-topic-link">
+        <div class="research-topic-header">
+        <span class="research-topic-number">02.</span>
+        <h3 class="research-topic-title">
+        Evaluation, Qualification, and Certification of Cold Spray Repairs
+        </h3>
+        </div>
+        </a>
+        </div>
 
         </div>
 
