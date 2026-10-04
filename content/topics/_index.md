@@ -35,6 +35,23 @@ sections:
         Through investigating these topics, we ensure that we can create aerospace structures that are both safe and efficient, making optimal use of scarce materials, and thereby contribute to sustainable aviation and strategic autonomy.
         </p>
 
+
+        <div class="research-card">
+          <a href="/topics/fatigue/" class="research-card-link">
+            <div class="research-number">01</div>
+
+            <h3 class="research-title">
+            Fracture and Fatigue of Composite Structures
+            </h3>
+
+            <p class="research-text">
+            Fracture and fatigue of composite structures, in particular investigating
+            if and how results from coupon level testing can be transferred to
+            structural performance.
+            </p>
+          </a>
+        </div>
+
       design:
        css_class: "full-bleed research-top"
 
