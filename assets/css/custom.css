@@ -351,3 +351,9 @@ html, body {
   display: block;
   margin: 0 auto;
 }
+
+.text-azzurro {
+  background: #eef5f8;
+  padding: 24px;
+  border-radius: 12px;
+}
