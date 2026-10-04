@@ -13,6 +13,7 @@ sections:
         <h2>Projects & Collaborations</h2>
 
         <div class="project-list">
+
         <a href="https://www.brightsky.nl" class="project-card"target="_blank" rel="noopener noreferrer">
         <div class="project-icon">
         <img src="/images/Fracture.jpg" alt="Fracture and Fatigue">
@@ -25,6 +26,20 @@ sections:
         </div>
         <div class="project-arrow">→</div>
         </a>
+
+        <a href="https://www.brightsky.nl" class="project-card"target="_blank" rel="noopener noreferrer">
+        <div class="project-icon">
+        <img src="/images/Bright_sky.jpg" alt="Fracture and Fatigue">
+        </div>
+        <div class="project-content">
+        <h3 class="project-title">COCOlith &amp; FATIGUE</h3>
+        <p class="project-text">
+        Brightsky is a large research initiative focused on improving the innovation capacity and competitiveness of the Dutch aviation sector. Within Brightsky, the DMC group is active in the Maintenance, Repair & Overhaul (MRO) work package. In this work package, a DMC PhD candidate developed a system for monitoring the cold spray process based on the emitted sound, and in addition supported other parters in the development of a qualified cold spray repair. Within Brightsky, the DMC group works together with the Amsterdam University of Applied Sciences, EPCOR, KLM Engineering & Maintenance, and the NLR. 
+        </p>
+        </div>
+        <div class="project-arrow">→</div>
+        </a>
+
         </div>
 
         <p style="font-size:1.2rem; line-height:1.6; margin-bottom:1.5rem;">
