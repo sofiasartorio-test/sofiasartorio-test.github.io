@@ -17,8 +17,8 @@ sections:
 
         Within the DMC group we seek to better understand how damage behaviour is affected by changes in the lay-up, as well as by other features such as manufacturing defects. Our goal is to minimize the amount of testing required to predict the performance of composite structures, by instead relying on models grounded in physical understanding of the material behaviour, rather than empirical calibration. 
         </p>
-
-        <img src="/images/Fracture.jpg" alt="Description">
+        
+        <img src="/images/Fracture.jpg" alt="Fracture" class="fracture-image">
 
       design:
        css_class: "full-bleed research-top"

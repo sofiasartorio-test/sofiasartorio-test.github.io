@@ -343,3 +343,11 @@ html, body {
   margin: 0;
   color: white !important;
 }
+
+.fracture-image {
+  width: 400px;
+  height: 300px;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto;
+}

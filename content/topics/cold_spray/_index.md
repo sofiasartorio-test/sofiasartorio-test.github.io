@@ -20,7 +20,7 @@ sections:
         Within the DMC group we are therefore developing methodologies that combine experimental data and modelling to predict the performance of a cold spray repair before it is applied, and to better understand what process parameters to monitor to ensure the quality of the repair.
         </p>
 
-        <img src="/images/Cold_Spray.jpg" alt="Description">
+        <img src="/images/Cold_Spray.jpg" alt="Cold Spray" class="fracture-image">
 
       design:
        css_class: "full-bleed research-top"
