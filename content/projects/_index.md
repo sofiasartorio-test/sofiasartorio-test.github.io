@@ -13,7 +13,6 @@ sections:
         <h2>Projects & Collaborations</h2>
 
         <div class="project-list">
-
         <a href="https://www.brightsky.nl" class="project-card"target="_blank" rel="noopener noreferrer">
         <div class="project-icon">
         <img src="/images/Fracture.jpg" alt="Fracture and Fatigue">
@@ -26,7 +25,9 @@ sections:
         </div>
         <div class="project-arrow">→</div>
         </a>
+        </div>
 
+        <div class="project-list">
         <a href="https://www.brightsky.nl" class="project-card"target="_blank" rel="noopener noreferrer">
         <div class="project-icon">
         <img src="/images/Bright_sky.jpg" alt="Fracture and Fatigue">
@@ -39,7 +40,6 @@ sections:
         </div>
         <div class="project-arrow">→</div>
         </a>
-
         </div>
 
         <p style="font-size:1.2rem; line-height:1.6; margin-bottom:1.5rem;">
