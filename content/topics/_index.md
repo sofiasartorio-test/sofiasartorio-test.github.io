@@ -38,17 +38,17 @@ sections:
 
         <div class="research-card">
           <a href="/topics/fatigue/" class="research-card-link">
-            <div class="research-number">01</div>
+          <div class="research-number">01</div>
 
-            <h3 class="research-title">
-            Fracture and Fatigue of Composite Structures
-            </h3>
+          <h3 class="research-title">
+          Fracture and Fatigue of Composite Structures
+          </h3>
 
-            <p class="research-text">
-            Fracture and fatigue of composite structures, in particular investigating
-            if and how results from coupon level testing can be transferred to
-            structural performance.
-            </p>
+          <p class="research-text">
+          Fracture and fatigue of composite structures, in particular investigating
+          if and how results from coupon level testing can be transferred to
+          structural performance.
+          </p>
           </a>
         </div>
 
