@@ -454,3 +454,23 @@ html, body {
 .project-card:hover .project-arrow {
   transform: translateX(5px);
 }
+
+/* Logo nella barra di navigazione */
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-brand::before {
+  content: "";
+  display: inline-block;
+  width: 45px;
+  height: 45px;
+  margin-right: 20px;
+
+  background-image: url("/images/logo.jpg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
