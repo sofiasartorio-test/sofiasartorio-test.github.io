@@ -14,7 +14,7 @@ sections:
 
         <div class="project-list">
 
-        <a href="https://www.example-project.com" class="project-card"target="_blank" rel="noopener noreferrer">
+        <a href="https://www.brightsky.nl/" class="project-card"target="_blank" rel="noopener noreferrer">
 
         <div class="project-icon">
         <img src="/images/Fracture.jpg" alt="Fracture and Fatigue">
