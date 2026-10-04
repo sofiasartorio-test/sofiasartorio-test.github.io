@@ -19,6 +19,6 @@ main:
   - name: 👥 News
     url: /news/
     weight: 14
-  - name: 📂 Projects Collaboration
+  - name: 📂 Projects & Collaborations
     url: /projects/
     weight: 15
