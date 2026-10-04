@@ -506,10 +506,52 @@ html, body {
 .damage-title > div span {
   color: white !important;
   font-size: 3rem !important;
-  
+
   margin: 0 !important;
   padding: 0 !important;
 
   line-height: 1.1 !important;
   text-align: center !important;
+}
+
+.research-intro {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.research-intro .container {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+.research-row {
+  display: flex !important;
+  align-items: stretch !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  gap: 0 !important;
+}
+
+.research-logo {
+  flex: 0 0 35% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.research-logo img {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  margin: 0 !important;
+}
+
+.text-box {
+  flex: 1 !important;
+  margin: 0 !important;
+  padding: 40px !important;
+  background: #eef5f8 !important;
 }
