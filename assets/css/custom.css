@@ -490,9 +490,11 @@ html, body {
   margin-top: 0 !important;
   margin-bottom: 0 !important;
   padding: 10px 20px;
-  background: #2563eb;
+  background: #034D85;
   color: white;
-  font-size: 2rem;
+  font-size: 4rem;
   font-weight: bold;
+  align-items:center;
+  justify-content:center;
   border-radius: 0;
 }
