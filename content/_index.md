@@ -35,9 +35,6 @@ sections:
 
         </div>
 
-
-
-
   - block: markdown
     design:
       css_class: "research-top"
