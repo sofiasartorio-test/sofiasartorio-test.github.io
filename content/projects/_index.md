@@ -85,7 +85,7 @@ sections:
         </a>
         </div>
 
-        <p "text-align:center;">
+        <p style="text-align:center;">
         If you want to collaborate with us, feel free to reach out via email:<br>
         <a href="mailto:test@tudelft.nl"style="color:#ffd700; text-decoration:underline;">
         test@tudelft.nl
