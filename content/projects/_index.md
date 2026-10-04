@@ -4,10 +4,35 @@ date: 2024-05-19
 type: landing
 
 design:
-  # Section spacing
   spacing: '5rem'
 
 sections:
+  - block: markdown
+    content:
+      text: |
+        <h1>Projects & Collaborations</h1>
+
+        <div class="project-list">
+
+        <a href="https://www.example-project.com" class="project-card"target="_blank" rel="noopener noreferrer">
+
+        <div class="project-icon">
+        <img src="/images/Fracture.jpg" alt="Fracture and Fatigue">
+        </div>
+
+        <div class="project-content">
+        <h3 class="project-title">FRACTURE &amp; FATIGUE</h3>
+        <p class="project-text">
+        Short description of the project and its main objectives.
+        </p>
+        </div>
+        <div class="project-arrow">→</div>
+        </a>
+        </div>
+    design:
+      css_class: full-bleed
+
+
   - block: markdown
     content:
       text: |
