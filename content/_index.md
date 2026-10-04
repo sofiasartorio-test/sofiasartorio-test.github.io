@@ -18,6 +18,58 @@ sections:
         <div>
         <span>DAMAGE MANAGEMENT &amp; CERTIFICATION GROUP</span>
         </div>
+
+  - block: markdown
+    content:
+      text: |
+        <div style="
+        display:flex;
+        align-items:stretch;
+        width:100%;
+        margin:0;
+        padding:0;
+        ">
+
+        <div style="
+          flex:0 0 35%;
+          max-width:35%;
+          margin:0;
+          padding:0;
+        ">
+          <img src="/images/logo.jpg"
+            alt="Research group"
+            style="
+              display:block;
+              width:100%;
+              height:100%;
+              object-fit:cover;
+              margin:0;
+              border-radius:0;
+            ">
+        </div>
+
+        <div style="
+          flex:1;
+          margin:0;
+          padding:40px;
+          box-sizing:border-box;
+          background:#eef5f8;
+          font-size:20px;
+          font-family:Arial, sans-serif;
+          color:#333;
+          display:flex;
+          align-items:center;
+        ">
+          TESTO DEL TUO GRUPPO. Qui puoi inserire il testo che vuoi e anche
+          <a href="/team/" style="color:#034D85; font-weight:bold; margin-left:5px;">
+            un link
+          </a>.
+        </div>
+
+        </div>
+
+    design:
+      css_class: "full-bleed research-top"
   
   - block: markdown
     content:
