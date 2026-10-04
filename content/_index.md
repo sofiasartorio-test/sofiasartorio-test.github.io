@@ -18,6 +18,8 @@ sections:
         </div>
 
   - block: markdown
+    design:
+      css_class: "full-bleed research-top"
     content:
       text: |
         <div style="
@@ -66,8 +68,6 @@ sections:
 
         </div>
 
-    design:
-      css_class: "full-bleed research-top"
   
   - block: markdown
     content:
