@@ -52,8 +52,6 @@ sections:
         In the CSAR project, DMC researchers are working on understanding the fatigue and impact resistance of cold spray repairs on aluminium alloys. CSAR is supported by a User Committee consisting of ADSE, KLM Engineering & Maintenance,  SAM XL, and Titomic.
         </p>
         </div>
-        <div class="project-arrow">→</div>
-        </a>
         </div>
 
         <div class="project-list">
