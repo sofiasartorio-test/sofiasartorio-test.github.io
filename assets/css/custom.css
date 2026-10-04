@@ -508,4 +508,8 @@ html, body {
   font-size: 3rem !important;
   line-height: 1.1 !important;
   text-align: center !important;
+  
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
 }
