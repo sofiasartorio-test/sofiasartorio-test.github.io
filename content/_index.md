@@ -19,7 +19,7 @@ sections:
 
   - block: markdown
     design:
-      css_class: "full bleed research-top"
+      css_class: "full-bleed research-top"
     content:
       text: |
         <img src="images/logo.jpg" alt="Research group"
