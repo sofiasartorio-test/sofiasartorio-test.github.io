@@ -93,6 +93,5 @@ sections:
         </p>
     design:
       css_class: "full-bleed research-top"
-
-
+      
 ---
