@@ -584,6 +584,31 @@ html, body {
   padding-bottom: 0 !important;
 }
 
+/* Elimina completamente lo spazio tra i due blocchi */
+
+.damage-title {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/* blocco immediatamente successivo */
+.damage-title + section,
+.damage-title + div {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+/* contenitori interni del blocco successivo */
+.damage-title + section > div,
+.damage-title + section .container,
+.damage-title + section .prose,
+.damage-title + div > div,
+.damage-title + div .container,
+.damage-title + div .prose {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
 /* ===== BLOCCO LOGO + TESTO ===== */
 
 .research-intro {
