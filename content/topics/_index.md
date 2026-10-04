@@ -52,6 +52,22 @@ sections:
         </a>
         </div>
 
+        <div class="research-topic research-topic-fatigue">
+
+        <a href="/topics/fatigue/" class="research-topic-link">
+
+        <div class="research-topic-header">
+        <span class="research-topic-number">01.</span>
+
+        <h3 class="research-topic-title">
+        Fracture and Fatigue of Composite Structures
+        </h3>
+        </div>
+
+        </a>
+
+        </div>
+
       design:
        css_class: "full-bleed research-top"
 
