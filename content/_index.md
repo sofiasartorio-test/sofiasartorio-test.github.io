@@ -18,23 +18,6 @@ sections:
         </div>
 
   - block: markdown
-    design:
-      css_class: "research-intro"
-    content:
-      text: |
-        <div class="research-row">
-
-        <div class="research-logo">
-          <img src="/images/logo.jpg" alt="Research group">
-        </div>
-
-        <div class="text-box">
-          IL TUO TESTO QUI
-        </div>
-
-        </div>
-
-  - block: markdown
     content:
       text: |
         <div style="
