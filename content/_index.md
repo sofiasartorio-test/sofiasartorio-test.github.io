@@ -22,10 +22,20 @@ sections:
       css_class: "full-bleed research-top"
     content:
       text: |
-        <img src="images/logo.jpg" alt="Research group"
-          style="flex:0 0 35%; max-width:35%; height:auto; border-radius:8px;">
-        <p>  
-        The Damage Management & Certification Group (DMC) is part of the department of Aerospace Structures & Materials, of the Faculty of Aerospace Engineering at TU Delft. Within the DMC group, we are working together on related projects, seeking to better understand <strong>damage formation<strong> and <strong>evolution in aerospace materials and structures<strong>. TEST </p>
+        <div style="display:flex;align-items:center;width:100%;gap:40px;">
+        <div style="flex:0 0 35%;">
+          <img src="/images/logo.jpg" alt="Research group"style="display:block;width:100%;
+            height:auto;border-radius:8px;">
+        </div>
+        <div style="flex:1;">
+          <p style="margin:0;">
+            TESTO DEL TUO GRUPPO. Qui puoi inserire tutto il testo che vuoi.
+          </p>
+        </div>
+
+        </div>
+
+
 
 
   - block: markdown
