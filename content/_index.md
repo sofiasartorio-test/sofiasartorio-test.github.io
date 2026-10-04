@@ -49,7 +49,7 @@ sections:
         <div style="
           flex:1;
           margin:0;
-          padding:40px;
+          padding:0px;
           box-sizing:border-box;
           background:#eef5f8;
           font-size:20px;
@@ -59,7 +59,7 @@ sections:
           align-items:center;
         ">
           TESTO DEL TUO GRUPPO. Qui puoi inserire il testo che vuoi e anche
-          <a href="/team/" style="color:#034D85; font-weight:bold; margin-left:5px;">
+          <a href="/team/" style="color:#034D85; font-weight:bold; margin-left:0px;">
             un link
           </a>.
         </div>
