@@ -501,7 +501,7 @@ html, body {
 .damage-title > div {
   width: 100% !important;
   margin: 0 !important;
-  padding: 0px !important;
+  padding: 0 20px 20px 20px !important;
   box-sizing: border-box !important;
 
   background: #034D85 !important;
