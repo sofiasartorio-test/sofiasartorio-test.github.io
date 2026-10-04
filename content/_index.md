@@ -22,8 +22,6 @@ sections:
   - block: markdown
     content:
       text: |
-        <div style="font-size:2rem;font-weight:bold;background:#2563eb;color:white;padding:10px 20px;margin-top:0;margin-bottom:0;border-radius:0;"> DAMAGE MANAGEMENT &amp; CERTIFICATION </div>
-
         <div style="display:flex; flex-wrap:wrap; align-items:center; gap:1rem;">
         <img src="images/logo.jpg" alt="Research group"
           style="flex:0 0 35%; max-width:35%; height:auto; border-radius:8px;">
