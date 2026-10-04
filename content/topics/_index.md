@@ -30,7 +30,7 @@ sections:
         </div>
 
         <div class="research-topic research-topic-cold-spray">
-        <a href="/topics/cold-spray/" class="research-topic-link">
+        <a href="/topics/cold_spray/" class="research-topic-link">
         <div class="research-topic-header">
         <span class="research-topic-number">02.</span>
         <h3 class="research-topic-title">
