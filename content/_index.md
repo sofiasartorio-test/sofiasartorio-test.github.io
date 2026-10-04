@@ -30,7 +30,7 @@ sections:
         </div>
 
     design:
-      css_class: full-bleed
+      css_class: "full-bleed research-top"
 
   - block: markdown
     content:
