@@ -484,6 +484,13 @@ html, body {
   padding: 0 !important;
 }
 
+.damage-title {
+  width: 100vw !important;
+  position: relative !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+}
+
 .damage-title > div {
   width: 100% !important;
   margin: 0 !important;
