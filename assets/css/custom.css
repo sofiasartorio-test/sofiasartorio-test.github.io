@@ -593,3 +593,9 @@ html, body {
   margin-top: 0 !important;
   padding-top: 0 !important;
 }
+
+.research-intro .container,
+.research-intro .prose {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
