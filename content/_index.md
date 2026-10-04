@@ -6,15 +6,15 @@ type: landing
 
 design:
   # Default section spacing
-  spacing: '1rem'
+  spacing: '0rem'
 
 sections:
   
   - block: markdown
     content:
       title: |
-        <div style="white-space: nowrap; font-size:2rem; font-weight:bold;">
-        Damage Management & Certification
+        <div style="font-size:2rem; font-weight:bold; background:#2563eb; color:white; padding:10px 20px;">
+        DAMAGE MANAGEMENT &amp; CERTIFICATION
         </div>
       text: |
         <div style="display:flex; flex-wrap:wrap; align-items:center; gap:1rem;">
