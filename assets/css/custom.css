@@ -313,6 +313,11 @@ html, body {
   background-image: url("/images/IMG_7320.jpg");
 }
 
+.research-topic:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
 .research-topic-link {
   display: block;
   width: 100%;

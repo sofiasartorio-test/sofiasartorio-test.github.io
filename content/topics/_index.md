@@ -39,7 +39,7 @@ sections:
         </div>
         </a>
         </div>
-        
+
         </div>
 
         <p class="research-intro">
