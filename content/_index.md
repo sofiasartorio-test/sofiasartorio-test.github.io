@@ -22,7 +22,7 @@ sections:
   - block: markdown
     content:
       text: |
-        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:1rem;">
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:0rem;">
         <img src="images/logo.jpg" alt="Research group"
           style="flex:0 0 35%; max-width:35%; height:auto; border-radius:8px;">
         <div style="flex:1 1 60%; font-size:20px; font-family:Arial, sans-serif; color:#333;">
