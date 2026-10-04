@@ -27,9 +27,11 @@ sections:
           <img src="/images/logo.jpg" alt="Research group"style="display:block;width:70%;
             height:auto">
         </div>
-        <div style="flex:1;">
+        <div style="flex:1;padding-left:20px;">
           <p style="margin:0;">
-          The Damage Management & Certification Group (DMC) is part of the department of Aerospace Structures & Materials, of the Faculty of Aerospace Engineering at TU Delft. Within the DMC group, we are working together on related projects, seeking to better understand <strong>damage formation<strong> and <strong>evolution in aerospace materials and structures<strong>.
+          The Damage Management & Certification Group (DMC) is part of the department of Aerospace Structures & Materials, of the <a href="https://www.tudelft.nl/en/ae" target="_blank" rel="noopener noreferrer" style="color:#034D85; font-weight:bold;"> Faculty of Aerospace Engineering </a> at TU Delft.
+          
+          Within the DMC group, we are working together on related projects, seeking to better understand <strong>damage formation<strong> and <strong>evolution in aerospace materials and structures<strong>.
           </p>
         </div>
 
