@@ -521,13 +521,18 @@ html, body {
   box-sizing: border-box !important;
 
   color: white !important;
-  font-size: 1rem !important;
+  font-size: 2rem !important;
 
   margin: 0 !important;
   padding: 0 !important;
 
   line-height: 1.1 !important;
   text-align: center !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
 }
 
 .research-intro {
