@@ -36,7 +36,7 @@ sections:
         </p>
 
       design:
-       css_class: full-bleed
+       css_class: "full-bleed research-top"
 
 ---
 

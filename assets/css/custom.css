@@ -224,3 +224,8 @@ html, body {
 .custom-bg-blue {
   background: #eef5f8;
 }
+
+.research-top {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
