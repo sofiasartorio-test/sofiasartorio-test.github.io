@@ -491,6 +491,13 @@ html, body {
   transform: translateX(-50%) !important;
 }
 
+.damage-title .max-w-prose {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
 .damage-title > div {
   width: 100% !important;
   margin: 0 !important;
