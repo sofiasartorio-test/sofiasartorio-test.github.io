@@ -507,3 +507,33 @@ html, body {
   text-align: center !important;
   border-radius: 0 !important;
 }
+
+.damage-title {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.damage-title > div {
+  width: 100% !important;
+  box-sizing: border-box !important;
+
+  margin: 0 !important;
+  padding: 20px !important;
+
+  background: #034D85 !important;
+  color: white !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  border-radius: 0 !important;
+}
+
+.damage-title > div span {
+  color: white !important;
+  font-size: 4rem !important;
+  font-weight: 700 !important;
+  line-height: 1.1 !important;
+  text-align: center !important;
+}

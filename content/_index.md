@@ -16,7 +16,7 @@ sections:
     content:
       text: |
         <div>
-          DAMAGE MANAGEMENT &amp; CERTIFICATION
+        <span>DAMAGE MANAGEMENT &amp; CERTIFICATION GROUP</span>
         </div>
   
   - block: markdown
