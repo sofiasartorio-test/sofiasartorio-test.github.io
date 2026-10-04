@@ -85,12 +85,12 @@ sections:
         </a>
         </div>
 
-        <p style="font-size:1.2rem; line-height:1.6; margin-bottom:1.5rem;">
+        <p style="font-size:1.2rem; line-height:1.6; margin-bottom:1.5rem;text-align:center;">
         If you want to collaborate with us, feel free to reach out via email:<br>
         <a href="mailto:test@tudelft.nl"style="color:#ffd700; text-decoration:underline;">
         test@tudelft.nl
         </a>
-        </div>
+        </p>
     design:
       css_class: "full-bleed research-top"
 
