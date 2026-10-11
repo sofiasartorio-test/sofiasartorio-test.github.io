@@ -114,6 +114,7 @@ def main():
                 continue
 
             date = f"{year}-01-01T00:00:00Z"
+            year = date[:4]
             authors_yaml = "\n".join(
                 f"  - {yaml_quote(author)}" for author in authors
             ) or f"  - {yaml_quote('Kristel Aalbers')}"
@@ -142,6 +143,7 @@ def main():
                 "---\n"
                 f"title: {yaml_quote(title)}\n"
                 f"date: '{date}'\n"
+                f"year: {year}\n"
                 "authors:\n"
                 f"{authors_yaml}\n"
                 "publication_types: ['manuscript']\n"
