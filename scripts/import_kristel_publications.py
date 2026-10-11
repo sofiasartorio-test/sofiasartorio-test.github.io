@@ -9,7 +9,7 @@ from datetime import datetime
 
 RSS_URL = (
     "https://research.tudelft.nl/en/persons/"
-    "kristel-aalbers/publications/?format=rss"
+    "ja-pascoe/publications/?format=rss"
 )
 
 OUTPUT_DIR = Path("content/publications")
@@ -117,7 +117,7 @@ def main():
             year = date[:4]
             authors_yaml = "\n".join(
                 f"  - {yaml_quote(author)}" for author in authors
-            ) or f"  - {yaml_quote('Kristel Aalbers')}"
+            ) or f"  - {yaml_quote('John-Alan Pascoe')}"
 
             abstract_yaml = (
                 f"abstract: {yaml_quote(abstract)}\n"
