@@ -87,8 +87,8 @@
           {{ $surnameSlug := urlize (delimit $surnameParts " ") }}
           {{ $authorPage := false }}
 
-          {{ range site.Pages }}
-            {{ if eq .Section "authors" }}
+          {{ range site.RegularPages }}
+            {{ if and (eq .Section "authors") .File }}
               {{ $slugParts := split .File.ContentBaseName "-" }}
               {{ if eq (index $slugParts (sub (len $slugParts) 1)) $surnameSlug }}
                 {{ $authorPage = . }}
