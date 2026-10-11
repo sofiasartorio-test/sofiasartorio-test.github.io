@@ -63,6 +63,7 @@
                 {{ $surnameStart = sub (len $parts) 3 }}
               {{ end }}
           {{ end }}
+        {{ end }}
 
           {{/* Crea le iniziali */}}
           {{ $initials := slice }}
@@ -81,18 +82,29 @@
           {{ end }}
 
           {{ $displayName := printf "%s %s" (delimit $initials "") (delimit $surnameParts " ") }}
-          {{ $slug := urlize $author }}
 
-          {{ with site.GetPage (printf "/authors/%s" $slug) }}
-           <a href="{{ .RelPermalink }}">{{ $displayName }}</a>
-          {{ else }}
-            {{ $displayName }}
+          {{/* Cerca il profilo autore confrontando l'ultima parte dello slug */}}
+          {{ $surnameSlug := urlize (delimit $surnameParts " ") }}
+          {{ $authorPage := false }}
+
+          {{ range site.Pages }}
+            {{ if eq .Section "authors" }}
+              {{ $slugParts := split .File.ContentBaseName "-" }}
+              {{ if eq (index $slugParts (sub (len $slugParts) 1)) $surnameSlug }}
+                {{ $authorPage = . }}
+              {{ end }}
+            {{ end }}
           {{ end }}
-        {{ end }}
+
+         {{ with $authorPage }}
+          <a href="{{ .RelPermalink }}">{{ $displayName }}</a>
+         {{ else }}
+          {{ $displayName }}
+         {{ end }}
+
       {{ else }}
         {{ $authors }}
       {{ end }}
-
 
         <!--{{/* AUTORI CLICCABILI */}}
         {{ $authors := .Params.authors }}
