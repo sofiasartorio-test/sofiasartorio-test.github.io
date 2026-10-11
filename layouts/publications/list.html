@@ -63,6 +63,10 @@
           – <a href="{{ . }}" target="_blank">PDF</a>
         {{ end }}
 
+        {{ with .Params.doi }}
+          – <a href="{{ . }}" target="_blank">DOI</a>
+        {{ end }}
+
         {{ with .Resources.GetMatch "cite.bib" }}
           – <a href="{{ .RelPermalink }}" target="_blank">BibTeX</a>
         {{ end }}
