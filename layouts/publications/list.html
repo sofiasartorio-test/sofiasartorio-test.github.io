@@ -64,7 +64,7 @@
         {{ end }}
 
         {{ with .Params.doi }}
-          – <a href="{{ . }}" target="_blank">DOI</a>
+          – <a href="{{ .RelPermalink }}" target="_blank">DOI</a>
         {{ end }}
 
         {{ with .Resources.GetMatch "cite.bib" }}
