@@ -32,11 +32,10 @@
   {{ range sort .Pages "Params.year" "desc" }}
     <div class="pub-item"
          data-search="{{ lower (printf "%s %s %v %v" .Title (delimit .Params.authors " ") .Params.topics .Params.year) }}">
-
-      <!-- TITOLO -->
-      <a href="{{ .RelPermalink }}" class="pub-title">
+         
+      <span class="pub-title">
         {{ .Title }}
-      </a>
+      </span>
 
       <!-- META -->
       <div class="pub-meta">
