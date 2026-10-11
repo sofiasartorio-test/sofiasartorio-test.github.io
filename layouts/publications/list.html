@@ -62,8 +62,8 @@
               {{ if and (ge (len $parts) 3) (in (slice "van" "von" "de" "del" "della" "der" "den" "da" "di" "du" "la" "le") (lower (index $parts (sub (len $parts) 3)))) (in (slice "der" "den" "la" "le") $previousPart) }}
                 {{ $surnameStart = sub (len $parts) 3 }}
               {{ end }}
-          {{ end }}
-        {{ end }}
+           {{ end }}
+        
 
           {{/* Crea le iniziali */}}
           {{ $initials := slice }}
@@ -105,22 +105,6 @@
       {{ else }}
         {{ $authors }}
       {{ end }}
-
-        <!--{{/* AUTORI CLICCABILI */}}
-        {{ $authors := .Params.authors }}
-        {{ if reflect.IsSlice $authors }}
-          {{ range $i, $author := $authors }}
-            {{ if gt $i 0 }}, {{ end }}
-            {{ $slug := urlize $author }}
-            {{ with site.GetPage (printf "/authors/%s" $slug) }}
-              <a href="{{ .RelPermalink }}">{{ $author }}</a>
-            {{ else }}
-              {{ $author }}
-            {{ end }}
-          {{ end }}
-        {{ else }}
-          {{ $authors }}
-        {{ end }}-->
 
         ({{ .Params.year }})
 
