@@ -32,7 +32,7 @@
   {{ range sort .Pages "Params.year" "desc" }}
     <div class="pub-item"
          data-search="{{ lower (printf "%s %s %v %v" .Title (delimit .Params.authors " ") .Params.topics .Params.year) }}">
-         
+
       <span class="pub-title">
         {{ .Title }}
       </span>
@@ -41,6 +41,60 @@
       <div class="pub-meta">
 
         {{/* AUTORI CLICCABILI */}}
+        {{ $authors := .Params.authors }}
+
+        {{ if reflect.IsSlice $authors }}
+          {{ range $i, $author := $authors }}
+            {{ if gt $i 0 }}, {{ end }}
+
+            {{ $parts := split (strings.TrimSpace $author) " " }}
+            {{ $surnameStart := sub (len $parts) 1 }}
+
+            {{/* Gestione dei cognomi composti con particelle */}}
+            {{ if ge (len $parts) 2 }}
+              {{ $lastPart := lower (index $parts (sub (len $parts) 1)) }}
+              {{ $previousPart := lower (index $parts (sub (len $parts) 2)) }}
+
+              {{ if in (slice "van" "von" "de" "del" "della" "der" "den" "da" "di" "du" "la" "le") $previousPart }}
+                {{ $surnameStart = sub (len $parts) 2 }}
+              {{ end }}
+
+              {{ if and (ge (len $parts) 3) (in (slice "van" "von" "de" "del" "della" "der" "den" "da" "di" "du" "la" "le") (lower (index $parts (sub (len $parts) 3)))) (in (slice "der" "den" "la" "le") $previousPart) }}
+                {{ $surnameStart = sub (len $parts) 3 }}
+              {{ end }}
+          {{ end }}
+
+          {{/* Crea le iniziali */}}
+          {{ $initials := slice }}
+          {{ range $j, $part := $parts }}
+            {{ if lt $j $surnameStart }}
+              {{ $initials = $initials | append (printf "%s." (upper (substr $part 0 1))) }}
+            {{ end }}
+          {{ end }}
+
+          {{/* Ricompone il cognome, incluse eventuali particelle */}}
+          {{ $surnameParts := slice }}
+          {{ range $j, $part := $parts }}
+            {{ if ge $j $surnameStart }}
+              {{ $surnameParts = $surnameParts | append $part }}
+            {{ end }}
+          {{ end }}
+
+          {{ $displayName := printf "%s %s" (delimit $initials "") (delimit $surnameParts " ") }}
+          {{ $slug := urlize $author }}
+
+          {{ with site.GetPage (printf "/authors/%s" $slug) }}
+           <a href="{{ .RelPermalink }}">{{ $displayName }}</a>
+          {{ else }}
+            {{ $displayName }}
+          {{ end }}
+        {{ end }}
+      {{ else }}
+        {{ $authors }}
+      {{ end }}
+
+
+        <!--{{/* AUTORI CLICCABILI */}}
         {{ $authors := .Params.authors }}
         {{ if reflect.IsSlice $authors }}
           {{ range $i, $author := $authors }}
@@ -54,7 +108,7 @@
           {{ end }}
         {{ else }}
           {{ $authors }}
-        {{ end }}
+        {{ end }}-->
 
         ({{ .Params.year }})
 

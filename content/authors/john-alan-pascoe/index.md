@@ -1,5 +1,5 @@
 ---
-title: "John Alan-Pascoe"
+title: "John-Alan Pascoe"
 role: "Principal Investigator"
 avatar: "/images/John-Alan_Pascoe.jpg"
 
