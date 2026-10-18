@@ -1,7 +1,309 @@
-{{ $block := . }}
-{{ $title := $block.content.title | default "Recent Papers" }}
+{{ $content := .content }}
+{{ $title := $content.title | default "Recent Papers" }}
+
+{{ $papers := where site.RegularPages "Section" "in" (slice "publication" "publications") }}
+{{ $papers = sort $papers "Date" "desc" }}
+{{ $papers = first 4 $papers }}
 
 <section class="recent-papers">
-  <h2>{{ $title }}</h2>
-  <p>Recent Papers block loaded successfully.</p>
+  <style>
+    .recent-papers {
+      padding: 1.5rem 0 2rem;
+    }
+
+    .recent-papers .rp-heading {
+      font-size: 1.8rem;
+      font-weight: 600;
+      margin: 0 0 1.5rem;
+    }
+
+    .recent-papers .rp-slider {
+      display: grid;
+      grid-template-columns: 44px minmax(0, 1fr) 44px;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .recent-papers .rp-content {
+      min-width: 0;
+      text-align: center;
+      padding: 1.5rem 0;
+    }
+
+    .recent-papers .rp-slide[hidden] {
+      display: none !important;
+    }
+
+    .recent-papers .rp-title {
+      font-size: clamp(1.25rem, 2.5vw, 1.8rem);
+      font-weight: 600;
+      line-height: 1.45;
+      margin: 0 0 1.1rem;
+    }
+
+    .recent-papers .rp-title a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .recent-papers .rp-title a:hover {
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    .recent-papers .rp-authors {
+      font-size: 1rem;
+      line-height: 1.9;
+      opacity: .8;
+    }
+
+    .recent-papers .rp-authors a {
+      color: inherit;
+      text-decoration: underline;
+      text-decoration-color: transparent;
+      text-underline-offset: 3px;
+    }
+
+    .recent-papers .rp-authors a:hover {
+      text-decoration-color: currentColor;
+    }
+
+    .recent-papers .rp-year {
+      font-size: .9rem;
+      opacity: .65;
+      margin: .7rem 0 1.3rem;
+    }
+
+    .recent-papers .rp-button {
+      display: inline-block;
+      padding: .65rem 1.1rem;
+      border: 1px solid currentColor;
+      border-radius: 6px;
+      color: inherit;
+      text-decoration: none;
+      font-size: .9rem;
+      transition: background .2s, color .2s;
+    }
+
+    .recent-papers .rp-button:hover {
+      background: var(--color-primary-600, #2563eb);
+      border-color: var(--color-primary-600, #2563eb);
+      color: #fff;
+    }
+
+    .recent-papers .rp-arrow {
+      width: 42px;
+      height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid currentColor;
+      border-radius: 50%;
+      background: transparent;
+      color: inherit;
+      cursor: pointer;
+      font-size: 1.35rem;
+      transition: background .2s, color .2s;
+    }
+
+    .recent-papers .rp-arrow:hover {
+      background: var(--color-primary-600, #2563eb);
+      border-color: var(--color-primary-600, #2563eb);
+      color: #fff;
+    }
+
+    .recent-papers .rp-counter {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: .7rem;
+      font-size: .8rem;
+      opacity: .65;
+    }
+
+    .recent-papers .rp-counter-line {
+      width: 30px;
+      height: 1px;
+      background: currentColor;
+    }
+
+    @media (max-width: 600px) {
+      .recent-papers .rp-slider {
+        grid-template-columns: 32px minmax(0, 1fr) 32px;
+        gap: .4rem;
+      }
+
+      .recent-papers .rp-arrow {
+        width: 32px;
+        height: 32px;
+        font-size: 1rem;
+      }
+
+      .recent-papers .rp-content {
+        padding: 1rem 0;
+      }
+
+      .recent-papers .rp-title {
+        font-size: 1.2rem;
+      }
+    }
+  </style>
+
+  <h2 class="rp-heading">{{ $title }}</h2>
+
+  {{ if $papers }}
+    <div class="rp-slider">
+      <button class="rp-arrow rp-prev"
+        type="button" aria-label="Previous paper">
+        &#8592;
+      </button>
+
+      <div class="rp-content" aria-live="polite">
+        {{ range $i, $paper := $papers }}
+          <article class="rp-slide"
+            {{ if ne $i 0 }}hidden{{ end }}>
+
+            <h3 class="rp-title">
+              <a href="{{ $paper.RelPermalink }}">
+                {{ $paper.Title }}
+              </a>
+            </h3>
+
+            <div class="rp-authors">
+              {{ $authors := $paper.Params.authors }}
+
+              {{ if reflect.IsSlice $authors }}
+                {{ range $j, $author := $authors }}
+                  {{ if gt $j 0 }}, {{ end }}
+
+                  {{ $parts := split (strings.TrimSpace $author) " " }}
+                  {{ $surnameStart := sub (len $parts) 1 }}
+
+                  {{ if ge (len $parts) 2 }}
+                    {{ $previousPart := lower (index $parts (sub (len $parts) 2)) }}
+
+                    {{ if in (slice "van" "von" "de" "del" "della" "der" "den" "da" "di" "du" "la" "le") $previousPart }}
+                      {{ $surnameStart = sub (len $parts) 2 }}
+                    {{ end }}
+
+                    {{ if and (ge (len $parts) 3) (in (slice "van" "von" "de" "del" "della" "der" "den" "da" "di" "du" "la" "le") (lower (index $parts (sub (len $parts) 3)))) (in (slice "der" "den" "la" "le") $previousPart) }}
+                      {{ $surnameStart = sub (len $parts) 3 }}
+                    {{ end }}
+                  {{ end }}
+
+                  {{ $initials := slice }}
+                  {{ range $k, $part := $parts }}
+                    {{ if lt $k $surnameStart }}
+                      {{ $initials = $initials | append (printf "%s." (upper (substr $part 0 1))) }}
+                    {{ end }}
+                  {{ end }}
+
+                  {{ $surnameParts := slice }}
+                  {{ range $k, $part := $parts }}
+                    {{ if ge $k $surnameStart }}
+                      {{ $surnameParts = $surnameParts | append $part }}
+                    {{ end }}
+                  {{ end }}
+
+                  {{ $displayName := printf "%s %s" (delimit $initials "") (delimit $surnameParts " ") }}
+                  {{ $surnameSlug := urlize (delimit $surnameParts " ") }}
+                  {{ $authorPage := false }}
+
+                  {{ range site.RegularPages }}
+                    {{ if and (eq .Section "authors") .File }}
+                      {{ $slugParts := split .File.ContentBaseName "-" }}
+                      {{ if and (gt (len $slugParts) 0) (eq (index $slugParts (sub (len $slugParts) 1)) $surnameSlug) }}
+                        {{ $authorPage = . }}
+                      {{ end }}
+                    {{ end }}
+                  {{ end }}
+
+                  {{ with $authorPage }}
+                    <a href="{{ .RelPermalink }}">{{ $displayName }}</a>
+                  {{ else }}
+                    {{ $displayName }}
+                  {{ end }}
+                {{ end }}
+              {{ else if $authors }}
+                {{ $authors }}
+              {{ end }}
+            </div>
+
+            <p class="rp-year">
+              {{ $paper.Params.year | default ($paper.Date.Format "2006") }}
+            </p>
+
+            {{ with $paper.Params.doi }}
+              {{ $doi := strings.TrimSpace (printf "%v" .) }}
+              {{ $doiURL := $doi }}
+
+              {{ if strings.HasPrefix (lower $doiURL) "doi:" }}
+                {{ $doiURL = strings.TrimSpace (substr $doiURL 4) }}
+              {{ end }}
+
+              {{ if not (strings.HasPrefix (lower $doiURL) "https://") }}
+                {{ if not (strings.HasPrefix (lower $doiURL) "http://") }}
+                  {{ $doiURL = printf "https://doi.org/%s" $doiURL }}
+                {{ end }}
+              {{ end }}
+
+              <a class="rp-button"
+                href="{{ $doiURL }}"
+                target="_blank"
+                rel="noopener noreferrer">
+                Read article ↗
+              </a>
+            {{ end }}
+
+          </article>
+        {{ end }}
+      </div>
+
+      <button class="rp-arrow rp-next"
+        type="button" aria-label="Next paper">
+        &#8594;
+      </button>
+    </div>
+
+    <div class="rp-counter" aria-label="Publication position">
+      <span class="rp-current">01</span>
+      <span class="rp-counter-line"></span>
+      <span>{{ printf "%02d" (len $papers) }}</span>
+    </div>
+
+    <script>
+      (() => {
+        const root = document.currentScript.closest(".recent-papers");
+        if (!root || root.dataset.ready) return;
+        root.dataset.ready = "true";
+
+        const slides = Array.from(root.querySelectorAll(".rp-slide"));
+        const prev = root.querySelector(".rp-prev");
+        const next = root.querySelector(".rp-next");
+        const counter = root.querySelector(".rp-current");
+        let current = 0;
+
+        function show(index) {
+          current = (index + slides.length) % slides.length;
+
+          slides.forEach((slide, i) => {
+            slide.hidden = i !== current;
+          });
+
+          counter.textContent = String(current + 1).padStart(2, "0");
+        }
+
+        prev.addEventListener("click", () => show(current - 1));
+        next.addEventListener("click", () => show(current + 1));
+
+        if (slides.length < 2) {
+          prev.hidden = true;
+          next.hidden = true;
+        }
+      })();
+    </script>
+  {{ else }}
+    <p>No publications found. Check the publication folder name.</p>
+  {{ end }}
 </section>
+
