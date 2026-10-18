@@ -1,243 +1,305 @@
+{{ $content := .content }}
+{{ $title := $content.title | default "Recent Papers" }}
+{{ $id := printf "recent-papers-%s" (anchorize $title) }}
 
-{{ $id := "recent-papers-slider" }}
 {{ $papers := where site.RegularPages "Section" "in" (slice "publication" "publications") }}
-{{ $papers = sort $papers "Params.year" "desc" }}
+{{ $papers = sort $papers "Date" "desc" }}
 {{ $papers = first 4 $papers }}
 
-<section id="{{ $id }}" class="recent-papers">
+<section class="recent-papers" id="{{ $id }}">
   <style>
+    /* Reset forza larghezza piena anche dentro contenitori Hugo Blox */
     #{{ $id }} {
-      width: 100%;
-      box-sizing: border-box;
-      padding: 2rem 1rem;
-    }
-
-    #{{ $id }} h2 {
-      text-align: center;
-      font-size: 2.2rem;
-      font-weight: 700;
-      line-height: 1.3;
-      margin: 0 0 2rem;
-    }
-
-    #{{ $id }} .rp-layout {
-      display: grid !important;
-      grid-template-columns: 40px minmax(0, 760px) 40px !important;
-      gap: 12px;
-      align-items: center;
-      justify-content: center;
-      width: 100% !important;
-      max-width: 900px !important;
-      margin: 0 auto !important;
-      box-sizing: border-box;
-    }
-
-    #{{ $id }} .rp-arrow {
-      width: 40px;
-      height: 40px;
-      border: 1px solid #ccc;
-      border-radius: 50%;
-      background: transparent;
-      cursor: pointer;
-      font-size: 24px;
-      line-height: 1;
-    }
-
-    #{{ $id }} .rp-card {
-      grid-column: 2 !important;
-      grid-row: 1;
       display: block !important;
       width: 100% !important;
-      min-width: 0;
+      max-width: 100% !important;
+      padding: 2rem 1rem;
       box-sizing: border-box;
-      padding: 1.5rem;
-      border: 1px solid #e5e5e5;
-      border-radius: 12px;
-      overflow-wrap: break-word;
-      word-break: normal;
-      text-align: left;
     }
 
-    #{{ $id }} .rp-card[hidden] {
+    #{{ $id }} *,
+    #{{ $id }} *::before,
+    #{{ $id }} *::after {
+      box-sizing: border-box;
+    }
+
+    #{{ $id }} .rp-heading {
+      width: 100%;
+      margin: 0 0 2rem;
+      text-align: center;
+      font-size: 1.8rem;
+      font-weight: 600;
+    }
+
+    /* FIX PRINCIPALE: il wrapper del grid deve essere block-level
+       con larghezza esplicita, non dipendere dal genitore */
+    #{{ $id }} .rp-slider {
+      display: grid;
+      grid-template-columns: 44px 1fr 44px;  /* 1fr invece di minmax(0,1fr) */
+      align-items: center;
+      gap: 1rem;
+      width: 100%;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    /* FIX: il contenuto centrale non può restringersi sotto la larghezza minima */
+    #{{ $id }} .rp-content {
+      display: block;
+      width: 100%;
+      /* CRITICO: senza overflow-wrap il browser non rompe le parole */
+      overflow-wrap: break-word;
+      word-break: normal;       /* NON break-all — rompe solo dove necessario */
+      hyphens: auto;
+      text-align: center;
+      min-width: 0;             /* necessario per grid child */
+      padding: 1.5rem 0;
+    }
+
+    #{{ $id }} .rp-slide[hidden] {
       display: none !important;
     }
 
     #{{ $id }} .rp-title {
-      display: block;
-      font-size: 1.15rem;
-      font-weight: 600;
+      /* max-width relativo, non fisso in pixel */
+      max-width: 100%;
+      margin: 0 auto 1rem;
+      font-size: clamp(1.1rem, 2.5vw, 1.7rem);
       line-height: 1.5;
-      margin-bottom: 0.8rem;
+      font-weight: 600;
+      overflow-wrap: break-word;
+      word-break: normal;
     }
 
-    #{{ $id }} .rp-meta {
-      font-size: 0.95rem;
-      line-height: 1.8;
-      color: #666;
-    }
-
-    #{{ $id }} a {
-      color: #0671c9;
+    #{{ $id }} .rp-title a {
+      color: inherit;
       text-decoration: none;
     }
 
-    #{{ $id }} a:hover {
+    #{{ $id }} .rp-title a:hover {
       text-decoration: underline;
+      text-underline-offset: 4px;
     }
 
-    #{{ $id }} .rp-doi {
-      display: inline-block;
-      margin-top: 1rem;
-      padding: 0.4rem 0.8rem;
-      border: 1px solid #0671c9;
-      border-radius: 6px;
+    #{{ $id }} .rp-authors {
+      max-width: 100%;
+      margin: 0 auto;
+      font-size: 1rem;
+      line-height: 1.9;
+      opacity: 0.85;
+      overflow-wrap: break-word;
+      word-break: normal;
     }
 
-    #{{ $id }} .rp-controls {
-      grid-column: 1 / -1;
-      text-align: center;
+    #{{ $id }} .rp-authors a {
+      color: inherit;
+      text-decoration: underline;
+      text-decoration-color: transparent;
+      text-underline-offset: 3px;
+    }
+
+    #{{ $id }} .rp-authors a:hover {
+      text-decoration-color: currentColor;
+    }
+
+    #{{ $id }} .rp-year {
+      margin: 0.8rem 0 1.2rem;
       font-size: 0.9rem;
-      color: #666;
-      margin-top: 0.5rem;
+      opacity: 0.65;
     }
 
-    @media (max-width: 520px) {
-      #{{ $id }} .rp-layout {
-        grid-template-columns: 32px minmax(0, 1fr) 32px;
-        gap: 6px;
-      }
+    #{{ $id }} .rp-button {
+      display: inline-block;
+      padding: 0.65rem 1.1rem;
+      border: 1px solid currentColor;
+      border-radius: 6px;
+      color: inherit;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+    }
 
+    #{{ $id }} .rp-button:hover {
+      background: var(--color-primary-600, #2563eb);
+      border-color: var(--color-primary-600, #2563eb);
+      color: #fff;
+    }
+
+    #{{ $id }} .rp-arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      flex-shrink: 0;     /* FIX: non si restringe mai */
+      padding: 0;
+      border: 1px solid currentColor;
+      border-radius: 50%;
+      background: transparent;
+      color: inherit;
+      cursor: pointer;
+      font-size: 1.3rem;
+      line-height: 1;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+    }
+
+    #{{ $id }} .rp-arrow:hover {
+      background: var(--color-primary-600, #2563eb);
+      border-color: var(--color-primary-600, #2563eb);
+      color: #fff;
+    }
+
+    #{{ $id }} .rp-counter {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      margin: 0.5rem auto 0;
+      font-size: 0.8rem;
+      opacity: 0.65;
+    }
+
+    #{{ $id }} .rp-counter-line {
+      display: inline-block;
+      width: 30px;
+      height: 1px;
+      background: currentColor;
+    }
+
+    @media (max-width: 600px) {
+      #{{ $id }} {
+        padding: 1.5rem 0.5rem;
+      }
+      #{{ $id }} .rp-slider {
+        grid-template-columns: 32px 1fr 32px;
+        gap: 0.5rem;
+      }
       #{{ $id }} .rp-arrow {
         width: 32px;
         height: 32px;
+        font-size: 1rem;
       }
-
-      #{{ $id }} .rp-card {
-        padding: 1rem;
+      #{{ $id }} .rp-title {
+        font-size: 1.1rem;
       }
     }
   </style>
 
-  <h2>Recent Papers</h2>
+  <h2 class="rp-heading">{{ $title }}</h2>
 
   {{ if $papers }}
-    <div class="rp-layout">
-      <button class="rp-arrow rp-prev" type="button"
-        aria-label="Previous paper">&#8592;</button>
+    <div class="rp-slider">
+      <button class="rp-arrow rp-prev" type="button" aria-label="Previous paper">&#8592;</button>
 
-      {{ range $i, $p := $papers }}
-        <article class="rp-card" {{ if ne $i 0 }}hidden{{ end }}>
-          <div class="rp-title">
-            {{ $p.Title }}
-          </div>
+      <div class="rp-content" aria-live="polite">
+        {{ range $i, $paper := $papers }}
+          <article class="rp-slide" {{ if ne $i 0 }}hidden{{ end }}>
+            <h3 class="rp-title">
+              <a href="{{ $paper.RelPermalink }}">{{ $paper.Title }}</a>
+            </h3>
 
-          <div class="rp-meta">
-            {{ $authors := $p.Params.authors }}
-
-            {{ if reflect.IsSlice $authors }}
-              {{ range $j, $author := $authors }}
-                {{ if $j }}, {{ end }}
-                {{ $parts := split (strings.TrimSpace $author) " " }}
-                {{ $last := sub (len $parts) 1 }}
-                {{ $surname := index $parts $last }}
-                {{ $initials := slice }}
-
-                {{ range $k, $part := $parts }}
-                  {{ if lt $k $last }}
-                    {{ $initials = $initials | append (printf "%s." (upper (substr $part 0 1))) }}
-                  {{ end }}
-                {{ end }}
-
-                {{ $display := printf "%s %s" (delimit $initials "") $surname }}
-                {{ $authorSlug := urlize $author }}
-                {{ $authorPage := false }}
-
-                {{ range site.RegularPages }}
-                  {{ if and (eq .Section "authors") .File }}
-                    {{ if eq .File.ContentBaseName $authorSlug }}
-                      {{ $authorPage = . }}
+            <div class="rp-authors">
+              {{ $authors := $paper.Params.authors }}
+              {{ if reflect.IsSlice $authors }}
+                {{ range $j, $author := $authors }}
+                  {{ if gt $j 0 }}, {{ end }}
+                  {{ $parts := split (strings.TrimSpace $author) " " }}
+                  {{ $surnameStart := sub (len $parts) 1 }}
+                  {{ if ge (len $parts) 2 }}
+                    {{ $previousPart := lower (index $parts (sub (len $parts) 2)) }}
+                    {{ if in (slice "van" "von" "de" "del" "della" "der" "den" "da" "di" "du" "la" "le") $previousPart }}
+                      {{ $surnameStart = sub (len $parts) 2 }}
                     {{ end }}
                   {{ end }}
+                  {{ $initials := slice }}
+                  {{ range $k, $part := $parts }}
+                    {{ if lt $k $surnameStart }}
+                      {{ $initials = $initials | append (printf "%s." (upper (substr $part 0 1))) }}
+                    {{ end }}
+                  {{ end }}
+                  {{ $surnameParts := slice }}
+                  {{ range $k, $part := $parts }}
+                    {{ if ge $k $surnameStart }}
+                      {{ $surnameParts = $surnameParts | append $part }}
+                    {{ end }}
+                  {{ end }}
+                  {{ $displayName := printf "%s %s" (delimit $initials "") (delimit $surnameParts " ") }}
+                  {{ $surnameSlug := urlize (delimit $surnameParts " ") }}
+                  {{ $authorPage := false }}
+                  {{ range site.RegularPages }}
+                    {{ if and (eq .Section "authors") .File }}
+                      {{ $slugParts := split .File.ContentBaseName "-" }}
+                      {{ if and (gt (len $slugParts) 0) (eq (index $slugParts (sub (len $slugParts) 1)) $surnameSlug) }}
+                        {{ $authorPage = . }}
+                      {{ end }}
+                    {{ end }}
+                  {{ end }}
+                  {{ with $authorPage }}
+                    <a href="{{ .RelPermalink }}">{{ $displayName }}</a>
+                  {{ else }}
+                    {{ $displayName }}
+                  {{ end }}
                 {{ end }}
+              {{ else if $authors }}
+                {{ $authors }}
+              {{ end }}
+            </div>
 
-                {{ with $authorPage }}
-                  <a href="{{ .RelPermalink }}">{{ $display }}</a>
-                {{ else }}
-                  {{ $display }}
+            <p class="rp-year">
+              {{ $paper.Params.year | default ($paper.Date.Format "2006") }}
+            </p>
+
+            {{ with $paper.Params.doi }}
+              {{ $doi := strings.TrimSpace (printf "%v" .) }}
+              {{ $doiURL := $doi }}
+              {{ if strings.HasPrefix (lower $doiURL) "doi:" }}
+                {{ $doiURL = strings.TrimSpace (substr $doiURL 4) }}
+              {{ end }}
+              {{ if not (strings.HasPrefix (lower $doiURL) "https://") }}
+                {{ if not (strings.HasPrefix (lower $doiURL) "http://") }}
+                  {{ $doiURL = printf "https://doi.org/%s" $doiURL }}
                 {{ end }}
               {{ end }}
-            {{ else if $authors }}
-              {{ $authors }}
+              <a class="rp-button" href="{{ $doiURL }}" target="_blank" rel="noopener noreferrer">
+                Read article ↗
+              </a>
             {{ end }}
-
-            {{ with $p.Params.year }}
-              · {{ . }}
-            {{ else }}
-              {{ with $p.Date }}
-                · {{ .Format "2006" }}
-              {{ end }}
-            {{ end }}
-          </div>
-
-          {{ with $p.Params.doi }}
-            {{ $doi := . }}
-            {{ if strings.HasPrefix $doi "http" }}
-              <a class="rp-doi" href="{{ $doi }}"
-                target="_blank" rel="noopener">DOI ↗</a>
-            {{ else }}
-              <a class="rp-doi"
-                href="{{ printf "https://doi.org/%s" $doi }}"
-                target="_blank" rel="noopener">DOI ↗</a>
-            {{ end }}
-          {{ end }}
-        </article>
-      {{ end }}
-
-      <button class="rp-arrow rp-next" type="button"
-        aria-label="Next paper">&#8594;</button>
-
-      <div class="rp-controls" aria-live="polite">
-        <span class="rp-current">1</span> / {{ len $papers }}
+          </article>
+        {{ end }}
       </div>
+
+      <button class="rp-arrow rp-next" type="button" aria-label="Next paper">&#8594;</button>
     </div>
+
+    <div class="rp-counter" aria-label="Publication position">
+      <span class="rp-current">01</span>
+      <span class="rp-counter-line"></span>
+      <span>{{ printf "%02d" (len $papers) }}</span>
+    </div>
+
+    <script>
+      (() => {
+        const script = document.currentScript;
+        const root = script && script.closest(".recent-papers");
+        if (!root || root.dataset.ready) return;
+        root.dataset.ready = "true";
+        const slides = Array.from(root.querySelectorAll(".rp-slide"));
+        const prev = root.querySelector(".rp-prev");
+        const next = root.querySelector(".rp-next");
+        const counter = root.querySelector(".rp-current");
+        if (!slides.length || !prev || !next || !counter) return;
+        let current = 0;
+        function show(index) {
+          current = (index + slides.length) % slides.length;
+          slides.forEach((slide, i) => { slide.hidden = i !== current; });
+          counter.textContent = String(current + 1).padStart(2, "0");
+        }
+        prev.addEventListener("click", () => show(current - 1));
+        next.addEventListener("click", () => show(current + 1));
+        if (slides.length < 2) { prev.hidden = true; next.hidden = true; }
+      })();
+    </script>
   {{ else }}
-    <p style="text-align:center">
-      No publications found. Check the publication folder name.
-    </p>
+    <p>No publications found.</p>
   {{ end }}
-
-  <script>
-    (() => {
-      const root = document.getElementById('recent-papers-slider');
-      if (!root || root.dataset.initialized) return;
-      root.dataset.initialized = 'true';
-
-      const cards = Array.from(root.querySelectorAll('.rp-card'));
-      const prev = root.querySelector('.rp-prev');
-      const next = root.querySelector('.rp-next');
-      const counter = root.querySelector('.rp-current');
-
-      if (!cards.length) return;
-
-      let current = 0;
-
-      function show(index) {
-        current = (index + cards.length) % cards.length;
-
-        cards.forEach((card, i) => {
-          card.hidden = i !== current;
-        });
-
-        counter.textContent = String(current + 1);
-      }
-
-      prev.addEventListener('click', () => show(current - 1));
-      next.addEventListener('click', () => show(current + 1));
-
-      if (cards.length < 2) {
-        prev.hidden = true;
-        next.hidden = true;
-      }
-    })();
-  </script>
 </section>
