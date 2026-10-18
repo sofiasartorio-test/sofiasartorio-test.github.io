@@ -40,8 +40,7 @@ sections:
   - block: markdown
     content:
       text: |
-       <h2>Our research</h2>
-       It revolves around the following fundamental questions:
+       Our research revolves around the following fundamental questions:
        <ol>
          <li>How is damage formed in aerospace materials?</li>
          <li>How will damage evolve over time if we keep using a damaged air or  spacecraft?</li>
