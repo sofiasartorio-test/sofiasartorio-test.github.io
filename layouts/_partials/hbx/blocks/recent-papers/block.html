@@ -1,15 +1,32 @@
 
 <div id="rp-simple" style="width:100%; padding:30px; box-sizing:border-box;">
   <style>
+    #rp-simple {
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    #rp-simple .rp-heading {
+      display: block;
+      width: 100%;
+      margin: 0 0 30px;
+      text-align: center;
+      font-size: 2.2rem;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
     #rp-simple .rp-row {
       display: flex !important;
       flex-direction: row !important;
+      flex-wrap: nowrap !important;
       align-items: center !important;
       justify-content: center !important;
       gap: 16px !important;
       width: 100% !important;
       max-width: 760px !important;
       margin: 30px auto !important;
+      box-sizing: border-box !important;
     }
 
     #rp-simple .rp-arrow {
@@ -31,7 +48,11 @@
       font-family: Arial, sans-serif !important;
       font-size: 28px !important;
       line-height: 40px !important;
-      cursor: pointer;
+      cursor: pointer !important;
+    }
+
+    #rp-simple .rp-arrow:hover {
+      background: #f0f0f0 !important;
     }
 
     #rp-simple .rp-card {
@@ -47,28 +68,130 @@
       border-radius: 12px !important;
       box-sizing: border-box !important;
       text-align: center !important;
+      overflow-wrap: normal !important;
+      word-break: normal !important;
     }
 
     #rp-simple .rp-card p {
+      display: block !important;
+      width: 100% !important;
       margin: 0 !important;
       font-size: 20px !important;
       line-height: 1.5 !important;
+      font-weight: 500;
       word-break: normal !important;
       overflow-wrap: normal !important;
     }
+
+    #rp-simple .rp-counter {
+      margin-top: 16px;
+      text-align: center;
+      font-size: 14px;
+      color: #666;
+    }
+
+    @media (max-width: 480px) {
+      #rp-simple {
+        padding: 20px 8px !important;
+      }
+
+      #rp-simple .rp-row {
+        gap: 6px !important;
+      }
+
+      #rp-simple .rp-arrow {
+        flex-basis: 32px !important;
+        width: 32px !important;
+        min-width: 32px !important;
+        max-width: 32px !important;
+        height: 36px !important;
+        font-size: 23px !important;
+        line-height: 32px !important;
+      }
+
+      #rp-simple .rp-card {
+        padding: 14px !important;
+        min-height: 150px !important;
+      }
+
+      #rp-simple .rp-card p {
+        font-size: 17px !important;
+      }
+    }
   </style>
 
-  <h2 style="text-align:center; font-size:2.2rem; margin:0;">
-    Recent Papers
-  </h2>
+  <h2 class="rp-heading">Recent Papers</h2>
 
   <div class="rp-row">
-    <div class="rp-arrow" aria-hidden="true">‹</div>
+    <div
+      class="rp-arrow rp-prev"
+      role="button"
+      tabindex="0"
+      aria-label="Articolo precedente"
+    >&#8249;</div>
 
-    <div class="rp-card">
-      <p>QUESTO È IL PRIMO ARTICOLO DI PROVA</p>
+    <div class="rp-card" aria-live="polite">
+      <p class="rp-slide-text">PRIMO ARTICOLO DI PROVA</p>
     </div>
 
-    <div class="rp-arrow" aria-hidden="true">›</div>
+    <div
+      class="rp-arrow rp-next"
+      role="button"
+      tabindex="0"
+      aria-label="Articolo successivo"
+    >&#8250;</div>
   </div>
+
+  <div class="rp-counter">
+    Articolo <span class="rp-current">1</span> di 4
+  </div>
+
+  <script>
+    (function () {
+      const root = document.getElementById('rp-simple');
+
+      if (!root || root.dataset.ready === 'true') {
+        return;
+      }
+
+      root.dataset.ready = 'true';
+
+      const slides = [
+        'PRIMO ARTICOLO DI PROVA',
+        'SECONDO ARTICOLO DI PROVA',
+        'TERZO ARTICOLO DI PROVA',
+        'QUARTO ARTICOLO DI PROVA'
+      ];
+
+      const text = root.querySelector('.rp-slide-text');
+      const counter = root.querySelector('.rp-current');
+      const prev = root.querySelector('.rp-prev');
+      const next = root.querySelector('.rp-next');
+
+      let current = 0;
+
+      function showSlide(index) {
+        current = (index + slides.length) % slides.length;
+        text.textContent = slides[current];
+        counter.textContent = String(current + 1);
+      }
+
+      function activate(element, direction) {
+        element.addEventListener('click', function () {
+          showSlide(current + direction);
+        });
+
+        element.addEventListener('keydown', function (event) {
+          if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            showSlide(current + direction);
+          }
+        });
+      }
+
+      activate(prev, -1);
+      activate(next, 1);
+    })();
+  </script>
 </div>
+
