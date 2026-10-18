@@ -1,5 +1,10 @@
 
-<div id="rp-simple" style="width:100%; padding:30px; box-sizing:border-box;">
+{{ $id := "rp-simple" }}
+{{ $papers := where site.RegularPages "Section" "publications" }}
+{{ $papers = sort $papers "Params.year" "desc" }}
+{{ $papers = first 4 $papers }}
+
+<div id="{{ $id }}" style="width:100%; padding:30px; box-sizing:border-box;">
   <style>
     #rp-simple {
       width: 100%;
@@ -56,10 +61,8 @@
     }
 
     #rp-simple .rp-card {
-      display: flex !important;
+      display: block !important;
       flex: 1 1 600px !important;
-      align-items: center !important;
-      justify-content: center !important;
       min-width: 0 !important;
       max-width: 600px !important;
       min-height: 180px !important;
@@ -67,20 +70,46 @@
       border: 2px solid #888 !important;
       border-radius: 12px !important;
       box-sizing: border-box !important;
-      text-align: center !important;
-      overflow-wrap: normal !important;
+      text-align: left !important;
+      overflow-wrap: break-word !important;
       word-break: normal !important;
     }
 
-    #rp-simple .rp-card p {
-      display: block !important;
-      width: 100% !important;
-      margin: 0 !important;
-      font-size: 20px !important;
+    #rp-simple .rp-card[hidden] {
+      display: none !important;
+    }
+
+    #rp-simple .rp-paper-title {
+      margin: 0 0 14px !important;
+      font-size: 1.15rem !important;
+      font-weight: 600 !important;
       line-height: 1.5 !important;
-      font-weight: 500;
       word-break: normal !important;
-      overflow-wrap: normal !important;
+      overflow-wrap: break-word !important;
+    }
+
+    #rp-simple .rp-meta {
+      margin: 0 !important;
+      font-size: 0.92rem !important;
+      line-height: 1.8 !important;
+      color: #555 !important;
+    }
+
+    #rp-simple a {
+      color: #0671c9;
+      text-decoration: none;
+    }
+
+    #rp-simple a:hover {
+      text-decoration: underline;
+    }
+
+    #rp-simple .rp-doi {
+      display: inline-block;
+      margin-top: 14px;
+      padding: 5px 12px;
+      border: 1px solid #0671c9;
+      border-radius: 6px;
     }
 
     #rp-simple .rp-counter {
@@ -113,75 +142,134 @@
         padding: 14px !important;
         min-height: 150px !important;
       }
-
-      #rp-simple .rp-card p {
-        font-size: 17px !important;
-      }
     }
   </style>
 
   <h2 class="rp-heading">Recent Papers</h2>
 
-  <div class="rp-row">
-    <div
-      class="rp-arrow rp-prev"
-      role="button"
-      tabindex="0"
-      aria-label="Articolo precedente"
-    >&#8249;</div>
+  {{ if $papers }}
+    <div class="rp-row">
+      <div class="rp-arrow rp-prev"
+        role="button" tabindex="0" aria-label="Articolo precedente">&#8249;</div>
 
-    <div class="rp-card" aria-live="polite">
-      <p class="rp-slide-text">PRIMO ARTICOLO DI PROVA</p>
+      {{ range $i, $p := $papers }}
+        <article class="rp-card" {{ if ne $i 0 }}hidden{{ end }}>
+          <h3 class="rp-paper-title">
+            {{ $p.Title }}
+          </h3>
+
+          <p class="rp-meta">
+            {{ $authors := $p.Params.authors }}
+
+            {{ if reflect.IsSlice $authors }}
+              {{ range $j, $author := $authors }}
+                {{ if $j }}, {{ end }}
+
+                {{ $parts := split (strings.TrimSpace $author) " " }}
+                {{ $surnameStart := sub (len $parts) 1 }}
+
+                {{ if ge (len $parts) 2 }}
+                  {{ $previous := lower (index $parts (sub (len $parts) 2)) }}
+                  {{ if in (slice "van" "von" "de" "del" "della" "der" "den" "da" "di" "du" "la" "le") $previous }}
+                    {{ $surnameStart = sub (len $parts) 2 }}
+                  {{ end }}
+                {{ end }}
+
+                {{ $initials := slice }}
+                {{ range $k, $part := $parts }}
+                  {{ if lt $k $surnameStart }}
+                    {{ $initials = $initials | append (printf "%s." (upper (substr $part 0 1))) }}
+                  {{ end }}
+                {{ end }}
+
+                {{ $surnameParts := slice }}
+                {{ range $k, $part := $parts }}
+                  {{ if ge $k $surnameStart }}
+                    {{ $surnameParts = $surnameParts | append $part }}
+                  {{ end }}
+                {{ end }}
+
+                {{ $display := printf "%s %s" (delimit $initials "") (delimit $surnameParts " ") }}
+                {{ $surnameSlug := urlize (delimit $surnameParts " ") }}
+                {{ $authorPage := false }}
+
+                {{ range site.RegularPages }}
+                  {{ if and (eq .Section "authors") .File }}
+                    {{ $slugParts := split .File.ContentBaseName "-" }}
+                    {{ if eq (index $slugParts (sub (len $slugParts) 1)) $surnameSlug }}
+                      {{ $authorPage = . }}
+                    {{ end }}
+                  {{ end }}
+                {{ end }}
+
+                {{ with $authorPage }}
+                  <a href="{{ .RelPermalink }}">{{ $display }}</a>
+                {{ else }}
+                  {{ $display }}
+                {{ end }}
+              {{ end }}
+            {{ else if $authors }}
+              {{ $authors }}
+            {{ end }}
+
+            {{ with $p.Params.year }}
+              · {{ . }}
+            {{ else }}
+              {{ with $p.Date }}· {{ .Format "2006" }}{{ end }}
+            {{ end }}
+          </p>
+
+          {{ with $p.Params.doi }}
+            {{ $doi := . }}
+            {{ if strings.HasPrefix $doi "http" }}
+              <a class="rp-doi" href="{{ $doi }}"
+                target="_blank" rel="noopener">DOI ↗</a>
+            {{ else }}
+              <a class="rp-doi"
+                href="{{ printf "https://doi.org/%s" $doi }}"
+                target="_blank" rel="noopener">DOI ↗</a>
+            {{ end }}
+          {{ end }}
+        </article>
+      {{ end }}
+
+      <div class="rp-arrow rp-next"
+        role="button" tabindex="0" aria-label="Articolo successivo">&#8250;</div>
     </div>
 
-    <div
-      class="rp-arrow rp-next"
-      role="button"
-      tabindex="0"
-      aria-label="Articolo successivo"
-    >&#8250;</div>
-  </div>
-
-  <div class="rp-counter">
-    Articolo <span class="rp-current">1</span> di 4
-  </div>
+    <div class="rp-counter">
+      Articolo <span class="rp-current">1</span> di {{ len $papers }}
+    </div>
+  {{ else }}
+    <p style="text-align:center">Nessuna pubblicazione trovata.</p>
+  {{ end }}
 
   <script>
     (function () {
       const root = document.getElementById('rp-simple');
-
-      if (!root || root.dataset.ready === 'true') {
-        return;
-      }
-
+      if (!root || root.dataset.ready === 'true') return;
       root.dataset.ready = 'true';
 
-      const slides = [
-        'PRIMO ARTICOLO DI PROVA',
-        'SECONDO ARTICOLO DI PROVA',
-        'TERZO ARTICOLO DI PROVA',
-        'QUARTO ARTICOLO DI PROVA'
-      ];
-
-      const text = root.querySelector('.rp-slide-text');
-      const counter = root.querySelector('.rp-current');
+      const cards = Array.from(root.querySelectorAll('.rp-card'));
       const prev = root.querySelector('.rp-prev');
       const next = root.querySelector('.rp-next');
+      const counter = root.querySelector('.rp-current');
+
+      if (!cards.length) return;
 
       let current = 0;
 
       function showSlide(index) {
-        current = (index + slides.length) % slides.length;
-        text.textContent = slides[current];
+        current = (index + cards.length) % cards.length;
+        cards.forEach((card, i) => {
+          card.hidden = i !== current;
+        });
         counter.textContent = String(current + 1);
       }
 
       function activate(element, direction) {
-        element.addEventListener('click', function () {
-          showSlide(current + direction);
-        });
-
-        element.addEventListener('keydown', function (event) {
+        element.addEventListener('click', () => showSlide(current + direction));
+        element.addEventListener('keydown', event => {
           if (event.key === 'Enter' || event.key === ' ') {
             event.preventDefault();
             showSlide(current + direction);
@@ -194,4 +282,5 @@
     })();
   </script>
 </div>
+
 
