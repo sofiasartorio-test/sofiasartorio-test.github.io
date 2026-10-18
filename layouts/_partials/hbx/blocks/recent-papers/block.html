@@ -1,3 +1,4 @@
+
 {{ $content := .content }}
 {{ $title := $content.title | default "Recent Papers" }}
 {{ $id := printf "recent-papers-%s" (anchorize $title) }}
@@ -8,109 +9,130 @@
 
 <section class="recent-papers" id="{{ $id }}">
   <style>
-    /* Reset forza larghezza piena anche dentro contenitori Hugo Blox */
-    #{{ $id }} {
+    .recent-papers {
       display: block !important;
       width: 100% !important;
       max-width: 100% !important;
+      min-width: 0 !important;
+      margin: 0 auto !important;
       padding: 2rem 1rem;
       box-sizing: border-box;
+      overflow: visible;
     }
 
-    #{{ $id }} *,
-    #{{ $id }} *::before,
-    #{{ $id }} *::after {
+    .recent-papers *,
+    .recent-papers *::before,
+    .recent-papers *::after {
       box-sizing: border-box;
     }
 
-    #{{ $id }} .rp-heading {
+    .recent-papers .rp-heading {
+      display: block;
       width: 100%;
       margin: 0 0 2rem;
       text-align: center;
       font-size: 1.8rem;
+      line-height: 1.35;
       font-weight: 600;
     }
 
-    /* FIX PRINCIPALE: il wrapper del grid deve essere block-level
-       con larghezza esplicita, non dipendere dal genitore */
-    #{{ $id }} .rp-slider {
-      display: grid;
-      grid-template-columns: 44px 1fr 44px;  /* 1fr invece di minmax(0,1fr) */
+    .recent-papers .rp-slider {
+      display: flex !important;
+      flex-direction: row !important;
       align-items: center;
+      justify-content: center;
       gap: 1rem;
-      width: 100%;
-      max-width: 960px;
-      margin: 0 auto;
+      width: 100% !important;
+      max-width: 1000px;
+      min-width: 0 !important;
+      margin: 0 auto !important;
     }
 
-    /* FIX: il contenuto centrale non può restringersi sotto la larghezza minima */
-    #{{ $id }} .rp-content {
+    .recent-papers .rp-content {
+      display: block !important;
+      flex: 1 1 0% !important;
+      width: 0 !important;
+      min-width: 0 !important;
+      max-width: 100%;
+      margin: 0;
+      padding: 2rem 0;
+      text-align: center;
+      overflow-wrap: normal !important;
+      word-break: normal !important;
+      hyphens: auto;
+    }
+
+    .recent-papers .rp-slide {
       display: block;
       width: 100%;
-      /* CRITICO: senza overflow-wrap il browser non rompe le parole */
-      overflow-wrap: break-word;
-      word-break: normal;       /* NON break-all — rompe solo dove necessario */
-      hyphens: auto;
+      min-width: 0;
+      margin: 0;
       text-align: center;
-      min-width: 0;             /* necessario per grid child */
-      padding: 1.5rem 0;
+      overflow-wrap: normal !important;
+      word-break: normal !important;
     }
 
-    #{{ $id }} .rp-slide[hidden] {
+    .recent-papers .rp-slide[hidden] {
       display: none !important;
     }
 
-    #{{ $id }} .rp-title {
-      /* max-width relativo, non fisso in pixel */
-      max-width: 100%;
-      margin: 0 auto 1rem;
-      font-size: clamp(1.1rem, 2.5vw, 1.7rem);
+    .recent-papers .rp-title {
+      display: block;
+      width: 100%;
+      max-width: 780px;
+      margin: 0 auto 1.25rem;
+      font-size: clamp(1.3rem, 2.5vw, 1.9rem);
       line-height: 1.5;
       font-weight: 600;
-      overflow-wrap: break-word;
-      word-break: normal;
+      overflow-wrap: break-word !important;
+      word-break: normal !important;
+      hyphens: auto;
     }
 
-    #{{ $id }} .rp-title a {
+    .recent-papers .rp-title a {
       color: inherit;
       text-decoration: none;
+      overflow-wrap: inherit;
+      word-break: inherit;
     }
 
-    #{{ $id }} .rp-title a:hover {
+    .recent-papers .rp-title a:hover {
       text-decoration: underline;
       text-underline-offset: 4px;
     }
 
-    #{{ $id }} .rp-authors {
-      max-width: 100%;
+    .recent-papers .rp-authors {
+      width: 100%;
+      max-width: 760px;
       margin: 0 auto;
       font-size: 1rem;
       line-height: 1.9;
       opacity: 0.85;
       overflow-wrap: break-word;
-      word-break: normal;
+      word-break: normal !important;
     }
 
-    #{{ $id }} .rp-authors a {
+    .recent-papers .rp-authors a {
       color: inherit;
       text-decoration: underline;
       text-decoration-color: transparent;
       text-underline-offset: 3px;
     }
 
-    #{{ $id }} .rp-authors a:hover {
+    .recent-papers .rp-authors a:hover {
       text-decoration-color: currentColor;
     }
 
-    #{{ $id }} .rp-year {
-      margin: 0.8rem 0 1.2rem;
+    .recent-papers .rp-year {
+      margin: 0.8rem 0 1.4rem;
       font-size: 0.9rem;
       opacity: 0.65;
     }
 
-    #{{ $id }} .rp-button {
+    .recent-papers .rp-button {
       display: inline-block;
-      padding: 0.65rem 1.1rem;
+      max-width: 100%;
+      padding: 0.7rem 1.2rem;
       border: 1px solid currentColor;
       border-radius: 6px;
       color: inherit;
@@ -119,37 +141,45 @@
       transition: background 0.2s, color 0.2s, border-color 0.2s;
     }
 
-    #{{ $id }} .rp-button:hover {
+    .recent-papers .rp-button:hover {
       background: var(--color-primary-600, #2563eb);
       border-color: var(--color-primary-600, #2563eb);
       color: #fff;
     }
 
-    #{{ $id }} .rp-arrow {
+    .recent-papers .rp-arrow {
       display: flex;
+      flex: 0 0 44px !important;
       align-items: center;
       justify-content: center;
-      width: 44px;
+      width: 44px !important;
+      min-width: 44px !important;
+      max-width: 44px !important;
       height: 44px;
-      flex-shrink: 0;     /* FIX: non si restringe mai */
       padding: 0;
       border: 1px solid currentColor;
       border-radius: 50%;
       background: transparent;
       color: inherit;
       cursor: pointer;
-      font-size: 1.3rem;
+      font-size: 1.35rem;
       line-height: 1;
       transition: background 0.2s, color 0.2s, border-color 0.2s;
     }
 
-    #{{ $id }} .rp-arrow:hover {
+    .recent-papers .rp-arrow:hover {
       background: var(--color-primary-600, #2563eb);
       border-color: var(--color-primary-600, #2563eb);
       color: #fff;
     }
 
-    #{{ $id }} .rp-counter {
+    .recent-papers .rp-arrow:focus-visible,
+    .recent-papers a:focus-visible {
+      outline: 2px solid currentColor;
+      outline-offset: 4px;
+    }
+
+    .recent-papers .rp-counter {
       display: flex;
       align-items: center;
       justify-content: center;
@@ -159,28 +189,51 @@
       opacity: 0.65;
     }
 
-    #{{ $id }} .rp-counter-line {
+    .recent-papers .rp-counter-line {
       display: inline-block;
       width: 30px;
       height: 1px;
       background: currentColor;
     }
 
+    .recent-papers .rp-empty {
+      text-align: center;
+    }
+
     @media (max-width: 600px) {
-      #{{ $id }} {
-        padding: 1.5rem 0.5rem;
+      .recent-papers {
+        padding: 1.5rem 0.25rem;
       }
-      #{{ $id }} .rp-slider {
-        grid-template-columns: 32px 1fr 32px;
-        gap: 0.5rem;
+
+      .recent-papers .rp-heading {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
       }
-      #{{ $id }} .rp-arrow {
-        width: 32px;
+
+      .recent-papers .rp-slider {
+        gap: 0.4rem;
+      }
+
+      .recent-papers .rp-arrow {
+        flex-basis: 32px !important;
+        width: 32px !important;
+        min-width: 32px !important;
+        max-width: 32px !important;
         height: 32px;
         font-size: 1rem;
       }
-      #{{ $id }} .rp-title {
-        font-size: 1.1rem;
+
+      .recent-papers .rp-content {
+        padding: 1.25rem 0;
+      }
+
+      .recent-papers .rp-title {
+        font-size: 1.2rem;
+        line-height: 1.5;
+      }
+
+      .recent-papers .rp-authors {
+        font-size: 0.9rem;
       }
     }
   </style>
@@ -189,43 +242,62 @@
 
   {{ if $papers }}
     <div class="rp-slider">
-      <button class="rp-arrow rp-prev" type="button" aria-label="Previous paper">&#8592;</button>
+      <button
+        class="rp-arrow rp-prev"
+        type="button"
+        aria-label="Previous paper">
+        &#8592;
+      </button>
 
       <div class="rp-content" aria-live="polite">
         {{ range $i, $paper := $papers }}
           <article class="rp-slide" {{ if ne $i 0 }}hidden{{ end }}>
             <h3 class="rp-title">
-              <a href="{{ $paper.RelPermalink }}">{{ $paper.Title }}</a>
+              <a href="{{ $paper.RelPermalink }}">
+                {{ $paper.Title }}
+              </a>
             </h3>
 
             <div class="rp-authors">
               {{ $authors := $paper.Params.authors }}
+
               {{ if reflect.IsSlice $authors }}
                 {{ range $j, $author := $authors }}
                   {{ if gt $j 0 }}, {{ end }}
+
                   {{ $parts := split (strings.TrimSpace $author) " " }}
                   {{ $surnameStart := sub (len $parts) 1 }}
+
                   {{ if ge (len $parts) 2 }}
                     {{ $previousPart := lower (index $parts (sub (len $parts) 2)) }}
+
                     {{ if in (slice "van" "von" "de" "del" "della" "der" "den" "da" "di" "du" "la" "le") $previousPart }}
                       {{ $surnameStart = sub (len $parts) 2 }}
                     {{ end }}
+
+                    {{ if and (ge (len $parts) 3) (in (slice "van" "von" "de" "del" "della" "der" "den" "da" "di" "du" "la" "le") (lower (index $parts (sub (len $parts) 3)))) (in (slice "der" "den" "la" "le") $previousPart) }}
+                      {{ $surnameStart = sub (len $parts) 3 }}
+                    {{ end }}
                   {{ end }}
+
                   {{ $initials := slice }}
                   {{ range $k, $part := $parts }}
                     {{ if lt $k $surnameStart }}
                       {{ $initials = $initials | append (printf "%s." (upper (substr $part 0 1))) }}
                     {{ end }}
                   {{ end }}
+
                   {{ $surnameParts := slice }}
                   {{ range $k, $part := $parts }}
                     {{ if ge $k $surnameStart }}
                       {{ $surnameParts = $surnameParts | append $part }}
                     {{ end }}
                   {{ end }}
+
                   {{ $displayName := printf "%s %s" (delimit $initials "") (delimit $surnameParts " ") }}
                   {{ $surnameSlug := urlize (delimit $surnameParts " ") }}
                   {{ $authorPage := false }}
+
                   {{ range site.RegularPages }}
                     {{ if and (eq .Section "authors") .File }}
                       {{ $slugParts := split .File.ContentBaseName "-" }}
@@ -234,6 +306,7 @@
                       {{ end }}
                     {{ end }}
                   {{ end }}
+
                   {{ with $authorPage }}
                     <a href="{{ .RelPermalink }}">{{ $displayName }}</a>
                   {{ else }}
@@ -252,15 +325,22 @@
             {{ with $paper.Params.doi }}
               {{ $doi := strings.TrimSpace (printf "%v" .) }}
               {{ $doiURL := $doi }}
+
               {{ if strings.HasPrefix (lower $doiURL) "doi:" }}
                 {{ $doiURL = strings.TrimSpace (substr $doiURL 4) }}
               {{ end }}
+
               {{ if not (strings.HasPrefix (lower $doiURL) "https://") }}
                 {{ if not (strings.HasPrefix (lower $doiURL) "http://") }}
                   {{ $doiURL = printf "https://doi.org/%s" $doiURL }}
                 {{ end }}
               {{ end }}
-              <a class="rp-button" href="{{ $doiURL }}" target="_blank" rel="noopener noreferrer">
+
+              <a
+                class="rp-button"
+                href="{{ $doiURL }}"
+                target="_blank"
+                rel="noopener noreferrer">
                 Read article ↗
               </a>
             {{ end }}
@@ -268,7 +348,12 @@
         {{ end }}
       </div>
 
-      <button class="rp-arrow rp-next" type="button" aria-label="Next paper">&#8594;</button>
+      <button
+        class="rp-arrow rp-next"
+        type="button"
+        aria-label="Next paper">
+        &#8594;
+      </button>
     </div>
 
     <div class="rp-counter" aria-label="Publication position">
@@ -281,25 +366,41 @@
       (() => {
         const script = document.currentScript;
         const root = script && script.closest(".recent-papers");
+
         if (!root || root.dataset.ready) return;
         root.dataset.ready = "true";
+
         const slides = Array.from(root.querySelectorAll(".rp-slide"));
         const prev = root.querySelector(".rp-prev");
         const next = root.querySelector(".rp-next");
         const counter = root.querySelector(".rp-current");
+
         if (!slides.length || !prev || !next || !counter) return;
+
         let current = 0;
+
         function show(index) {
           current = (index + slides.length) % slides.length;
-          slides.forEach((slide, i) => { slide.hidden = i !== current; });
+
+          slides.forEach((slide, i) => {
+            slide.hidden = i !== current;
+          });
+
           counter.textContent = String(current + 1).padStart(2, "0");
         }
+
         prev.addEventListener("click", () => show(current - 1));
         next.addEventListener("click", () => show(current + 1));
-        if (slides.length < 2) { prev.hidden = true; next.hidden = true; }
+
+        if (slides.length < 2) {
+          prev.hidden = true;
+          next.hidden = true;
+        }
       })();
     </script>
   {{ else }}
-    <p>No publications found.</p>
+    <p class="rp-empty">
+      No publications found. Check the publication folder name.
+    </p>
   {{ end }}
 </section>
