@@ -1,0 +1,7 @@
+{{ $block := . }}
+{{ $title := $block.content.title | default "Recent Papers" }}
+
+<section class="recent-papers">
+  <h2>{{ $title }}</h2>
+  <p>Recent Papers block loaded successfully.</p>
+</section>

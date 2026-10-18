@@ -97,6 +97,10 @@ sections:
       text: |
         {{< papers >}}
 
+  - block: recent-papers
+    content:
+      title: Recent Papers
+
   - block: markdown
     content:
       title: "Where to find us"
