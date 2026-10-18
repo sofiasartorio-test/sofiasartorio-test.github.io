@@ -4,71 +4,57 @@
     #rp-simple .rp-row {
       display: flex !important;
       flex-direction: row !important;
-      flex-wrap: nowrap !important;
       align-items: center !important;
       justify-content: center !important;
-      gap: 15px !important;
+      gap: 16px !important;
       width: 100% !important;
       max-width: 760px !important;
       margin: 30px auto !important;
+    }
+
+    #rp-simple .rp-arrow {
+      display: block !important;
+      position: static !important;
+      flex: 0 0 44px !important;
+      width: 44px !important;
+      min-width: 44px !important;
+      max-width: 44px !important;
+      height: 44px !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      border: 1px solid #888 !important;
+      border-radius: 50% !important;
       box-sizing: border-box !important;
+      color: #333 !important;
+      background: white !important;
+      text-align: center !important;
+      font-family: Arial, sans-serif !important;
+      font-size: 28px !important;
+      line-height: 40px !important;
+      cursor: pointer;
     }
 
     #rp-simple .rp-card {
-      flex: 1 1 auto;
-      min-width: 0;
-      max-width: 600px;
-      padding: 30px;
-      border: 2px solid #888;
-      border-radius: 12px;
-      box-sizing: border-box;
-      text-align: center;
-      overflow-wrap: normal;
-      word-break: normal;
-    }
-
-    #rp-simple .rp-row > .rp-arrow {
-      position: static !important;
-      display: inline-flex !important;
+      display: flex !important;
+      flex: 1 1 600px !important;
       align-items: center !important;
       justify-content: center !important;
-      flex: 0 0 42px !important;
-      width: 42px !important;
-      min-width: 42px !important;
-      height: 42px !important;
-      margin: 0 !important;
-      padding: 0 !important;
-      float: none !important;
-      transform: none !important;
-      border: 1px solid #888 !important;
-      border-radius: 50% !important;
-      background: transparent !important;
-      font-size: 22px !important;
-      line-height: 1 !important;
-      cursor: pointer !important;
+      min-width: 0 !important;
+      max-width: 600px !important;
+      min-height: 180px !important;
+      padding: 24px !important;
+      border: 2px solid #888 !important;
+      border-radius: 12px !important;
+      box-sizing: border-box !important;
+      text-align: center !important;
     }
 
     #rp-simple .rp-card p {
-      margin: 0;
-      font-size: 20px;
-      word-break: normal;
-      overflow-wrap: normal;
-    }
-
-    @media (max-width: 480px) {
-      #rp-simple .rp-row {
-        gap: 6px;
-      }
-
-      #rp-simple .rp-arrow {
-        flex-basis: 32px;
-        width: 32px;
-        height: 32px;
-      }
-
-      #rp-simple .rp-card {
-        padding: 12px;
-      }
+      margin: 0 !important;
+      font-size: 20px !important;
+      line-height: 1.5 !important;
+      word-break: normal !important;
+      overflow-wrap: normal !important;
     }
   </style>
 
@@ -77,12 +63,12 @@
   </h2>
 
   <div class="rp-row">
-    <button class="rp-arrow" type="button" aria-label="Precedente">‹</button>
+    <div class="rp-arrow" aria-hidden="true">‹</div>
 
     <div class="rp-card">
       <p>QUESTO È IL PRIMO ARTICOLO DI PROVA</p>
     </div>
 
-    <button class="rp-arrow" type="button" aria-label="Successivo">›</button>
+    <div class="rp-arrow" aria-hidden="true">›</div>
   </div>
 </div>
