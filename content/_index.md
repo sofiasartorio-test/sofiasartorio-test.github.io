@@ -92,11 +92,6 @@ sections:
     design:
       css_class: custom-bg-blue hbx-bg-light full-bleed research-top   
 
-  - block: markdown
-    content:
-      text: |
-        {{< papers >}}
-
   - block: recent-papers
     content:
       title: Recent Papers
