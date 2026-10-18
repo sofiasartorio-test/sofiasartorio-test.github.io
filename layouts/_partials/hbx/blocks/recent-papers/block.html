@@ -1,33 +1,55 @@
+
 {{ $content := .content }}
 {{ $title := $content.title | default "Recent Papers" }}
+{{ $id := printf "recent-papers-%s" (anchorize $title) }}
 
 {{ $papers := where site.RegularPages "Section" "in" (slice "publication" "publications") }}
 {{ $papers = sort $papers "Date" "desc" }}
 {{ $papers = first 4 $papers }}
 
-<section class="recent-papers">
+<section class="recent-papers" id="{{ $id }}">
   <style>
     .recent-papers {
-      padding: 1.5rem 0 2rem;
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+      box-sizing: border-box;
+    }
+
+    .recent-papers *,
+    .recent-papers *::before,
+    .recent-papers *::after {
+      box-sizing: border-box;
     }
 
     .recent-papers .rp-heading {
+      width: 100%;
+      margin: 0 0 2rem;
+      text-align: center;
       font-size: 1.8rem;
+      line-height: 1.3;
       font-weight: 600;
-      margin: 0 0 1.5rem;
     }
 
     .recent-papers .rp-slider {
       display: grid;
       grid-template-columns: 44px minmax(0, 1fr) 44px;
       align-items: center;
-      gap: 1rem;
+      gap: 1.25rem;
+      width: 100%;
+      max-width: 1000px;
+      margin: 0 auto;
     }
 
     .recent-papers .rp-content {
+      display: block;
+      width: 100%;
       min-width: 0;
+      margin: 0 auto;
+      padding: 2rem 0;
       text-align: center;
-      padding: 1.5rem 0;
     }
 
     .recent-papers .rp-slide[hidden] {
@@ -35,10 +57,12 @@
     }
 
     .recent-papers .rp-title {
-      font-size: clamp(1.25rem, 2.5vw, 1.8rem);
+      max-width: 780px;
+      margin: 0 auto 1.25rem;
+      font-size: clamp(1.3rem, 2.5vw, 1.9rem);
+      line-height: 1.5;
       font-weight: 600;
-      line-height: 1.45;
-      margin: 0 0 1.1rem;
+      overflow-wrap: anywhere;
     }
 
     .recent-papers .rp-title a {
@@ -52,9 +76,12 @@
     }
 
     .recent-papers .rp-authors {
+      max-width: 760px;
+      margin: 0 auto;
       font-size: 1rem;
       line-height: 1.9;
-      opacity: .8;
+      opacity: 0.85;
+      overflow-wrap: anywhere;
     }
 
     .recent-papers .rp-authors a {
@@ -69,20 +96,21 @@
     }
 
     .recent-papers .rp-year {
-      font-size: .9rem;
-      opacity: .65;
-      margin: .7rem 0 1.3rem;
+      margin: 0.8rem 0 1.4rem;
+      font-size: 0.9rem;
+      opacity: 0.65;
     }
 
     .recent-papers .rp-button {
       display: inline-block;
-      padding: .65rem 1.1rem;
+      max-width: 100%;
+      padding: 0.7rem 1.2rem;
       border: 1px solid currentColor;
       border-radius: 6px;
       color: inherit;
       text-decoration: none;
-      font-size: .9rem;
-      transition: background .2s, color .2s;
+      font-size: 0.9rem;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
     }
 
     .recent-papers .rp-button:hover {
@@ -92,18 +120,20 @@
     }
 
     .recent-papers .rp-arrow {
-      width: 42px;
-      height: 42px;
       display: flex;
       align-items: center;
       justify-content: center;
+      width: 44px;
+      height: 44px;
+      padding: 0;
       border: 1px solid currentColor;
       border-radius: 50%;
       background: transparent;
       color: inherit;
       cursor: pointer;
       font-size: 1.35rem;
-      transition: background .2s, color .2s;
+      line-height: 1;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
     }
 
     .recent-papers .rp-arrow:hover {
@@ -112,25 +142,42 @@
       color: #fff;
     }
 
+    .recent-papers .rp-arrow:focus-visible,
+    .recent-papers a:focus-visible {
+      outline: 2px solid currentColor;
+      outline-offset: 4px;
+    }
+
     .recent-papers .rp-counter {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: .7rem;
-      font-size: .8rem;
-      opacity: .65;
+      gap: 0.75rem;
+      margin: 0.5rem auto 0;
+      font-size: 0.8rem;
+      opacity: 0.65;
     }
 
     .recent-papers .rp-counter-line {
+      display: inline-block;
       width: 30px;
       height: 1px;
       background: currentColor;
     }
 
     @media (max-width: 600px) {
+      .recent-papers {
+        padding: 1.5rem 0.5rem;
+      }
+
+      .recent-papers .rp-heading {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+      }
+
       .recent-papers .rp-slider {
         grid-template-columns: 32px minmax(0, 1fr) 32px;
-        gap: .4rem;
+        gap: 0.4rem;
       }
 
       .recent-papers .rp-arrow {
@@ -140,11 +187,16 @@
       }
 
       .recent-papers .rp-content {
-        padding: 1rem 0;
+        padding: 1.25rem 0;
       }
 
       .recent-papers .rp-title {
         font-size: 1.2rem;
+        line-height: 1.5;
+      }
+
+      .recent-papers .rp-authors {
+        font-size: 0.9rem;
       }
     }
   </style>
@@ -153,16 +205,16 @@
 
   {{ if $papers }}
     <div class="rp-slider">
-      <button class="rp-arrow rp-prev"
-        type="button" aria-label="Previous paper">
+      <button
+        class="rp-arrow rp-prev"
+        type="button"
+        aria-label="Previous paper">
         &#8592;
       </button>
 
       <div class="rp-content" aria-live="polite">
         {{ range $i, $paper := $papers }}
-          <article class="rp-slide"
-            {{ if ne $i 0 }}hidden{{ end }}>
-
+          <article class="rp-slide" {{ if ne $i 0 }}hidden{{ end }}>
             <h3 class="rp-title">
               <a href="{{ $paper.RelPermalink }}">
                 {{ $paper.Title }}
@@ -247,20 +299,22 @@
                 {{ end }}
               {{ end }}
 
-              <a class="rp-button"
+              <a
+                class="rp-button"
                 href="{{ $doiURL }}"
                 target="_blank"
                 rel="noopener noreferrer">
                 Read article ↗
               </a>
             {{ end }}
-
           </article>
         {{ end }}
       </div>
 
-      <button class="rp-arrow rp-next"
-        type="button" aria-label="Next paper">
+      <button
+        class="rp-arrow rp-next"
+        type="button"
+        aria-label="Next paper">
         &#8594;
       </button>
     </div>
@@ -273,7 +327,9 @@
 
     <script>
       (() => {
-        const root = document.currentScript.closest(".recent-papers");
+        const script = document.currentScript;
+        const root = script && script.closest(".recent-papers");
+
         if (!root || root.dataset.ready) return;
         root.dataset.ready = "true";
 
@@ -281,6 +337,9 @@
         const prev = root.querySelector(".rp-prev");
         const next = root.querySelector(".rp-next");
         const counter = root.querySelector(".rp-current");
+
+        if (!slides.length || !prev || !next || !counter) return;
+
         let current = 0;
 
         function show(index) {
@@ -303,7 +362,10 @@
       })();
     </script>
   {{ else }}
-    <p>No publications found. Check the publication folder name.</p>
+    <p class="rp-empty">
+      No publications found. Check the publication folder name.
+    </p>
   {{ end }}
 </section>
+
 
