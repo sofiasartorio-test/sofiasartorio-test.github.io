@@ -1,5 +1,13 @@
-<section class="recent-papers">
-  <p style="width: 100%; text-align: center;">
-    Questo è un test di larghezza del contenitore.
-  </p>
+{{ $id := "recent-papers-test" }}
+
+<section id="{{ $id }}" class="recent-papers">
+  <style>
+    #recent-papers-test {
+      display: block;
+      width: 100%;
+    }
+  </style>
+
+  <h2>Recent Papers</h2>
+  <p>Test del blocco Recent Papers.</p>
 </section>
