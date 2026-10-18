@@ -524,3 +524,69 @@ html, body {
 
   text-align: center !important;
 }
+
+/* =========================================================
+   home PAGE paper slider
+   ========================================================= */
+
+
+/* Recent Papers: fix layout and text wrapping */
+.recent-papers {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  box-sizing: border-box !important;
+}
+
+.recent-papers .rp-slider {
+  display: grid !important;
+  grid-template-columns: 44px minmax(0, 1fr) 44px !important;
+  align-items: center !important;
+  gap: 1rem !important;
+  width: 100% !important;
+  max-width: 1000px !important;
+  margin: 0 auto !important;
+}
+
+.recent-papers .rp-content {
+  display: block !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: none !important;
+  text-align: center !important;
+  writing-mode: horizontal-tb !important;
+}
+
+.recent-papers .rp-slide,
+.recent-papers .rp-title,
+.recent-papers .rp-title a,
+.recent-papers .rp-authors {
+  width: 100% !important;
+  max-width: 100% !important;
+  white-space: normal !important;
+  word-break: normal !important;
+  overflow-wrap: break-word !important;
+  writing-mode: horizontal-tb !important;
+  letter-spacing: normal !important;
+}
+
+.recent-papers .rp-title,
+.recent-papers .rp-authors {
+  text-align: center !important;
+}
+
+.recent-papers .rp-slide[hidden] {
+  display: none !important;
+}
+
+.recent-papers .rp-arrow {
+  flex-shrink: 0 !important;
+}
+
+@media (max-width: 600px) {
+  .recent-papers .rp-slider {
+    grid-template-columns: 32px minmax(0, 1fr) 32px !important;
+    gap: 0.4rem !important;
+  }
+}
